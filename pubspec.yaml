@@ -1,0 +1,44 @@
+name: arthurdev
+description: Personal website and online portfolio for ArthurDev.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Bree Serif
+      fonts:
+        - asset: assets/fonts/bree_serif_regular.ttf
+    - family: Heebo
+      fonts:
+        - asset: assets/fonts/heebo_medium.ttf
+          weight: 500
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat_bold.ttf
+          weight: 700
+    - family: CustomIcons
+      fonts:
+        - asset: assets/fonts/custom_icons.ttf
+    - family: MyIcons
+      fonts:
+        - asset: assets/fonts/my_icons.ttf
