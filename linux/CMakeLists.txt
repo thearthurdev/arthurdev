@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
 set(BINARY_NAME "arthurdev")
-set(APPLICATION_ID "com.example.arthurdev")
+set(APPLICATION_ID "com.arthurdev.arthurdev")
 
 cmake_policy(SET CMP0063 NEW)
 

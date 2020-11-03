@@ -12,10 +12,12 @@ class LandingSection extends StatelessWidget {
     Key key,
     @required this.initScreenHeight,
     @required this.currentSection,
+    @required this.scrollController,
   }) : super(key: key);
 
   final double initScreenHeight;
   final int currentSection;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class LandingSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: initScreenHeight * 0.1),
-              NavigationBar(currentSection: currentSection),
+              NavigationBar(currentSection: currentSection, scrollController: scrollController,),
               SizedBox(height: initScreenHeight * 0.3),
               introductionInfoActionBox(leftIndent: 16.0),
             ],

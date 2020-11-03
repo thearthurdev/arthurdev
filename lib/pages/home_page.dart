@@ -42,9 +42,12 @@ class _HomePageState extends State<HomePage> {
       setState(() => showAppBar = false);
     }
 
-    if (scrollController.offset < 1450.0) setState(() => currentSection = 0);
-    if (scrollController.offset > 1450.0) setState(() => currentSection = 1);
-    if (scrollController.offset > 3100.0) setState(() => currentSection = 2);
+    if (scrollController.offset <= kWorksSectionScrollOffset)
+      setState(() => currentSection = 0);
+    if (scrollController.offset >= kWorksSectionScrollOffset)
+      setState(() => currentSection = 1);
+    if (scrollController.offset >= kBlogSectionScrollOffset)
+      setState(() => currentSection = 2);
   }
 
   @override
@@ -67,6 +70,7 @@ class _HomePageState extends State<HomePage> {
                           LandingSection(
                             initScreenHeight: initScreenHeight,
                             currentSection: currentSection,
+                            scrollController: scrollController,
                           ),
                           ExperienceSection(
                             initScreenHeight: initScreenHeight,
@@ -93,6 +97,7 @@ class _HomePageState extends State<HomePage> {
             CustomAppBar(
               showAppBar: showAppBar,
               currentSection: currentSection,
+              scrollController: scrollController,
             ),
           ],
         ),

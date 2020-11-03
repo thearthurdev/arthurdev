@@ -2,17 +2,22 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:flutter/material.dart';
 
 class NavigationBar extends StatelessWidget {
-  const NavigationBar({Key key, this.currentSection}) : super(key: key);
+  const NavigationBar({
+    Key key,
+    @required this.currentSection,
+    @required this.scrollController,
+  }) : super(key: key);
 
   final int currentSection;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
-    final List<String> navigationDestinations = [
-      'Home',
-      'Works',
-      'Blog',
-    ];
+    final Map<String, double> navigationDestinations = {
+      'Home': kHomeSectionScrollOffset,
+      'Works': kWorksSectionScrollOffset,
+      'Blog': kBlogSectionScrollOffset,
+    };
 
     return Container(
       margin: const EdgeInsets.fromLTRB(8.0, 12.0, 16.0, 0.0),
@@ -32,13 +37,19 @@ class NavigationBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      scrollController.animateTo(
+                        navigationDestinations.values.elementAt(i),
+                        curve: Curves.easeOut,
+                        duration: kShortDuration,
+                      );
+                    },
                     borderRadius: kBorderRadius,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Center(
                         child: Text(
-                          navigationDestinations[i],
+                          navigationDestinations.keys.elementAt(i),
                           style: kHeaderTextStyle.copyWith(
                             color: isSelected
                                 ? kPrimaryTextColor

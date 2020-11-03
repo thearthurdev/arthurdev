@@ -9,10 +9,12 @@ class CustomAppBar extends StatelessWidget {
     Key key,
     @required this.showAppBar,
     @required this.currentSection,
+    @required this.scrollController,
   }) : super(key: key);
 
   final bool showAppBar;
   final int currentSection;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,10 @@ class CustomAppBar extends StatelessWidget {
             children: [
               ArthurDevBanner(),
               kIsDesktop(context)
-                  ? NavigationBar(currentSection: currentSection)
+                  ? NavigationBar(
+                      currentSection: currentSection,
+                      scrollController: scrollController,
+                    )
                   : InkWell(
                       onTap: () {},
                       customBorder: CircleBorder(),
