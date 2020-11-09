@@ -29,7 +29,7 @@ jobs:
       - name: Deploy
         run: |
           cd build/web
-          # git init
+          git init
           git config --global user.email arthurdelords@gmail.com
           git config --global user.name thearthurdev
           git status
