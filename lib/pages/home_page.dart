@@ -84,9 +84,9 @@ class _HomePageState extends State<HomePage> {
                           BlogSection(
                             initScreenHeight: initScreenHeight,
                           ),
-                          // JobSection(
-                          //   initScreenHeight: initScreenHeight,
-                          // ),
+                          JobSection(
+                            initScreenHeight: initScreenHeight,
+                          ),
                         ],
                       ),
                     ),
