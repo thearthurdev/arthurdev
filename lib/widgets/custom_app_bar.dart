@@ -1,6 +1,7 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/arthurdev_banner.dart';
+import 'package:arthurdev/widgets/navigation_menu.dart';
 import 'package:arthurdev/widgets/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -33,20 +34,15 @@ class CustomAppBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ArthurDevBanner(),
+              ArthurDevBanner(scrollController: scrollController),
               kIsDesktop(context)
                   ? NavigationBar(
                       currentSection: currentSection,
                       scrollController: scrollController,
                     )
-                  : InkWell(
-                      onTap: () {},
-                      customBorder: CircleBorder(),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.menu_rounded,
-                            size: 32.0, color: kPrimaryTextColor),
-                      ),
+                  : NavigationMenu(
+                      currentSection: currentSection,
+                      scrollController: scrollController,
                     ),
             ],
           ),

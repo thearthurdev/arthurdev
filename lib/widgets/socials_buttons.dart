@@ -12,24 +12,30 @@ class SocialsButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FittedBox(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: List.generate(
-          socials.length,
-          (i) {
-            return Container(
-              margin: EdgeInsets.only(
-                right: i != socials.length - 1 ? 16.0 : 0.0,
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  socials.values.elementAt(i),
-                  color: kPrimaryTextColor,
+      child: Container(
+        width: 50.0 * socials.length,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            socials.length,
+            (i) {
+              return Material(
+                type: MaterialType.transparency,
+                child: InkWell(
+                  customBorder: CircleBorder(),
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      socials.values.elementAt(i),
+                      color: kPrimaryTextColor,
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

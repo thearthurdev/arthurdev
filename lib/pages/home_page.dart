@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    initScreenHeight = kScreenHeight(context) - 128.0;
+    initScreenHeight = initScreenHeight ?? kScreenHeight(context) - 128.0;
   }
 
   void handleScrolling() {
@@ -48,6 +48,8 @@ class _HomePageState extends State<HomePage> {
       setState(() => currentSection = 1);
     if (scrollController.offset >= kBlogSectionScrollOffset)
       setState(() => currentSection = 2);
+    if (scrollController.offset >= kJobSectionScrollOffset)
+      setState(() => currentSection = 3);
   }
 
   @override
@@ -64,31 +66,29 @@ class _HomePageState extends State<HomePage> {
                 child: Scrollbar(
                   child: SingleChildScrollView(
                     controller: scrollController,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          LandingSection(
-                            initScreenHeight: initScreenHeight,
-                            currentSection: currentSection,
-                            scrollController: scrollController,
-                          ),
-                          ExperienceSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          TechnologiesSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          ProjectsSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          BlogSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          JobSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                        ],
-                      ),
+                    child: Column(
+                      children: [
+                        LandingSection(
+                          initScreenHeight: initScreenHeight,
+                          currentSection: currentSection,
+                          scrollController: scrollController,
+                        ),
+                        ExperienceSection(
+                          initScreenHeight: initScreenHeight,
+                        ),
+                        TechnologiesSection(
+                          initScreenHeight: initScreenHeight,
+                        ),
+                        ProjectsSection(
+                          initScreenHeight: initScreenHeight,
+                        ),
+                        BlogSection(
+                          initScreenHeight: initScreenHeight,
+                        ),
+                        JobSection(
+                          initScreenHeight: initScreenHeight,
+                        ),
+                      ],
                     ),
                   ),
                 ),

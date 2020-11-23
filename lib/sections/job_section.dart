@@ -101,7 +101,7 @@ class JobSection extends StatelessWidget {
 
   Widget tabletFooter() {
     return FittedBox(
-          child: Container(
+      child: Container(
         constraints: BoxConstraints(maxWidth: 520.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

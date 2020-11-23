@@ -13,24 +13,18 @@ class NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, double> navigationDestinations = {
-      'Home': kHomeSectionScrollOffset,
-      'Works': kWorksSectionScrollOffset,
-      'Blog': kBlogSectionScrollOffset,
-    };
-
     return Container(
       margin: const EdgeInsets.fromLTRB(8.0, 12.0, 16.0, 0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(
-          navigationDestinations.length,
+          kNavigationDestinations.length,
           (i) {
             bool isSelected = currentSection == i;
 
             return Container(
               margin: EdgeInsets.only(
-                right: i != navigationDestinations.length - 1 ? 24.0 : 0.0,
+                right: i != kNavigationDestinations.length - 1 ? 24.0 : 0.0,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -39,7 +33,7 @@ class NavigationBar extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       scrollController.animateTo(
-                        navigationDestinations.values.elementAt(i),
+                        kNavigationDestinations.values.elementAt(i),
                         curve: Curves.easeOut,
                         duration: kShortDuration,
                       );
@@ -49,7 +43,7 @@ class NavigationBar extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Center(
                         child: Text(
-                          navigationDestinations.keys.elementAt(i),
+                          kNavigationDestinations.keys.elementAt(i),
                           style: kHeaderTextStyle.copyWith(
                             color: isSelected
                                 ? kPrimaryTextColor

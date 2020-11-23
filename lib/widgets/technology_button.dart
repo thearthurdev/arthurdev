@@ -140,14 +140,16 @@ class TechnologyButton extends StatelessWidget {
                       ),
                     ),
                     // SizedBox(height: 8.0),
-                    Text(
-                      subtitle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: kSectionInfoTextStyle.copyWith(
-                        fontFamily: 'Heebo',
-                        fontSize: 11.0,
-                        color: Colors.white,
+                    Flexible(
+                      child: Text(
+                        subtitle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: kSectionInfoTextStyle.copyWith(
+                          fontFamily: 'Heebo',
+                          fontSize: 11.0,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],

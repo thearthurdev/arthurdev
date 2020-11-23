@@ -48,13 +48,13 @@ class TechnologiesSection extends StatelessWidget {
                           icon: CustomIcons.ic_flutter,
                           title: 'Flutter SDK\n& Dart',
                           subtitle: '4 Projects',
-                          isSelected: true,
                         ),
                         TechnologyButton(
                           icon: CustomIcons.ic_kotlin,
                           iconSize: 20.0,
                           title: 'Android SDK\n& Kotlin',
                           subtitle: '2 Projects',
+                          isSelected: true,
                         ),
                         TechnologyButton(
                           icon: CustomIcons.ic_settings,

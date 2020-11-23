@@ -2,10 +2,10 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/arthurdev_banner.dart';
 import 'package:arthurdev/widgets/navigation_bar.dart';
+import 'package:arthurdev/widgets/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arthurdev/widgets/profile.dart';
 import 'package:arthurdev/widgets/info_action_box.dart';
-import 'package:arthurdev/widgets/socials_buttons.dart';
 
 class LandingSection extends StatelessWidget {
   const LandingSection({
@@ -42,21 +42,25 @@ class LandingSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: initScreenHeight * 0.08),
-              ArthurDevBanner(isLarge: true),
-              SizedBox(height: initScreenHeight * 0.15),
+              SizedBox(height: initScreenHeight * 0.11),
+              ArthurDevBanner(
+                scrollController: scrollController,
+                isLarge: true,
+              ),
+              SizedBox(height: initScreenHeight * 0.17),
               Profile(),
-              SizedBox(height: 16.0),
-              SocialsButtons(),
-              SizedBox(height: initScreenHeight * 0.3),
+              SizedBox(height: initScreenHeight * 0.32),
             ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: initScreenHeight * 0.1),
-              NavigationBar(currentSection: currentSection, scrollController: scrollController,),
-              SizedBox(height: initScreenHeight * 0.3),
+              NavigationBar(
+                currentSection: currentSection,
+                scrollController: scrollController,
+              ),
+              SizedBox(height: initScreenHeight * 0.24),
               introductionInfoActionBox(leftIndent: 16.0),
             ],
           ),
@@ -77,18 +81,13 @@ class LandingSection extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ArthurDevBanner(isLarge: true),
-                  InkWell(
-                    onTap: () {},
-                    customBorder: CircleBorder(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.menu_rounded,
-                        size: 32.0,
-                        color: kPrimaryTextColor,
-                      ),
-                    ),
+                  ArthurDevBanner(
+                    scrollController: scrollController,
+                    isLarge: true,
+                  ),
+                  NavigationMenu(
+                    currentSection: currentSection,
+                    scrollController: scrollController,
                   ),
                 ],
               ),
@@ -97,9 +96,7 @@ class LandingSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Profile(),
-                  SizedBox(height: 24.0),
-                  SocialsButtons(),
-                  SizedBox(height: 64.0),
+                  SizedBox(height: 80.0),
                   introductionInfoActionBox(),
                   SizedBox(height: 64.0),
                 ],
@@ -123,32 +120,27 @@ class LandingSection extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ArthurDevBanner(isLarge: true),
-                  InkWell(
-                    onTap: () {},
-                    customBorder: CircleBorder(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.menu_rounded,
-                        size: 32.0,
-                        color: kPrimaryTextColor,
-                      ),
-                    ),
+                  ArthurDevBanner(
+                    scrollController: scrollController,
+                    isLarge: true,
+                  ),
+                  NavigationMenu(
+                    currentSection: currentSection,
+                    scrollController: scrollController,
                   ),
                 ],
               ),
               SizedBox(height: initScreenHeight * 0.02),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Profile(),
-                  SizedBox(height: 24.0),
-                  SocialsButtons(),
-                  SizedBox(height: 64.0),
-                  introductionInfoActionBox(),
-                  SizedBox(height: 64.0),
-                ],
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Profile(),
+                    SizedBox(height: 80.0),
+                    introductionInfoActionBox(),
+                    SizedBox(height: 64.0),
+                  ],
+                ),
               ),
             ],
           ),

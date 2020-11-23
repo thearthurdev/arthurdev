@@ -1,5 +1,6 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
+import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
@@ -34,7 +35,7 @@ class Profile extends StatelessWidget {
   Widget mobileLayout() {
     return Container(
       width: 288.0,
-      height: 392.0,
+      height: 400.0,
       child: Stack(
         children: [
           profilePic(),
@@ -80,6 +81,8 @@ class Profile extends StatelessWidget {
             margin: const EdgeInsets.only(left: 4.0, top: 16.0),
             color: kAccentColor,
           ),
+          SizedBox(height: 10.0),
+          SocialsButtons(),
         ],
       ),
     );

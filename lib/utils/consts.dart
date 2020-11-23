@@ -5,9 +5,10 @@ BorderRadius kBorderRadius = BorderRadius.circular(6.0);
 const double kMaxWidth = 1160.0;
 
 //TODO specify different offsets for tablet/mobile mode as well
-const double kHomeSectionScrollOffset = 0.0; 
+const double kHomeSectionScrollOffset = 0.0;
 const double kWorksSectionScrollOffset = 1470.0;
 const double kBlogSectionScrollOffset = 3250.0;
+const double kJobSectionScrollOffset = 4200.0;
 
 const Color kPrimaryColor = Color(0xFF333646);
 const Color kPrimaryColorDeep = Color(0xFF252734);
@@ -21,6 +22,14 @@ const Color kSectionInfoTextColor = Color(0xFF999AA2);
 const Duration kShortDuration = Duration(milliseconds: 300);
 const Duration kMediumDuration = Duration(milliseconds: 600);
 const Duration kLongDuration = Duration(milliseconds: 900);
+
+// Navigation Destinations
+const Map<String, double> kNavigationDestinations = {
+  'Home': kHomeSectionScrollOffset,
+  'Works': kWorksSectionScrollOffset,
+  'Blog': kBlogSectionScrollOffset,
+  'Job': kJobSectionScrollOffset,
+};
 
 // TextStyles
 const TextStyle kLargeHeaderTextStyle = TextStyle(
