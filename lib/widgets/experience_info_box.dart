@@ -38,11 +38,13 @@ class ExperienceInfoBox extends StatelessWidget {
               children: [
                 experienceCounter(
                   years: '2',
-                  type: 'Years of\nProfessional\nExperience',
+                  type: 'Years of Professional Experience',
+                  flex1: 1,
+                  flex2:2, 
                 ),
                 experienceCounter(
                   years: '5+',
-                  type: 'Years\nDeveloping\nSolutions',
+                  type: 'Years Developing Solutions',
                 ),
               ],
             ),
@@ -52,11 +54,12 @@ class ExperienceInfoBox extends StatelessWidget {
     );
   }
 
-  Widget experienceCounter({String years, String type}) {
+  Widget experienceCounter({String years, String type, int flex1, int flex2}) {
     return Flexible(
       child: Row(
         children: [
           Flexible(
+            flex: flex1 ?? 1,
             child: Text(
               years,
               maxLines: 1,
@@ -66,6 +69,7 @@ class ExperienceInfoBox extends StatelessWidget {
           ),
           SizedBox(width: 4.0),
           Flexible(
+            flex: flex2 ?? 1,
             child: Text(
               type,
               maxLines: 3,

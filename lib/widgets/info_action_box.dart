@@ -27,56 +27,64 @@ class InfoActionBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '— $sectionTitle',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: kSectionInfoTextStyle,
-          ),
-          SizedBox(height: 8.0),
-          Text(
-            heading,
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-            style: kSectionHeaderTextStyle,
-          ),
-          SizedBox(height: 24.0),
-          Text(
-            body,
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-            style: kSectionInfoTextStyle,
-          ),
-          SizedBox(height: 32.0),
-          Material(
-            type: MaterialType.transparency,
-            child: InkWell(
-              onTap: onActionTap ?? () {},
-              borderRadius: kBorderRadius,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 8.0, 8.0, 8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        actionText,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: kActionButtonTextStyle,
+          sectionTitle == null
+              ? SizedBox()
+              : Text(
+                  '— $sectionTitle',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: kSectionInfoTextStyle,
+                ),
+          SizedBox(height: sectionTitle == null ? 0.0 : 8.0),
+          heading == null
+              ? SizedBox()
+              : Text(
+                  heading,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  style: kSectionHeaderTextStyle,
+                ),
+          SizedBox(height: body == null ? 0.0 : 24.0),
+          body == null
+              ? SizedBox()
+              : Text(
+                  body,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  style: kSectionInfoTextStyle,
+                ),
+          SizedBox(height: actionText == null ? 0.0 : 32.0),
+          actionText == null
+              ? SizedBox()
+              : Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    onTap: onActionTap ?? () {},
+                    borderRadius: kBorderRadius,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0.0, 8.0, 8.0, 8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              actionText,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: kActionButtonTextStyle,
+                            ),
+                          ),
+                          SizedBox(width: 24.0),
+                          Icon(
+                            MyIcons.arrow_right,
+                            size: 16.0,
+                            color: kAccentColor,
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(width: 24.0),
-                    Icon(
-                      MyIcons.arrow_right,
-                      size: 16.0,
-                      color: kAccentColor,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ),
         ],
       ),
     );

@@ -4,9 +4,10 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:arthurdev/widgets/technology_button.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class ProjectsSection extends StatelessWidget {
-  const ProjectsSection({
+class PortfolioSection extends StatelessWidget {
+  const PortfolioSection({
     Key key,
     @required this.initScreenHeight,
   }) : super(key: key);
@@ -121,6 +122,14 @@ class ProjectsSection extends StatelessWidget {
           '\ncreative works.',
       actionText: 'Explore more',
       leftIndent: 16.0,
+      onActionTap: () async {
+        String url = kPortfolioURL;
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch $url';
+        }
+      },
     );
   }
 

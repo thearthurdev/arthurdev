@@ -3,6 +3,7 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/experience_info_box.dart';
 import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ExperienceSection extends StatelessWidget {
   const ExperienceSection({
@@ -84,12 +85,19 @@ class ExperienceSection extends StatelessWidget {
   Widget contactInfoActionBox() {
     return InfoActionBox(
       sectionTitle: 'Contact',
-      heading: 'Any type of query\n& discussion',
+      heading: 'Any type of query\n& discussion.',
       body:
-          'I am available to talk and I typically\nrespond within a few hours',
+          'I am available to talk and I typically\nrespond within a few hours.',
       actionText: 'arthurdelords@gmail.com',
       leftIndent: 16.0,
+      onActionTap: () async {
+        String url = kEmailURL;
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch $url';
+        }
+      },
     );
   }
 }
-

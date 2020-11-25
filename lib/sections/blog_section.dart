@@ -2,7 +2,9 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/my_icons.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/blog_post_listtile.dart';
+import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BlogSection extends StatelessWidget {
   const BlogSection({
@@ -57,7 +59,8 @@ class BlogSection extends StatelessWidget {
                   child: Container(
                     height: 344.0,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
@@ -68,7 +71,9 @@ class BlogSection extends StatelessWidget {
                             reviewBody(),
                           ],
                         ),
+                        SizedBox(height: 16.0),
                         reviewAuthor(),
+                        SizedBox(height: 24.0),
                         reviewPageIndicator(),
                       ],
                     ),
@@ -102,22 +107,23 @@ class BlogSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     reviewAuthorImagePlaceholder(size: 88.0),
                     SizedBox(width: 8.0),
-                    openQuotesIcon(16.0),
-                    SizedBox(width: 16.0),
-                    Flexible(
-                      child: Container(
-                        constraints: BoxConstraints(maxWidth: 420.0),
-                        child: reviewBody(maxLines: 3),
-                      ),
-                    ),
+                    reviewAuthor(),
                   ],
                 ),
-                reviewAuthor(),
+                SizedBox(height: 4.0),
+                openQuotesIcon(16.0),
+                Flexible(
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 420.0),
+                    child: reviewBody(maxLines: 3),
+                  ),
+                ),
+                SizedBox(height: 8.0),
                 reviewPageIndicator(),
                 SizedBox(height: 64.0),
               ],
@@ -125,6 +131,24 @@ class BlogSection extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget blogInfoBox({double leftIndent}) {
+    return InfoActionBox(
+      sectionTitle: 'Blog',
+      heading: 'What\'s new?\nSee my latest blog posts.',
+      body: 'I write about tech tips and tricks,'
+          '\nmy experiences and opinions now and then.',
+      actionText: 'Visit blog',
+      onActionTap: () async {
+        String url = kBlogURL;
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch $url';
+        }
+      },
     );
   }
 
@@ -221,33 +245,6 @@ class BlogSection extends StatelessWidget {
             title: 'scrcpy - Mirror Your Device\'s Screen! (Linux Edition)',
           ),
         ],
-      ),
-    );
-  }
-
-  Widget blogInfoBox({double leftIndent}) {
-    return Flexible(
-      child: Container(
-        margin: EdgeInsets.only(left: leftIndent ?? 0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '— Blog',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: kSectionInfoTextStyle,
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              'What\'s new?\n'
-              'See my latest blog posts',
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-              style: kSectionHeaderTextStyle,
-            ),
-          ],
-        ),
       ),
     );
   }

@@ -2,11 +2,12 @@ import 'package:arthurdev/sections/blog_section.dart';
 import 'package:arthurdev/sections/experience_section.dart';
 import 'package:arthurdev/sections/job_section.dart';
 import 'package:arthurdev/sections/landing_section.dart';
-import 'package:arthurdev/sections/projects_section.dart';
+import 'package:arthurdev/sections/portfolio_section.dart';
 import 'package:arthurdev/sections/technologies_section.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/custom_app_bar.dart';
+import 'package:arthurdev/widgets/custom_scrollbar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,34 +64,37 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.topCenter,
               child: Container(
                 width: double.infinity,
-                child: Scrollbar(
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                    child: Column(
-                      children: [
-                        LandingSection(
-                          initScreenHeight: initScreenHeight,
-                          currentSection: currentSection,
-                          scrollController: scrollController,
-                        ),
-                        ExperienceSection(
-                          initScreenHeight: initScreenHeight,
-                        ),
-                        TechnologiesSection(
-                          initScreenHeight: initScreenHeight,
-                        ),
-                        ProjectsSection(
-                          initScreenHeight: initScreenHeight,
-                        ),
-                        BlogSection(
-                          initScreenHeight: initScreenHeight,
-                        ),
-                        JobSection(
-                          initScreenHeight: initScreenHeight,
-                        ),
-                      ],
+                child: Stack(
+                  children: [
+                    SingleChildScrollView(
+                      controller: scrollController,
+                      child: Column(
+                        children: [
+                          LandingSection(
+                            initScreenHeight: initScreenHeight,
+                            currentSection: currentSection,
+                            scrollController: scrollController,
+                          ),
+                          ExperienceSection(
+                            initScreenHeight: initScreenHeight,
+                          ),
+                          TechnologiesSection(
+                            initScreenHeight: initScreenHeight,
+                          ),
+                          PortfolioSection(
+                            initScreenHeight: initScreenHeight,
+                          ),
+                          BlogSection(
+                            initScreenHeight: initScreenHeight,
+                          ),
+                          JobSection(
+                            initScreenHeight: initScreenHeight,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                    CustomScrollbar(scrollController: scrollController),
+                  ],
                 ),
               ),
             ),

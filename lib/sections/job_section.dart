@@ -3,8 +3,10 @@ import 'dart:ui';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/my_icons.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
+import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JobSection extends StatelessWidget {
   const JobSection({
@@ -153,7 +155,7 @@ class JobSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Estimated your project?'
+          'Want to do a project together?'
           '\nLet me know here.',
           maxLines: 4,
           overflow: TextOverflow.ellipsis,
@@ -249,58 +251,19 @@ class JobSection extends StatelessWidget {
   }
 
   Widget jobActionBox({double leftIndent}) {
-    return Container(
-      margin: EdgeInsets.only(left: leftIndent ?? 0.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Impressed?'
-            '\nGive me a job.',
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-            style: kSectionHeaderTextStyle,
-          ),
-          SizedBox(height: 24.0),
-          Text(
-            'I am looking for a part-time job or a'
-            '\nfreelance project',
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-            style: kSectionInfoTextStyle,
-          ),
-          SizedBox(height: 32.0),
-          Material(
-            type: MaterialType.transparency,
-            child: InkWell(
-              onTap: () {},
-              borderRadius: kBorderRadius,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 8.0, 8.0, 8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        'arthurdelords@gmail.com',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: kActionButtonTextStyle,
-                      ),
-                    ),
-                    SizedBox(width: 24.0),
-                    Icon(
-                      MyIcons.arrow_right,
-                      size: 16.0,
-                      color: kAccentColor,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+    return InfoActionBox(
+      sectionTitle: 'Job',
+      heading: 'Impressed?\nGive me a job.',
+      body: 'I am looking for a part-time job or a\nfreelance project.',
+      actionText: 'arthurdelords@gmail.com',
+      onActionTap: () async {
+        String url = kEmailURL;
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch $url';
+        }
+      },
     );
   }
 }

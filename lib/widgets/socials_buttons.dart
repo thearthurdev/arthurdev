@@ -1,12 +1,13 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/my_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SocialsButtons extends StatelessWidget {
   final Map<String, IconData> socials = {
-    'https://github.com/thearthurdev': MyIcons.github,
-    'https://www.linkedin.com/arthurdelords/': MyIcons.linkedin,
-    'https://twitter.com/_DeeArthur': MyIcons.twitter
+    kGitHubURL: MyIcons.github,
+    kLinkedInURL: MyIcons.linkedin,
+    kTwitterURL: MyIcons.twitter,
   };
 
   @override
@@ -24,7 +25,14 @@ class SocialsButtons extends StatelessWidget {
                 type: MaterialType.transparency,
                 child: InkWell(
                   customBorder: CircleBorder(),
-                  onTap: () {},
+                  onTap: () async {
+                    String url = socials.keys.elementAt(i);
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
