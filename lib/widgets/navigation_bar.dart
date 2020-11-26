@@ -33,7 +33,7 @@ class NavigationBar extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       scrollController.animateTo(
-                        kNavigationDestinations.values.elementAt(i),
+                        kSectionScrollOffsets[i],
                         curve: Curves.easeOut,
                         duration: kShortDuration,
                       );
@@ -43,7 +43,7 @@ class NavigationBar extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Center(
                         child: Text(
-                          kNavigationDestinations.keys.elementAt(i),
+                          kNavigationDestinations[i],
                           style: kHeaderTextStyle.copyWith(
                             color: isSelected
                                 ? kPrimaryTextColor

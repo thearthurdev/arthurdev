@@ -16,7 +16,7 @@ class ArthurDevBanner extends StatelessWidget {
         child: InkWell(
           onTap: () {
             scrollController.animateTo(
-              kHomeSectionScrollOffset,
+              kSectionScrollOffsets[0],
               curve: Curves.easeOut,
               duration: kShortDuration,
             );

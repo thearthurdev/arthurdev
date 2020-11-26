@@ -1,7 +1,7 @@
 import 'package:arthurdev/sections/blog_section.dart';
 import 'package:arthurdev/sections/experience_section.dart';
 import 'package:arthurdev/sections/job_section.dart';
-import 'package:arthurdev/sections/landing_section.dart';
+import 'package:arthurdev/sections/intro_section.dart';
 import 'package:arthurdev/sections/portfolio_section.dart';
 import 'package:arthurdev/sections/technologies_section.dart';
 import 'package:arthurdev/utils/consts.dart';
@@ -34,6 +34,23 @@ class _HomePageState extends State<HomePage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     initScreenHeight = initScreenHeight ?? kScreenHeight(context) - 128.0;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      int sectionIndex = -1;
+      for (GlobalKey sectionKey in kSectionKeys) {
+        sectionIndex++;
+        try {
+          final RenderBox sectionRenderBox =
+              sectionKey.currentContext.findRenderObject();
+          final sectionPosition = sectionRenderBox
+              .localToGlobal(Offset(0.0, scrollController.offset));
+          kSectionScrollOffsets[sectionIndex] = sectionPosition.dy -
+              (sectionIndex == 1 && kIsDesktop(context) ? 176.0 : 0.0);
+        } catch (e) {
+          print(e);
+        }
+      }
+    });
   }
 
   void handleScrolling() {
@@ -43,19 +60,20 @@ class _HomePageState extends State<HomePage> {
       setState(() => showAppBar = false);
     }
 
-    if (scrollController.offset <= kWorksSectionScrollOffset)
+    if (scrollController.offset <= kSectionScrollOffsets[0])
       setState(() => currentSection = 0);
-    if (scrollController.offset >= kWorksSectionScrollOffset)
+    if (scrollController.offset >= kSectionScrollOffsets[1])
       setState(() => currentSection = 1);
-    if (scrollController.offset >= kBlogSectionScrollOffset)
+    if (scrollController.offset >= kSectionScrollOffsets[2])
       setState(() => currentSection = 2);
-    if (scrollController.offset >= kJobSectionScrollOffset)
+    if (scrollController.offset >= kSectionScrollOffsets[3])
       setState(() => currentSection = 3);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: kHomePageKey,
       backgroundColor: kPrimaryColor,
       body: SafeArea(
         child: Stack(
@@ -70,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                       controller: scrollController,
                       child: Column(
                         children: [
-                          LandingSection(
+                          IntroSection(
                             initScreenHeight: initScreenHeight,
                             currentSection: currentSection,
                             scrollController: scrollController,

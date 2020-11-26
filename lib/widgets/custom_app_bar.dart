@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedAlign(
-      duration: Duration(milliseconds: 800),
+      duration: kLongDuration,
       curve: Curves.decelerate,
       alignment:
           showAppBar ? Alignment.topCenter : Alignment(0.0, -kToolbarHeight),

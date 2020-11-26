@@ -21,7 +21,7 @@ class NavigationMenu extends StatelessWidget {
         icon: Icon(Icons.menu_rounded, color: kPrimaryTextColor),
         onSelected: (i) {
           scrollController.animateTo(
-            kNavigationDestinations.values.elementAt(i),
+            kSectionScrollOffsets[i],
             curve: Curves.easeOut,
             duration: kShortDuration,
           );
@@ -50,7 +50,7 @@ class NavigationMenu extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    kNavigationDestinations.keys.elementAt(i),
+                    kNavigationDestinations[i],
                     style: kHeaderTextStyle.copyWith(
                       fontSize: 16.0,
                       color: isSelected

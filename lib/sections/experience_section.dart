@@ -16,6 +16,7 @@ class ExperienceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: kExperienceSectionKey,
       width: double.infinity,
       color: kPrimaryColorDeep,
       child: Align(

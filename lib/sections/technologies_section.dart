@@ -17,6 +17,7 @@ class TechnologiesSection extends StatelessWidget {
     return !kIsDesktop(context)
         ? SizedBox()
         : Container(
+            key: kTechnologiesSectionKey,
             width: double.infinity,
             height: 243.0,
             color: kPrimaryColorDeep,

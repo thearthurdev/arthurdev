@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 
-BorderRadius kBorderRadius = BorderRadius.circular(6.0);
-
 const double kMaxWidth = 1160.0;
 
+BorderRadius kBorderRadius = BorderRadius.circular(6.0);
+
 // Navigation Destinations
-const Map<String, double> kNavigationDestinations = {
-  'Intro': kHomeSectionScrollOffset,
-  'Portfolio': kWorksSectionScrollOffset,
-  'Blog': kBlogSectionScrollOffset,
-  'Job': kJobSectionScrollOffset,
-};
+List<String> kNavigationDestinations = ['Intro', 'Portfolio', 'Blog', 'Job'];
+
+// Section scroll offsets
+double kIntroSectionScrollOffset = 0.0;
+double kPortfolioSectionScrollOffset = 1418.0;
+double kBlogSectionScrollOffset = 3189.0;
+double kJobSectionScrollOffset = 4167.0;
+
+List<double> kSectionScrollOffsets = [
+  kIntroSectionScrollOffset,
+  kPortfolioSectionScrollOffset,
+  kBlogSectionScrollOffset,
+  kJobSectionScrollOffset,
+];
+
+// Global Keys
+GlobalKey kIntroSectionKey = GlobalKey();
+GlobalKey kPortfolioSectionKey = GlobalKey();
+GlobalKey kBlogSectionKey = GlobalKey();
+GlobalKey kJobSectionKey = GlobalKey();
+GlobalKey kTechnologiesSectionKey = GlobalKey();
+GlobalKey kExperienceSectionKey = GlobalKey();
+GlobalKey kHomePageKey = GlobalKey();
+
+List<GlobalKey> kSectionKeys = [
+  kIntroSectionKey,
+  kPortfolioSectionKey,
+  kBlogSectionKey,
+  kJobSectionKey,
+  // kExperienceSectionKey,
+  // kTechnologiesSectionKey,
+];
 
 // URLs
 const String kGitHubURL = 'https://github.com/thearthurdev';
@@ -19,13 +45,6 @@ const String kTwitterURL = 'https://twitter.com/_DeeArthur';
 const String kEmailURL = 'mailto:arthurdelords@gmail.com';
 const String kPortfolioURL = 'https://arthur.hashnode.dev/arthurdev-portfolio';
 const String kBlogURL = 'https://arthur.hashnode.dev';
-
-// Section scroll offsets
-//TODO specify different offsets for tablet/mobile mode as well
-const double kHomeSectionScrollOffset = 0.0;
-const double kWorksSectionScrollOffset = 1470.0;
-const double kBlogSectionScrollOffset = 3250.0;
-const double kJobSectionScrollOffset = 4200.0;
 
 // Colors
 const Color kPrimaryColor = Color(0xFF333646);

@@ -6,6 +6,7 @@ import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
 class BlogSection extends StatelessWidget {
   const BlogSection({
     Key key,
@@ -17,6 +18,7 @@ class BlogSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: kBlogSectionKey,
       width: double.infinity,
       color: kPrimaryColorDeep,
       child: Align(
@@ -44,6 +46,7 @@ class BlogSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 blogInfoBox(),
+                SizedBox(width: 24.0),
                 latestBlogPostsList(),
               ],
             ),
@@ -95,7 +98,7 @@ class BlogSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(height: 80.0),
+          SizedBox(height: 64.0),
           blogInfoBox(leftIndent: 16.0),
           SizedBox(height: 64.0),
           latestBlogPostsList(),
@@ -227,24 +230,26 @@ class BlogSection extends StatelessWidget {
   }
 
   Widget latestBlogPostsList() {
-    return Container(
-      width: 560.0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          BlogPostListTile(
-            date: 'Feb 26',
-            title: 'Developer or Superstar?',
-          ),
-          BlogPostListTile(
-            date: 'Feb 14',
-            title: 'My QodeHub Internship Experience',
-          ),
-          BlogPostListTile(
-            date: 'Feb 09',
-            title: 'scrcpy - Mirror Your Device\'s Screen! (Linux Edition)',
-          ),
-        ],
+    return Flexible(
+          child: Container(
+        width: 560.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BlogPostListTile(
+              date: 'Feb 26',
+              title: 'Developer or Superstar?',
+            ),
+            BlogPostListTile(
+              date: 'Feb 14',
+              title: 'My QodeHub Internship Experience',
+            ),
+            BlogPostListTile(
+              date: 'Feb 09',
+              title: 'scrcpy - Mirror Your Device\'s Screen! (Linux Edition)',
+            ),
+          ],
+        ),
       ),
     );
   }

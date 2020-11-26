@@ -17,6 +17,7 @@ class PortfolioSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: kPortfolioSectionKey,
       width: double.infinity,
       color: kPrimaryColor,
       child: Align(

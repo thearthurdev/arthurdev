@@ -3,6 +3,8 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:flutter/rendering.dart';
+
 class CustomScrollbar extends StatefulWidget {
   const CustomScrollbar({
     Key key,
@@ -20,12 +22,15 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
   double screenHeight;
   double scrollbarHandleOffset;
   double scrollbarHandleLength;
+  double scrollbarTrackExtent;
 
   @override
   void initState() {
     super.initState();
     widget.scrollController.addListener(handleScrolling);
     scrollbarHandleOffset = 0.0;
+    scrollbarHandleLength = 80.0;
+    scrollbarTrackExtent = 0.0;
   }
 
   @override
@@ -49,20 +54,27 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
     );
 
     scrollbarHandleLength = handleExtent.clamp(24.0, 80.0);
-    print(scrollbarHandleLength);
+
+    scrollbarTrackExtent = screenHeight - (scrollbarHandleLength + 16.0);
   }
 
   void handleScrolling() {
-    setState(() => scrollbarHandleOffset = screenHeight *
+    setState(() => scrollbarHandleOffset = scrollbarTrackExtent *
         widget.scrollController.position.extentBefore /
         maxScrollExtent);
+  }
+
+  @override
+  void dispose() {
+    widget.scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       duration: kShortDuration,
-      opacity: scrollbarHandleOffset < 40.0 ? 0.0 : 1.0,
+      opacity: scrollbarHandleOffset < 60.0 ? 0.0 : 1.0,
       child: Stack(
         children: [
           scrollbarTrack(),
@@ -99,7 +111,7 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
         child: Container(
           height: scrollbarHandleLength,
           width: 6.0,
-          margin: EdgeInsets.only(top: 4.0),
+          margin: EdgeInsets.only(top: 8.0),
           decoration: BoxDecoration(
             color: kAccentColor,
             borderRadius: BorderRadius.all(

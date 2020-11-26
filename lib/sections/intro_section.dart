@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:arthurdev/widgets/profile.dart';
 import 'package:arthurdev/widgets/info_action_box.dart';
 
-class LandingSection extends StatelessWidget {
-  const LandingSection({
+class IntroSection extends StatelessWidget {
+  const IntroSection({
     Key key,
     @required this.initScreenHeight,
     @required this.currentSection,
@@ -22,12 +22,19 @@ class LandingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: kMaxWidth),
-      child: kIsDesktop(context)
-          ? desktopLayout(context)
-          : kIsTablet(context)
-              ? tabletLayout(context)
-              : mobileLayout(context),
+      key: kIntroSectionKey,
+      width: double.infinity,
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+          constraints: BoxConstraints(maxWidth: kMaxWidth),
+          child: kIsDesktop(context)
+              ? desktopLayout(context)
+              : kIsTablet(context)
+                  ? tabletLayout(context)
+                  : mobileLayout(context),
+        ),
+      ),
     );
   }
 
@@ -38,19 +45,21 @@ class LandingSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(height: initScreenHeight * 0.11),
-              ArthurDevBanner(
-                scrollController: scrollController,
-                isLarge: true,
-              ),
-              SizedBox(height: initScreenHeight * 0.17),
-              Profile(),
-              SizedBox(height: initScreenHeight * 0.32),
-            ],
+          Flexible(
+                      child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(height: initScreenHeight * 0.11),
+                ArthurDevBanner(
+                  scrollController: scrollController,
+                  isLarge: true,
+                ),
+                SizedBox(height: initScreenHeight * 0.17),
+                Profile(),
+                SizedBox(height: initScreenHeight * 0.32),
+              ],
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
