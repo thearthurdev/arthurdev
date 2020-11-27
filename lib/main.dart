@@ -17,8 +17,8 @@ class ArthurDev extends StatelessWidget {
         accentColor: kAccentColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: HomePage(),
-      home: Example(),
+      home: HomePage(),
+      // home: Example(),
       debugShowCheckedModeBanner: false,
     );
   }
