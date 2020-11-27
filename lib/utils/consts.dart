@@ -57,6 +57,7 @@ const Color kPrimaryTextDisabledColor = Color(0xFF666874);
 const Color kSectionInfoTextColor = Color(0xFF999AA2);
 
 // Animation Durations
+const Duration kVeryShortDuration = Duration(milliseconds: 100);
 const Duration kShortDuration = Duration(milliseconds: 300);
 const Duration kMediumDuration = Duration(milliseconds: 600);
 const Duration kLongDuration = Duration(milliseconds: 900);
