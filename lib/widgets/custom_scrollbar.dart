@@ -40,11 +40,11 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
     screenHeight = kScreenHeight(context);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       maxScrollExtent = widget.scrollController.position.maxScrollExtent;
-      getScrollbarHandleLength();
+      getScrollbarHandleLength().whenComplete(() => setState(() {}));
     });
   }
 
-  void getScrollbarHandleLength() {
+  Future<void> getScrollbarHandleLength() async {
     final double fractionVisible =
         (widget.scrollController.position.extentInside / maxScrollExtent)
             .clamp(0.0, 1.0);
