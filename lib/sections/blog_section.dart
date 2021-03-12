@@ -1,4 +1,3 @@
-import 'package:arthurdev/services/blog_rss_feed_service.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/my_icons.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
@@ -6,7 +5,7 @@ import 'package:arthurdev/widgets/blog_post_listtile.dart';
 import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:webfeed/webfeed.dart';
+
 
 class BlogSection extends StatelessWidget {
   const BlogSection({
@@ -231,51 +230,27 @@ class BlogSection extends StatelessWidget {
   }
 
   Widget latestBlogPostsList() {
-
-    return FutureBuilder(
-      future: RssFeedService.loadFeed(),
-      builder: (context, snapshot) {
-        RssFeed feed = snapshot.data;
-
-        if (snapshot.connectionState != ConnectionState.done) {
-          return Container(
-            height: 200.0,
-            width: 200.0,
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-
-        if (snapshot.data == null) {
-          return Container(
-            width: 200.0,
-            height: 200.0,
-            child: Center(
-              child: Text(
-                'Unable to load blog feed',
-                style: kSectionInfoTextStyle,
-              ),
-            ),
-          );
-        }
-
-        return Flexible(
+    return Flexible(
           child: Container(
-            width: 560.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: List.generate(
-                feed.items.length,
-                (i) => BlogPostListTile(
-                  date: feed.items[i].pubDate.toString(),
-                  title: feed.items[i].title,
-                ),
-              ),
+        width: 560.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BlogPostListTile(
+              date: 'Feb 26',
+              title: 'Developer or Superstar?',
             ),
-          ),
-        );
-      },
+            BlogPostListTile(
+              date: 'Feb 14',
+              title: 'My QodeHub Internship Experience',
+            ),
+            BlogPostListTile(
+              date: 'Feb 09',
+              title: 'scrcpy - Mirror Your Device\'s Screen! (Linux Edition)',
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
