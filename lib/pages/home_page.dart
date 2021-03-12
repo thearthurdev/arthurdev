@@ -4,10 +4,12 @@ import 'package:arthurdev/sections/job_section.dart';
 import 'package:arthurdev/sections/intro_section.dart';
 import 'package:arthurdev/sections/portfolio_section.dart';
 import 'package:arthurdev/sections/technologies_section.dart';
+import 'package:arthurdev/services/blog_rss_feed_service.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/custom_app_bar.dart';
 import 'package:arthurdev/widgets/custom_scrollbar.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,6 +22,8 @@ class _HomePageState extends State<HomePage> {
   bool showAppBar;
   int currentSection;
   double initScreenHeight;
+  double screenHeight;
+  double maxScrollExtent;
 
   @override
   void initState() {
@@ -28,6 +32,7 @@ class _HomePageState extends State<HomePage> {
     scrollController.addListener(handleScrolling);
     showAppBar = false;
     currentSection = 0;
+    RssFeedService.loadFeed();
   }
 
   @override
@@ -36,6 +41,9 @@ class _HomePageState extends State<HomePage> {
     initScreenHeight = initScreenHeight ?? kScreenHeight(context) - 128.0;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      screenHeight = kScreenHeight(context);
+      maxScrollExtent = scrollController.position.maxScrollExtent;
+
       int sectionIndex = -1;
       for (GlobalKey sectionKey in kSectionKeys) {
         sectionIndex++;
@@ -70,6 +78,25 @@ class _HomePageState extends State<HomePage> {
       setState(() => currentSection = 3);
   }
 
+  void handleWheelScrollEvents(PointerSignalEvent pointerSignal) {
+    final double scrollExtentBefore = scrollController.position.extentBefore;
+
+    if (pointerSignal is PointerScrollEvent) {
+      double scrollDirection = pointerSignal.scrollDelta.direction;
+      double scrollDelta = screenHeight * 0.05;
+
+      if (scrollDirection > 0) {
+        scrollController.position.moveTo(
+          scrollExtentBefore + (scrollDelta * (maxScrollExtent / screenHeight)),
+        );
+      } else {
+        scrollController.position.moveTo(
+          scrollExtentBefore - (scrollDelta * (maxScrollExtent / screenHeight)),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,31 +111,35 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 child: Stack(
                   children: [
-                    SingleChildScrollView(
-                      controller: scrollController,
-                      child: Column(
-                        children: [
-                          IntroSection(
-                            initScreenHeight: initScreenHeight,
-                            currentSection: currentSection,
-                            scrollController: scrollController,
-                          ),
-                          ExperienceSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          TechnologiesSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          PortfolioSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          BlogSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                          JobSection(
-                            initScreenHeight: initScreenHeight,
-                          ),
-                        ],
+                    Listener(
+                      onPointerSignal: (pointerSignal) =>
+                          handleWheelScrollEvents(pointerSignal),
+                      child: SingleChildScrollView(
+                        controller: scrollController,
+                        child: Column(
+                          children: [
+                            IntroSection(
+                              initScreenHeight: initScreenHeight,
+                              currentSection: currentSection,
+                              scrollController: scrollController,
+                            ),
+                            ExperienceSection(
+                              initScreenHeight: initScreenHeight,
+                            ),
+                            TechnologiesSection(
+                              initScreenHeight: initScreenHeight,
+                            ),
+                            PortfolioSection(
+                              initScreenHeight: initScreenHeight,
+                            ),
+                            BlogSection(
+                              initScreenHeight: initScreenHeight,
+                            ),
+                            JobSection(
+                              initScreenHeight: initScreenHeight,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
