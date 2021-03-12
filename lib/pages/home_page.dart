@@ -86,16 +86,12 @@ class _HomePageState extends State<HomePage> {
       double scrollDelta = screenHeight * 0.05;
 
       if (scrollDirection > 0) {
-        scrollController.position.animateTo(
+        scrollController.position.moveTo(
           scrollExtentBefore + (scrollDelta * (maxScrollExtent / screenHeight)),
-          duration: Duration(milliseconds: 300),
-          curve: Curves.decelerate,
         );
       } else {
-        scrollController.position.animateTo(
+        scrollController.position.moveTo(
           scrollExtentBefore - (scrollDelta * (maxScrollExtent / screenHeight)),
-          duration: Duration(milliseconds: 300),
-          curve: Curves.decelerate,
         );
       }
     }
