@@ -15,9 +15,6 @@ jobs:
         with:
           flutter-version: 1.12.x
           channel: beta
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Upgrade Flutter
         run: flutter upgrade
       - name: Get packages
