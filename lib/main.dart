@@ -1,4 +1,3 @@
-import 'package:arthurdev/pages/example.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,6 @@ class ArthurDev extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),
-      // home: Example(),
       debugShowCheckedModeBanner: false,
     );
   }
