@@ -16,14 +16,12 @@ class NavigationDestinations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: const EdgeInsets.fromLTRB(8.0, 12.0, 16.0, 0.0),
+      margin: const EdgeInsets.only(top: 4.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(
           kNavigationDestinations.length,
           (i) {
-            bool isSelected = currentSection == i;
-
             return Container(
               margin: EdgeInsets.only(
                 right: i != kNavigationDestinations.length - 1 ? 24.0 : 0.0,

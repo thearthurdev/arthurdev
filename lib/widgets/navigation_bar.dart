@@ -20,7 +20,6 @@ class NavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: kPrimaryColorDeep,
-      elevation: 5.0,
       child: Container(
         height: kToolbarHeight,
         width: kScreenWidth(context),

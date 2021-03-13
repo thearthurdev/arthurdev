@@ -1,11 +1,8 @@
-import 'package:arthurdev/pages/example.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(ArthurDev());
-}
+void main() => runApp(ArthurDev());
 
 class ArthurDev extends StatelessWidget {
   @override
@@ -18,7 +15,6 @@ class ArthurDev extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),
-      // home: Example(),
       debugShowCheckedModeBanner: false,
     );
   }
