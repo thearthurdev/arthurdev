@@ -26,8 +26,8 @@ class ArthurDevBanner extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: isLarge ? 80.0 : 56.0,
-                height: isLarge ? 48.0 : 40.0,
+                width: isLarge ? 80.0 : 42.0,
+                height: isLarge ? 48.0 : 32.0,
                 padding: EdgeInsets.only(left: 8.0),
                 child: Image.asset(
                   'assets/images/arthurdev_logo.png',
@@ -42,7 +42,7 @@ class ArthurDevBanner extends StatelessWidget {
                     maxLines: 1,
                     softWrap: false,
                     overflow: TextOverflow.fade,
-                    style: kHeaderTextStyle,
+                    style: kHeaderTextStyle.copyWith(fontSize: 18.0, ),
                   ),
                 ),
               ),

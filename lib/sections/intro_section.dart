@@ -2,6 +2,7 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/arthurdev_banner.dart';
 import 'package:arthurdev/widgets/navigation_bar.dart';
+import 'package:arthurdev/widgets/navigation_destinations.dart';
 import 'package:arthurdev/widgets/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arthurdev/widgets/profile.dart';
@@ -66,8 +67,8 @@ class IntroSection extends StatelessWidget {
             children: [
               SizedBox(height: initScreenHeight * 0.1),
               NavigationBar(
-                currentSection: currentSection,
                 scrollController: scrollController,
+                currentSection: currentSection,
               ),
               SizedBox(height: initScreenHeight * 0.24),
               introductionInfoActionBox(leftIndent: 16.0),

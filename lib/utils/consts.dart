@@ -5,7 +5,7 @@ const double kMaxWidth = 1160.0;
 BorderRadius kBorderRadius = BorderRadius.circular(6.0);
 
 // Navigation Destinations
-List<String> kNavigationDestinations = ['Intro', 'Portfolio', 'Blog', 'Job'];
+List<String> kNavigationDestinations = ['INTRO', 'PORTFOLIO', 'BLOG', 'JOB'];
 
 // Section scroll offsets
 double kIntroSectionScrollOffset = 0.0;

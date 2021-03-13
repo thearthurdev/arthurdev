@@ -26,6 +26,7 @@ class InfoActionBox extends StatelessWidget {
       margin: EdgeInsets.only(left: leftIndent ?? 0.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           sectionTitle == null
               ? SizedBox()
