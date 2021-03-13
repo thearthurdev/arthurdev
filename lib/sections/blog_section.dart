@@ -4,7 +4,7 @@ import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class BlogSection extends StatelessWidget {
+class BlogSectionRight extends StatelessWidget {
   // const BlogSection({
   //   Key key,
   //   @required this.initScreenHeight,
@@ -16,7 +16,7 @@ class BlogSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: kBlogSectionKey,
-      color: Colors.blue,
+      // color: Colors.blue,
       height: kScreenHeight(context) + kToolbarHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

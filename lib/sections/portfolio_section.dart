@@ -4,7 +4,7 @@ import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PortfolioSection extends StatelessWidget {
+class PortfolioSectionRight extends StatelessWidget {
   // const PortfolioSection({
   //   Key key,
   //   @required this.initScreenHeight,
@@ -16,7 +16,7 @@ class PortfolioSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: kPortfolioSectionKey,
-      color: Colors.red,
+      // color: Colors.red,
       height: kScreenHeight(context) + kToolbarHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

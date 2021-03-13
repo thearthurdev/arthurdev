@@ -40,7 +40,7 @@ class ExperienceInfoBox extends StatelessWidget {
                   years: '2',
                   type: 'Years of Professional Experience',
                   flex1: 1,
-                  flex2:2, 
+                  flex2: 2,
                 ),
                 experienceCounter(
                   years: '5+',

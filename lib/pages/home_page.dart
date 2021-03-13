@@ -2,13 +2,18 @@ import 'package:arthurdev/sections/blog_section.dart';
 import 'package:arthurdev/sections/intro_section.dart';
 import 'package:arthurdev/sections/job_section.dart';
 import 'package:arthurdev/sections/portfolio_section.dart';
+import 'package:arthurdev/services/blog_rss_feed_service.dart';
 import 'package:arthurdev/utils/consts.dart';
+import 'package:arthurdev/utils/my_icons.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
+import 'package:arthurdev/widgets/blog_post_listtile.dart';
 import 'package:arthurdev/widgets/navigation_bar.dart';
+import 'package:arthurdev/widgets/profile.dart';
 import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:arthurdev/widgets/stack_clip.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:webfeed/webfeed.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -161,12 +166,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: kHomePageKey,
-      // backgroundColor: kPrimaryColor,
+      backgroundColor: kPrimaryColor,
       body: SafeArea(
         child: Listener(
-          onPointerSignal: (pointerSignal) =>
-              _handleWheelScrollEvents(pointerSignal),
+          onPointerSignal: (pointerSignal) {
+            _handleWheelScrollEvents(pointerSignal);
+          },
           child: SingleChildScrollView(
             controller: _mainScrollController,
             physics: NeverScrollableScrollPhysics(),
@@ -180,12 +185,12 @@ class _HomePageState extends State<HomePage> {
                   height: kScreenHeight(context),
                   child: Row(
                     children: [
-                      LeftSide(_secondaryScrollController),
-                      RightSide(
+                      LeftSide(
                         _secondaryScrollController,
                         _currentSection,
                         _secondaryScrollControllerOffset,
                       ),
+                      RightSide(_secondaryScrollController),
                     ],
                   ),
                 ),
@@ -199,8 +204,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class RightSide extends StatelessWidget {
-  const RightSide(this.secondaryScrollController, this.currentSection,
+class LeftSide extends StatelessWidget {
+  const LeftSide(this.secondaryScrollController, this.currentSection,
       this.secondaryScrollControllerOffset);
 
   final ScrollController secondaryScrollController;
@@ -220,29 +225,29 @@ class RightSide extends StatelessWidget {
     switch (currentSection) {
       case 0:
         return StackClip(
-          backgroundWidget: Container(color: Colors.green),
-          foregroundWidget: Container(color: Colors.red),
+          backgroundWidget: IntroSectionLeft(),
+          foregroundWidget: PortfolioSectionLeft(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection),
         );
       case 1:
         return StackClip(
-          backgroundWidget: Container(color: Colors.red),
-          foregroundWidget: Container(color: Colors.blue),
+          backgroundWidget: PortfolioSectionLeft(),
+          foregroundWidget: BlogSectionLeft(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection) -
               (kToolbarHeight * currentSection),
         );
       case 2:
         return StackClip(
-          backgroundWidget: Container(color: Colors.blue),
-          foregroundWidget: Container(color: Colors.pink),
+          backgroundWidget: BlogSectionLeft(),
+          foregroundWidget: JobSectionLeft(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection) -
               (kToolbarHeight * currentSection),
         );
       case 3:
-        return Container(color: Colors.pink);
+        return JobSectionLeft();
         break;
       default:
         return SizedBox.shrink();
@@ -250,8 +255,252 @@ class RightSide extends StatelessWidget {
   }
 }
 
-class LeftSide extends StatelessWidget {
-  const LeftSide(this.secondaryScrollController);
+class JobSectionLeft extends StatelessWidget {
+  const JobSectionLeft({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kPrimaryColorLight2,
+      padding: EdgeInsets.only(bottom: kScreenHeightAwareSize(40.0, context)),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Want to do a project together?'
+              '\nLet me know here.',
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+              style: kSectionHeaderTextStyle,
+            ),
+            Container(
+              constraints: BoxConstraints(maxWidth: 420.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  JobInfoTextField(
+                    'What\'s your name?',
+                    TextInputType.name,
+                  ),
+                  JobInfoTextField(
+                    'Your fancy email',
+                    TextInputType.emailAddress,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 24.0),
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: InkWell(
+                        onTap: () {},
+                        borderRadius: kBorderRadius,
+                        child: Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 8.0, 4.0, 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  'Tell me about your project',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: kHeaderTextStyle.copyWith(
+                                    fontSize: 18.0,
+                                    letterSpacing: 1.0,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 24.0),
+                              Icon(
+                                MyIcons.arrow_right,
+                                size: 16.0,
+                                color: kAccentColor,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class JobInfoTextField extends StatelessWidget {
+  JobInfoTextField(this.hint, this.inputType);
+
+  final String hint;
+  final TextInputType inputType;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      autocorrect: false,
+      textCapitalization: TextCapitalization.words,
+      cursorColor: kAccentColor,
+      keyboardType: inputType,
+      style: kHeaderTextStyle.copyWith(
+        fontSize: 18.0,
+        letterSpacing: 1.0,
+      ),
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: kHeaderTextStyle.copyWith(
+          fontSize: 18.0,
+          letterSpacing: 1.0,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: kDividerColor,
+            width: 2.0,
+          ),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: kDividerColor,
+            width: 2.0,
+          ),
+        ),
+        contentPadding: EdgeInsets.symmetric(vertical: 32.0),
+      ),
+    );
+  }
+}
+
+class BlogSectionLeft extends StatelessWidget {
+  const BlogSectionLeft({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Map<String, String> blogPosts = {
+      'Feb 02': 'Blog post 3',
+      'March 03': 'Blog post 2',
+      'Dec 12': 'BlogPost 1',
+    };
+
+    return Container(
+      color: kPrimaryColorLight1,
+      padding: EdgeInsets.only(bottom: kScreenHeightAwareSize(40.0, context)),
+      // child: FutureBuilder(
+      //     future: RssFeedService.loadFeed(),
+      //     builder: (context, snapshot) {
+      //       RssFeed feed = snapshot.data;
+
+      //       if (snapshot.connectionState != ConnectionState.done) {
+      //         return Container(
+      //           height: 200.0,
+      //           width: 200.0,
+      //           child: Center(
+      //             child: CircularProgressIndicator(),
+      //           ),
+      //         );
+      //       }
+
+      //       if (snapshot.data == null) {
+      //         return Container(
+      //           width: 200.0,
+      //           height: 200.0,
+      //           child: Center(
+      //             child: Text(
+      //               'Unable to load blog feed',
+      //               style: kSectionInfoTextStyle,
+      //             ),
+      //           ),
+      //         );
+      //       }
+
+      //       return Flexible(
+      //         child: Container(
+      //           width: 560.0,
+      //           child: Column(
+      //             crossAxisAlignment: CrossAxisAlignment.start,
+      //             children: List.generate(
+      //               feed.items.length,
+      //               (i) => BlogPostListTile(
+      //                 date: feed.items[i].pubDate.toString(),
+      //                 title: feed.items[i].title,
+      //               ),
+      //             ),
+      //           ),
+      //         ),
+      //       );
+      //     }),
+
+      child: Center(
+        child: Container(
+          width: 560.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(
+              blogPosts.length,
+              (i) => BlogPostListTile(
+                date: blogPosts.keys.elementAt(i),
+                title: blogPosts.values.elementAt(i),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PortfolioSectionLeft extends StatelessWidget {
+  const PortfolioSectionLeft({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kPrimaryColorLight2,
+      child: Center(
+        child: Container(
+          width: 500.0,
+          height: 700.0,
+          color: kPrimaryColorDeep,
+        ),
+      ),
+    );
+  }
+}
+
+class IntroSectionLeft extends StatelessWidget {
+  const IntroSectionLeft({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: kPrimaryColorLight1,
+      padding: EdgeInsets.fromLTRB(
+        kScreenWidthAwareSize(80.0, context),
+        kScreenHeightAwareSize(80.0, context),
+        kScreenWidthAwareSize(80.0, context),
+        kScreenHeightAwareSize(120.0, context),
+      ),
+      child: Profile(),
+    );
+  }
+}
+
+class RightSide extends StatelessWidget {
+  const RightSide(this.secondaryScrollController);
 
   final ScrollController secondaryScrollController;
 
@@ -268,10 +517,10 @@ class LeftSide extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IntroSection(),
-            PortfolioSection(),
-            BlogSection(),
-            JobSection(),
+            IntroSectionRight(),
+            PortfolioSectionRight(),
+            BlogSectionRight(),
+            JobSectionRight(),
           ],
         ),
       ),

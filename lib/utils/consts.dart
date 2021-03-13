@@ -25,17 +25,12 @@ GlobalKey kIntroSectionKey = GlobalKey();
 GlobalKey kPortfolioSectionKey = GlobalKey();
 GlobalKey kBlogSectionKey = GlobalKey();
 GlobalKey kJobSectionKey = GlobalKey();
-GlobalKey kTechnologiesSectionKey = GlobalKey();
-GlobalKey kExperienceSectionKey = GlobalKey();
-GlobalKey kHomePageKey = GlobalKey();
 
 List<GlobalKey> kSectionKeys = [
   kIntroSectionKey,
   kPortfolioSectionKey,
   kBlogSectionKey,
   kJobSectionKey,
-  // kExperienceSectionKey,
-  // kTechnologiesSectionKey,
 ];
 
 // URLs
@@ -48,6 +43,8 @@ const String kBlogURL = 'https://arthur.hashnode.dev';
 
 // Colors
 const Color kPrimaryColor = Color(0xFF333646);
+const Color kPrimaryColorLight1 = Color(0xFF424657);
+const Color kPrimaryColorLight2 = Color(0xFF45495C);
 const Color kPrimaryColorDeep = Color(0xFF252734);
 const Color kAccentColor = Color(0xFFFFBB69);
 const Color kTechnologyBoxColor = Color(0xFF424657);

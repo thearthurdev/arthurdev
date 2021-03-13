@@ -6,7 +6,7 @@ import 'package:arthurdev/widgets/info_action_box.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class JobSection extends StatelessWidget {
+class JobSectionRight extends StatelessWidget {
   // const JobSection({
   //   Key key,
   //   @required this.initScreenHeight,
@@ -18,7 +18,7 @@ class JobSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: kJobSectionKey,
-      color: Colors.pink,
+      // color: Colors.pink,
       height: kScreenHeight(context) + kToolbarHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

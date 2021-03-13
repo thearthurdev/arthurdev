@@ -3,7 +3,7 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:flutter/material.dart';
 import 'package:arthurdev/widgets/info_action_box.dart';
 
-class IntroSection extends StatelessWidget {
+class IntroSectionRight extends StatelessWidget {
   // const IntroSection({
   //   Key key,
   //   @required this.initScreenHeight,
@@ -19,7 +19,7 @@ class IntroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: kIntroSectionKey,
-      color: Colors.green,
+      // color: Colors.green,
       height: kScreenHeight(context),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

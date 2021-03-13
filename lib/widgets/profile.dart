@@ -1,6 +1,5 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
-import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
@@ -82,7 +81,6 @@ class Profile extends StatelessWidget {
             color: kAccentColor,
           ),
           SizedBox(height: 10.0),
-          SocialsButtons(),
         ],
       ),
     );
