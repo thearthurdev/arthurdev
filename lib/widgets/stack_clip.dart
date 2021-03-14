@@ -18,21 +18,35 @@ class StackClip extends StatefulWidget {
 
 class _StackClipState extends State<StackClip> {
   double _offset;
+  double _overlayOpacity;
 
   @override
   void initState() {
     super.initState();
     _offset = 0.0;
+    _overlayOpacity = 0.0;
   }
 
   @override
   Widget build(BuildContext context) {
     _offset = widget.scrollOffset;
+    _overlayOpacity = ((_offset / 100) * 0.05).clamp(0.0, 0.3);
+
     return Stack(
       fit: StackFit.expand,
       alignment: AlignmentDirectional.center,
       children: [
-        widget.backgroundWidget,
+        Stack(
+          fit: StackFit.expand,
+          children: [
+            widget.backgroundWidget,
+            IgnorePointer(
+              child: Container(
+                color: Colors.black.withOpacity(_overlayOpacity),
+              ),
+            ),
+          ],
+        ),
         ClipPath(
           child: widget.foregroundWidget,
           clipper: _StackClipper(

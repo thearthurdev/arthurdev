@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:arthurdev/utils/consts.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +29,7 @@ class NavigationDestinations extends StatelessWidget {
                   scrollController.animateTo(
                     kSectionScrollOffsets[i],
                     curve: Curves.easeOut,
-                    duration: kShortDuration,
+                    duration: kMediumDuration,
                   );
                 },
                 borderRadius: kBorderRadius,

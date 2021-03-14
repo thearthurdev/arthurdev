@@ -62,31 +62,29 @@ const Duration kLongDuration = Duration(milliseconds: 900);
 
 // TextStyles
 const TextStyle kLargeHeaderTextStyle = TextStyle(
-  fontFamily: 'MontSerrat',
+  fontFamily: 'Righteous',
   fontSize: 64.0,
-  fontWeight: FontWeight.w700,
-  letterSpacing: 2.1,
+  letterSpacing: -0.5,
   height: 0.9,
   color: kPrimaryTextColorDark,
 );
 
 const TextStyle kHeaderTextStyleLight = TextStyle(
-  fontFamily: 'Heebo',
+  fontFamily: 'Sen',
   fontSize: 22.0,
   letterSpacing: -0.1,
   color: kPrimaryTextColorLight,
 );
 
 const TextStyle kHeaderTextStyleDark = TextStyle(
-  fontFamily: 'Heebo',
+  fontFamily: 'Righteous',
   fontSize: 22.0,
   letterSpacing: 1.0,
   color: kPrimaryTextColorDark,
-  fontWeight: FontWeight.w700,
 );
 
 const TextStyle kTextFieldTextStyleDark = TextStyle(
-  fontFamily: 'Heebo',
+  fontFamily: 'Sen',
   fontSize: 22.0,
   letterSpacing: 1.0,
   color: kPrimaryTextColorDark,
@@ -99,16 +97,15 @@ const TextStyle kSectionInfoTextStyle = TextStyle(
 );
 
 const TextStyle kSectionHeaderTextStyle = TextStyle(
-  fontFamily: 'Heebo',
-  fontWeight: FontWeight.w700,
+  fontFamily: 'Righteous',
   fontSize: 26.0,
-  letterSpacing: 1.0,
+  letterSpacing: -0.5,
   color: kPrimaryTextColorDark,
 );
 
 const TextStyle kActionButtonTextStyle = TextStyle(
-  fontFamily: 'Heebo',
-  fontSize: 18.0,
+  fontFamily: 'Sen',
+  fontSize: 14.0,
   letterSpacing: -0.1,
   color: kAccentColor,
 );

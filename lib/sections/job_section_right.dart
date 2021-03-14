@@ -26,7 +26,7 @@ class JobSectionRight extends StatelessWidget {
           InfoActionBox(
             sectionTitle: 'Job',
             heading: 'Impressed?\nGive me a job.',
-            body: 'I am looking for a part-time job or a\nfreelance project.',
+            body: 'I am looking for a part-time job or a\nfreelance project',
             actionText: 'Email me',
             onActionTap: () async {
               String url = kEmailURL;

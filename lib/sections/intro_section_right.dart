@@ -28,7 +28,7 @@ class IntroSectionRight extends StatelessWidget {
             sectionTitle: 'Intro',
             heading: 'Software Developer,\nbased in Ghana.',
             body:
-                'I specialize in cross-platform mobile\ndevelopment, android and windows\nautomation.',
+                'I specialize in cross-platform mobile\ndevelopment, android and windows\nautomation',
             actionText: 'More about me',
           ),
         ],

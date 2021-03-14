@@ -18,7 +18,7 @@ class PageViewActionButton extends StatelessWidget {
       height: 60.0,
       margin: EdgeInsets.all(64.0),
       decoration: BoxDecoration(
-        color: kDividerColor.withOpacity(0.5),
+        color: kDividerColor.withOpacity(0.4),
         shape: BoxShape.circle,
       ),
       child: Material(

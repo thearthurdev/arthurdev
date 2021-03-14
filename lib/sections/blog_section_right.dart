@@ -25,7 +25,7 @@ class BlogSectionRight extends StatelessWidget {
             sectionTitle: 'Blog',
             heading: 'What\'s new?\nSee my latest blog posts.',
             body: 'I write about tech tips, software development,'
-                '\nmy experiences and opinions now and then.',
+                '\nmy experiences and opinions now and then',
             actionText: 'Visit blog',
             onActionTap: () async {
               String url = kBlogURL;

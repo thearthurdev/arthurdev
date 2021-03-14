@@ -1,5 +1,4 @@
 import 'package:arthurdev/utils/consts.dart';
-import 'package:arthurdev/utils/my_icons.dart';
 import 'package:flutter/material.dart';
 
 class InfoActionBox extends StatelessWidget {
@@ -59,8 +58,8 @@ class InfoActionBox extends StatelessWidget {
               ? SizedBox()
               : Container(
                   decoration: BoxDecoration(
-                  color: kPrimaryColorDark,
-                  borderRadius: kBorderRadius,
+                    color: kPrimaryColorDark,
+                    borderRadius: kBorderRadius,
                   ),
                   child: Material(
                     type: MaterialType.transparency,

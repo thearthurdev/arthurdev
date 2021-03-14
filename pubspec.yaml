@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.0
   http: ^0.13.0
+  provider: ^5.0.0
   url_launcher: ^5.7.10
   webfeed: ^0.6.0
 
@@ -27,6 +28,9 @@ flutter:
     - assets/images/
 
   fonts:
+    - family: Righteous
+      fonts:
+        - asset: assets/fonts/righteous_regular.ttf
     - family: Bree Serif
       fonts:
         - asset: assets/fonts/bree_serif_regular.ttf

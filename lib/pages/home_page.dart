@@ -1,6 +1,7 @@
 import 'package:arthurdev/sections/blog_section_left.dart';
 import 'package:arthurdev/sections/blog_section_right.dart';
 import 'package:arthurdev/sections/footer_section.dart';
+import 'package:arthurdev/sections/intro_section_left.dart';
 import 'package:arthurdev/sections/intro_section_right.dart';
 import 'package:arthurdev/sections/job_section_left.dart';
 import 'package:arthurdev/sections/job_section_right.dart';
@@ -22,8 +23,10 @@ class _HomePageState extends State<HomePage> {
   ScrollController _mainScrollController;
   ScrollController _secondaryScrollController;
   ScrollController _currentScrollController;
+  PageController _portfolioPageController;
   bool _freezeMainScrollController;
   int _currentSection;
+  int _currentPortfolioPage;
   double _initScreenHeight;
   // double _maxMainScrollExtent;
   double _maxSecondaryScrollExtent;
@@ -40,9 +43,11 @@ class _HomePageState extends State<HomePage> {
       ..addListener(_handleScrollEvents);
     _secondaryScrollController = ScrollController()
       ..addListener(_handleScrollEvents);
+    _portfolioPageController = PageController();
     _currentScrollController = _mainScrollController;
     _freezeMainScrollController = false;
     _currentSection = 0;
+    _currentPortfolioPage = 0;
     _secondaryScrollControllerOffset = 0.0;
     _mainScrollControllerExtentBefore = 0.0;
     _mainScrollControllerExtentAfter = 0.0;
@@ -191,10 +196,9 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       LeftPanel(
-                        currentSection: _currentSection,
-                        secondaryScrollControllerOffset:
-                            _secondaryScrollControllerOffset,
-                        secondaryScrollController: _secondaryScrollController,
+                        _currentSection,
+                        _secondaryScrollControllerOffset,
+                        _secondaryScrollController,
                       ),
                       RightPanel(_secondaryScrollController),
                     ],
@@ -211,11 +215,11 @@ class _HomePageState extends State<HomePage> {
 }
 
 class LeftPanel extends StatelessWidget {
-  const LeftPanel({
-    @required this.currentSection,
-    @required this.secondaryScrollControllerOffset,
-    @required this.secondaryScrollController,
-  });
+  const LeftPanel(
+    this.currentSection,
+    this.secondaryScrollControllerOffset,
+    this.secondaryScrollController,
+  );
 
   final int currentSection;
   final double secondaryScrollControllerOffset;
@@ -236,8 +240,7 @@ class LeftPanel extends StatelessWidget {
     switch (currentSection) {
       case 0:
         return StackClip(
-          // backgroundWidget: IntroSectionLeft(),
-          backgroundWidget: PortfolioSectionLeft(),
+          backgroundWidget: IntroSectionLeft(),
           foregroundWidget: PortfolioSectionLeft(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection),
