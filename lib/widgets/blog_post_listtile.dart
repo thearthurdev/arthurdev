@@ -1,6 +1,7 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/my_icons.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
+import 'package:arthurdev/widgets/circular_arrow_icon.dart';
 import 'package:flutter/material.dart';
 
 class BlogPostListTile extends StatelessWidget {
@@ -38,16 +39,12 @@ class BlogPostListTile extends StatelessWidget {
                       title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: kHeaderTextStyle.copyWith(
-                          fontSize: 22.0, letterSpacing: 1.0),
+                      style: kHeaderTextStyleDark,
                     ),
                   ),
                 ),
-                Icon(
-                  MyIcons.arrow_right,
-                  size: 16.0,
-                  color: kAccentColor,
-                ),
+                SizedBox(width: 16.0),
+                CircularArrowIcon(),
               ],
             ),
           ),
@@ -80,15 +77,11 @@ class BlogPostListTile extends StatelessWidget {
                 title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: kHeaderTextStyle.copyWith(
+                style: kHeaderTextStyleLight.copyWith(
                     fontSize: 18.0, letterSpacing: 1.0),
               ),
             ),
-            trailing: Icon(
-              MyIcons.arrow_right,
-              size: 16.0,
-              color: kAccentColor,
-            ),
+            trailing: CircularArrowIcon(),
           ),
           Container(
             height: 1.0,

@@ -20,7 +20,7 @@ class Profile extends StatelessWidget {
 
   Widget desktopLayout() {
     return Container(
-      width: 469.0,
+      width: 472.0,
       height: 333.0,
       child: Stack(
         children: [
@@ -78,7 +78,7 @@ class Profile extends StatelessWidget {
             width: 46.0,
             height: 8.0,
             margin: const EdgeInsets.only(left: 4.0, top: 16.0),
-            color: kAccentColor,
+            color: kAccentColorDeep,
           ),
           SizedBox(height: 10.0),
         ],

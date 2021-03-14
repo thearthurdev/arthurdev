@@ -1,19 +1,17 @@
-import 'package:arthurdev/sections/blog_section.dart';
-import 'package:arthurdev/sections/intro_section.dart';
-import 'package:arthurdev/sections/job_section.dart';
-import 'package:arthurdev/sections/portfolio_section.dart';
-import 'package:arthurdev/services/blog_rss_feed_service.dart';
+import 'package:arthurdev/sections/blog_section_left.dart';
+import 'package:arthurdev/sections/blog_section_right.dart';
+import 'package:arthurdev/sections/footer_section.dart';
+import 'package:arthurdev/sections/intro_section_right.dart';
+import 'package:arthurdev/sections/job_section_left.dart';
+import 'package:arthurdev/sections/job_section_right.dart';
+import 'package:arthurdev/sections/portfolio_section_left.dart';
+import 'package:arthurdev/sections/portfolio_section_right.dart';
 import 'package:arthurdev/utils/consts.dart';
-import 'package:arthurdev/utils/my_icons.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
-import 'package:arthurdev/widgets/blog_post_listtile.dart';
 import 'package:arthurdev/widgets/navigation_bar.dart';
-import 'package:arthurdev/widgets/profile.dart';
-import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:arthurdev/widgets/stack_clip.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:webfeed/webfeed.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -77,6 +75,13 @@ class _HomePageState extends State<HomePage> {
         }
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _mainScrollController.removeListener(_handleScrollEvents);
+    _secondaryScrollController.removeListener(_handleScrollEvents);
+    super.dispose();
   }
 
   void _handleScrollEvents() {
@@ -185,16 +190,17 @@ class _HomePageState extends State<HomePage> {
                   height: kScreenHeight(context),
                   child: Row(
                     children: [
-                      LeftSide(
-                        _secondaryScrollController,
-                        _currentSection,
-                        _secondaryScrollControllerOffset,
+                      LeftPanel(
+                        currentSection: _currentSection,
+                        secondaryScrollControllerOffset:
+                            _secondaryScrollControllerOffset,
+                        secondaryScrollController: _secondaryScrollController,
                       ),
-                      RightSide(_secondaryScrollController),
+                      RightPanel(_secondaryScrollController),
                     ],
                   ),
                 ),
-                Footer(),
+                FooterSection(),
               ],
             ),
           ),
@@ -204,20 +210,25 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class LeftSide extends StatelessWidget {
-  const LeftSide(this.secondaryScrollController, this.currentSection,
-      this.secondaryScrollControllerOffset);
+class LeftPanel extends StatelessWidget {
+  const LeftPanel({
+    @required this.currentSection,
+    @required this.secondaryScrollControllerOffset,
+    @required this.secondaryScrollController,
+  });
 
-  final ScrollController secondaryScrollController;
   final int currentSection;
   final double secondaryScrollControllerOffset;
+  final ScrollController secondaryScrollController;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: kScreenHeight(context) + kToolbarHeight,
-      width: kScreenWidth(context) * 0.6,
-      child: buildSection(context),
+    return Flexible(
+      flex: 6,
+      child: Container(
+        height: kScreenHeight(context) + kToolbarHeight,
+        child: buildSection(context),
+      ),
     );
   }
 
@@ -225,7 +236,8 @@ class LeftSide extends StatelessWidget {
     switch (currentSection) {
       case 0:
         return StackClip(
-          backgroundWidget: IntroSectionLeft(),
+          // backgroundWidget: IntroSectionLeft(),
+          backgroundWidget: PortfolioSectionLeft(),
           foregroundWidget: PortfolioSectionLeft(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection),
@@ -255,317 +267,32 @@ class LeftSide extends StatelessWidget {
   }
 }
 
-class JobSectionLeft extends StatelessWidget {
-  const JobSectionLeft({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: kPrimaryColorLight2,
-      padding: EdgeInsets.only(bottom: kScreenHeightAwareSize(40.0, context)),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Want to do a project together?'
-              '\nLet me know here.',
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-              style: kSectionHeaderTextStyle,
-            ),
-            Container(
-              constraints: BoxConstraints(maxWidth: 420.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  JobInfoTextField(
-                    'What\'s your name?',
-                    TextInputType.name,
-                  ),
-                  JobInfoTextField(
-                    'Your fancy email',
-                    TextInputType.emailAddress,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 24.0),
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: kBorderRadius,
-                        child: Container(
-                          padding:
-                              const EdgeInsets.fromLTRB(0.0, 8.0, 4.0, 8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  'Tell me about your project',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: kHeaderTextStyle.copyWith(
-                                    fontSize: 18.0,
-                                    letterSpacing: 1.0,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 24.0),
-                              Icon(
-                                MyIcons.arrow_right,
-                                size: 16.0,
-                                color: kAccentColor,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class JobInfoTextField extends StatelessWidget {
-  JobInfoTextField(this.hint, this.inputType);
-
-  final String hint;
-  final TextInputType inputType;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      autocorrect: false,
-      textCapitalization: TextCapitalization.words,
-      cursorColor: kAccentColor,
-      keyboardType: inputType,
-      style: kHeaderTextStyle.copyWith(
-        fontSize: 18.0,
-        letterSpacing: 1.0,
-      ),
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: kHeaderTextStyle.copyWith(
-          fontSize: 18.0,
-          letterSpacing: 1.0,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: kDividerColor,
-            width: 2.0,
-          ),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: kDividerColor,
-            width: 2.0,
-          ),
-        ),
-        contentPadding: EdgeInsets.symmetric(vertical: 32.0),
-      ),
-    );
-  }
-}
-
-class BlogSectionLeft extends StatelessWidget {
-  const BlogSectionLeft({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Map<String, String> blogPosts = {
-      'Feb 02': 'Blog post 3',
-      'March 03': 'Blog post 2',
-      'Dec 12': 'BlogPost 1',
-    };
-
-    return Container(
-      color: kPrimaryColorLight1,
-      padding: EdgeInsets.only(bottom: kScreenHeightAwareSize(40.0, context)),
-      // child: FutureBuilder(
-      //     future: RssFeedService.loadFeed(),
-      //     builder: (context, snapshot) {
-      //       RssFeed feed = snapshot.data;
-
-      //       if (snapshot.connectionState != ConnectionState.done) {
-      //         return Container(
-      //           height: 200.0,
-      //           width: 200.0,
-      //           child: Center(
-      //             child: CircularProgressIndicator(),
-      //           ),
-      //         );
-      //       }
-
-      //       if (snapshot.data == null) {
-      //         return Container(
-      //           width: 200.0,
-      //           height: 200.0,
-      //           child: Center(
-      //             child: Text(
-      //               'Unable to load blog feed',
-      //               style: kSectionInfoTextStyle,
-      //             ),
-      //           ),
-      //         );
-      //       }
-
-      //       return Flexible(
-      //         child: Container(
-      //           width: 560.0,
-      //           child: Column(
-      //             crossAxisAlignment: CrossAxisAlignment.start,
-      //             children: List.generate(
-      //               feed.items.length,
-      //               (i) => BlogPostListTile(
-      //                 date: feed.items[i].pubDate.toString(),
-      //                 title: feed.items[i].title,
-      //               ),
-      //             ),
-      //           ),
-      //         ),
-      //       );
-      //     }),
-
-      child: Center(
-        child: Container(
-          width: 560.0,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(
-              blogPosts.length,
-              (i) => BlogPostListTile(
-                date: blogPosts.keys.elementAt(i),
-                title: blogPosts.values.elementAt(i),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class PortfolioSectionLeft extends StatelessWidget {
-  const PortfolioSectionLeft({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: kPrimaryColorLight2,
-      child: Center(
-        child: Container(
-          width: 500.0,
-          height: 700.0,
-          color: kPrimaryColorDeep,
-        ),
-      ),
-    );
-  }
-}
-
-class IntroSectionLeft extends StatelessWidget {
-  const IntroSectionLeft({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: kPrimaryColorLight1,
-      padding: EdgeInsets.fromLTRB(
-        kScreenWidthAwareSize(80.0, context),
-        kScreenHeightAwareSize(80.0, context),
-        kScreenWidthAwareSize(80.0, context),
-        kScreenHeightAwareSize(120.0, context),
-      ),
-      child: Profile(),
-    );
-  }
-}
-
-class RightSide extends StatelessWidget {
-  const RightSide(this.secondaryScrollController);
+class RightPanel extends StatelessWidget {
+  const RightPanel(this.secondaryScrollController);
 
   final ScrollController secondaryScrollController;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: secondaryScrollController,
-      physics: NeverScrollableScrollPhysics(),
-      child: Container(
-        color: kPrimaryColor,
-        width: kScreenWidth(context) * 0.4,
-        padding: EdgeInsets.symmetric(
-            horizontal: kScreenWidthAwareSize(60.0, context)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IntroSectionRight(),
-            PortfolioSectionRight(),
-            BlogSectionRight(),
-            JobSectionRight(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: kToolbarHeight * 5.0,
-      color: kPrimaryColorDeep,
-      child: Center(
-        child: FittedBox(
-          child: Container(
-            margin: EdgeInsets.all(24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 88.0,
-                  height: 88.0,
-                  child: Image.asset(
-                    'assets/images/arthurdev_logo.png',
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-                SizedBox(height: 24.0),
-                RichText(
-                  text: TextSpan(
-                    text: 'Thanks for dropping by,',
-                    style: kHeaderTextStyle.copyWith(fontSize: 16.0),
-                    children: [
-                      TextSpan(
-                        text: ' visit again soon!',
-                        style: kSectionInfoTextStyle.copyWith(fontSize: 14.0),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 32.0),
-                SocialsButtons(),
-              ],
-            ),
+    return Flexible(
+      flex: 4,
+      child: SingleChildScrollView(
+        controller: secondaryScrollController,
+        physics: NeverScrollableScrollPhysics(),
+        child: Container(
+          color: kPrimaryColor,
+          padding: EdgeInsets.only(
+            left: kScreenWidthAwareSize(60.0, context),
+            right: kScreenWidthAwareSize(40.0, context),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IntroSectionRight(),
+              PortfolioSectionRight(),
+              BlogSectionRight(),
+              JobSectionRight(),
+            ],
           ),
         ),
       ),

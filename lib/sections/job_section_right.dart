@@ -27,7 +27,7 @@ class JobSectionRight extends StatelessWidget {
             sectionTitle: 'Job',
             heading: 'Impressed?\nGive me a job.',
             body: 'I am looking for a part-time job or a\nfreelance project.',
-            actionText: 'arthurdelords@gmail.com',
+            actionText: 'Email me',
             onActionTap: () async {
               String url = kEmailURL;
               if (await canLaunch(url)) {
@@ -112,7 +112,7 @@ class JobSectionRight extends StatelessWidget {
   //       RichText(
   //         text: TextSpan(
   //           text: 'Thanks for dropping by,',
-  //           style: kHeaderTextStyle.copyWith(fontSize: 16.0),
+  //           style: kHeaderTextStyleLight.copyWith(fontSize: 16.0),
   //           children: [
   //             TextSpan(
   //               text: ' visit again soon!',
@@ -154,7 +154,7 @@ class JobSectionRight extends StatelessWidget {
   //                     overflow: TextOverflow.ellipsis,
   //                     text: TextSpan(
   //                       text: 'Thanks for dropping by,',
-  //                       style: kHeaderTextStyle.copyWith(
+  //                       style: kHeaderTextStyleLight.copyWith(
   //                           fontSize: 16.0, height: 1.2),
   //                       children: [
   //                         TextSpan(
@@ -218,7 +218,7 @@ class JobSectionRight extends StatelessWidget {
   //                             'Tell me about your project',
   //                             maxLines: 1,
   //                             overflow: TextOverflow.ellipsis,
-  //                             style: kHeaderTextStyle.copyWith(
+  //                             style: kHeaderTextStyleLight.copyWith(
   //                               fontSize: 18.0,
   //                               letterSpacing: 1.0,
   //                             ),
@@ -249,13 +249,13 @@ class JobSectionRight extends StatelessWidget {
   //     textCapitalization: TextCapitalization.words,
   //     cursorColor: kAccentColor,
   //     keyboardType: inputType,
-  //     style: kHeaderTextStyle.copyWith(
+  //     style: kHeaderTextStyleLight.copyWith(
   //       fontSize: 18.0,
   //       letterSpacing: 1.0,
   //     ),
   //     decoration: InputDecoration(
   //       hintText: hint,
-  //       hintStyle: kHeaderTextStyle.copyWith(
+  //       hintStyle: kHeaderTextStyleLight.copyWith(
   //         fontSize: 18.0,
   //         letterSpacing: 1.0,
   //       ),

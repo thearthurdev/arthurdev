@@ -79,7 +79,7 @@ class ExperienceInfoBox extends StatelessWidget {
                 fontSize: 11.0,
                 letterSpacing: 1.2,
                 height: 1.3,
-                color: kPrimaryTextColor,
+                color: kPrimaryTextColorLight,
               ),
             ),
           ),

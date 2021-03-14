@@ -19,7 +19,7 @@ class NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: kPrimaryColorDeep,
+      color: kPrimaryColorDark,
       child: Container(
         height: kToolbarHeight,
         width: kScreenWidth(context),

@@ -23,7 +23,7 @@ class PortfolioSectionRight extends StatelessWidget {
         children: [
           InfoActionBox(
             sectionTitle: 'Portfolio',
-            heading: 'Creative works,\nselected projects.',
+            heading: 'Creative works,\nhighlighted projects.',
             body: 'Check out some of my side projects and'
                 '\ncreative works.',
             actionText: 'Explore more',

@@ -13,12 +13,12 @@ class NavigationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuTheme(
       data: PopupMenuThemeData(
-        color: kPrimaryColorDeep,
+        color: kPrimaryColorDark,
         shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
       ),
       child: PopupMenuButton(
         tooltip: 'Navigation Menu',
-        icon: Icon(Icons.menu_rounded, color: kPrimaryTextColor),
+        icon: Icon(Icons.menu_rounded, color: kPrimaryTextColorLight),
         onSelected: (i) {
           scrollController.animateTo(
             kSectionScrollOffsets[i],
@@ -51,10 +51,10 @@ class NavigationMenu extends StatelessWidget {
                   ),
                   Text(
                     kNavigationDestinations[i],
-                    style: kHeaderTextStyle.copyWith(
+                    style: kHeaderTextStyleLight.copyWith(
                       fontSize: 16.0,
                       color: isSelected
-                          ? kPrimaryTextColor
+                          ? kPrimaryTextColorLight
                           : kPrimaryTextDisabledColor,
                     ),
                   ),

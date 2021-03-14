@@ -24,7 +24,7 @@ class BlogSectionRight extends StatelessWidget {
           InfoActionBox(
             sectionTitle: 'Blog',
             heading: 'What\'s new?\nSee my latest blog posts.',
-            body: 'I write about tech tips and tricks,'
+            body: 'I write about tech tips, software development,'
                 '\nmy experiences and opinions now and then.',
             actionText: 'Visit blog',
             onActionTap: () async {
@@ -44,7 +44,7 @@ class BlogSectionRight extends StatelessWidget {
   //   return Container(
   //     key: kBlogSectionKey,
   //     width: double.infinity,
-  //     color: kPrimaryColorDeep,
+  //     color: kPrimaryColorDark,
   //     child: Align(
   //       alignment: Alignment.topCenter,
   //       child: Container(
@@ -225,7 +225,7 @@ class BlogSectionRight extends StatelessWidget {
   //         'John Doe',
   //         maxLines: 1,
   //         overflow: TextOverflow.ellipsis,
-  //         style: kHeaderTextStyle.copyWith(
+  //         style: kHeaderTextStyleLight.copyWith(
   //           fontSize: 16.0,
   //           letterSpacing: 1.0,
   //         ),
@@ -248,7 +248,7 @@ class BlogSectionRight extends StatelessWidget {
   //       'on this topic. Keep up the good work!',
   //       maxLines: maxLines ?? 6,
   //       overflow: TextOverflow.ellipsis,
-  //       style: kHeaderTextStyle.copyWith(height: 1.2),
+  //       style: kHeaderTextStyleLight.copyWith(height: 1.2),
   //     ),
   //   );
   // }

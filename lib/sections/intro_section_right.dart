@@ -25,7 +25,7 @@ class IntroSectionRight extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           InfoActionBox(
-            sectionTitle: 'Introduction',
+            sectionTitle: 'Intro',
             heading: 'Software Developer,\nbased in Ghana.',
             body:
                 'I specialize in cross-platform mobile\ndevelopment, android and windows\nautomation.',

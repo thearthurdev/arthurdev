@@ -41,7 +41,7 @@ class SocialsButtons extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
                       socials.values.elementAt(i),
-                      color: kPrimaryTextColor,
+                      color: kPrimaryTextColorLight,
                       size: size ?? null,
                     ),
                   ),

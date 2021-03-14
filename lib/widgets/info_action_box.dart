@@ -40,12 +40,12 @@ class InfoActionBox extends StatelessWidget {
           heading == null
               ? SizedBox()
               : Text(
-                  heading,
+                  heading.toUpperCase(),
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                   style: kSectionHeaderTextStyle,
                 ),
-          SizedBox(height: body == null ? 0.0 : 24.0),
+          SizedBox(height: body == null ? 0.0 : 16.0),
           body == null
               ? SizedBox()
               : Text(
@@ -57,31 +57,34 @@ class InfoActionBox extends StatelessWidget {
           SizedBox(height: actionText == null ? 0.0 : 32.0),
           actionText == null
               ? SizedBox()
-              : Material(
-                  type: MaterialType.transparency,
-                  child: InkWell(
-                    onTap: onActionTap ?? () {},
-                    borderRadius: kBorderRadius,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0.0, 8.0, 8.0, 8.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              actionText,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: kActionButtonTextStyle,
+              : Container(
+                  decoration: BoxDecoration(
+                  color: kPrimaryColorDark,
+                  borderRadius: kBorderRadius,
+                  ),
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: InkWell(
+                      onTap: onActionTap ?? () {},
+                      borderRadius: kBorderRadius,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 8.0,
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                actionText.toUpperCase(),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: kActionButtonTextStyle,
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 24.0),
-                          Icon(
-                            MyIcons.arrow_right,
-                            size: 16.0,
-                            color: kAccentColor,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

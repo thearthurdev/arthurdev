@@ -39,12 +39,8 @@ class NavigationDestinations extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Center(
                     child: Text(
-                      kNavigationDestinations[i],
-                      style: kLargeHeaderTextStyle.copyWith(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w100,
-                        color: kSectionInfoTextColor,
-                      ),
+                      kNavigationDestinations[i].toUpperCase(),
+                      style: kNavigationDestinationTextStyle,
                     ),
                   ),
                 ),
