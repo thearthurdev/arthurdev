@@ -1,4 +1,9 @@
 import 'package:arthurdev/utils/consts.dart';
+import 'package:arthurdev/utils/responsive_view_util.dart';
+import 'package:arthurdev/widgets/arthurdev_banner.dart';
+import 'package:arthurdev/widgets/navigation_menu.dart';
+import 'package:arthurdev/widgets/navigation_destinations.dart';
+import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
 
 class NavigationBar extends StatelessWidget {
@@ -13,64 +18,33 @@ class NavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(8.0, 12.0, 16.0, 0.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(
-          kNavigationDestinations.length,
-          (i) {
-            bool isSelected = currentSection == i;
-
-            return Container(
-              margin: EdgeInsets.only(
-                right: i != kNavigationDestinations.length - 1 ? 24.0 : 0.0,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      scrollController.animateTo(
-                        kSectionScrollOffsets[i],
-                        curve: Curves.easeOut,
-                        duration: kShortDuration,
-                      );
-                    },
-                    borderRadius: kBorderRadius,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Center(
-                        child: Text(
-                          kNavigationDestinations[i],
-                          style: kHeaderTextStyle.copyWith(
-                            color: isSelected
-                                ? kPrimaryTextColor
-                                : kPrimaryTextDisabledColor,
-                          ),
-                        ),
-                      ),
+    return Material(
+      color: kPrimaryColorDark,
+      child: Container(
+        height: kToolbarHeight,
+        width: kScreenWidth(context),
+        child: Center(
+          child: Container(
+            constraints: BoxConstraints(maxWidth: kMaxWidth),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ArthurDevBanner(scrollController: scrollController),
+                    SizedBox(width: 24.0),
+                    NavigationDestinations(
+                      currentSection: currentSection,
+                      scrollController: scrollController,
                     ),
-                  ),
-                  Flexible(
-                    child: Opacity(
-                      opacity: isSelected ? 1.0 : 0.0,
-                      child: Container(
-                        width: 6.0,
-                        height: 6.0,
-                        margin: const EdgeInsets.only(top: 0.0, bottom: 4.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: kAccentColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
+                  ],
+                ),
+                Expanded(child: SizedBox.shrink()),
+                SocialsButtons(size: 18.0),
+              ],
+            ),
+          ),
         ),
       ),
     );

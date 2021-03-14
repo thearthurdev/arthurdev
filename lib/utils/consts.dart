@@ -25,17 +25,12 @@ GlobalKey kIntroSectionKey = GlobalKey();
 GlobalKey kPortfolioSectionKey = GlobalKey();
 GlobalKey kBlogSectionKey = GlobalKey();
 GlobalKey kJobSectionKey = GlobalKey();
-GlobalKey kTechnologiesSectionKey = GlobalKey();
-GlobalKey kExperienceSectionKey = GlobalKey();
-GlobalKey kHomePageKey = GlobalKey();
 
 List<GlobalKey> kSectionKeys = [
   kIntroSectionKey,
   kPortfolioSectionKey,
   kBlogSectionKey,
   kJobSectionKey,
-  // kExperienceSectionKey,
-  // kTechnologiesSectionKey,
 ];
 
 // URLs
@@ -47,12 +42,15 @@ const String kPortfolioURL = 'https://arthur.hashnode.dev/arthurdev-portfolio';
 const String kBlogURL = 'https://arthur.hashnode.dev';
 
 // Colors
-const Color kPrimaryColor = Color(0xFF333646);
-const Color kPrimaryColorDeep = Color(0xFF252734);
-const Color kAccentColor = Color(0xFFFFBB69);
-const Color kTechnologyBoxColor = Color(0xFF424657);
-const Color kDividerColor = Color(0xFF3A3D4C);
-const Color kPrimaryTextColor = Color(0xFFEBEBEC);
+const Color kPrimaryColor = Color(0xFFFFFFFF);
+const Color kPrimaryColorDark = Color(0xFF000000);
+const Color kPrimaryColorLight1 = Color(0xFFEAEAEA);
+const Color kPrimaryColorLight2 = Color(0xFFD2D2D2);
+const Color kAccentColor = Color(0xFFFFC279);
+const Color kAccentColorDeep = Color(0xFFE49A41);
+const Color kDividerColor = Color(0xFFC5C5C5);
+const Color kPrimaryTextColorLight = Color(0xFFEBEBEC);
+const Color kPrimaryTextColorDark = Color(0xFF000000);
 const Color kPrimaryTextDisabledColor = Color(0xFF666874);
 const Color kSectionInfoTextColor = Color(0xFF999AA2);
 
@@ -64,39 +62,61 @@ const Duration kLongDuration = Duration(milliseconds: 900);
 
 // TextStyles
 const TextStyle kLargeHeaderTextStyle = TextStyle(
-  fontFamily: 'MontSerrat',
+  fontFamily: 'Righteous',
   fontSize: 64.0,
-  letterSpacing: -0.1,
+  letterSpacing: -0.5,
   height: 0.9,
-  color: kPrimaryTextColor,
+  color: kPrimaryTextColorDark,
 );
 
-const TextStyle kHeaderTextStyle = TextStyle(
-  fontFamily: 'Heebo',
-  fontSize: 24.0,
+const TextStyle kHeaderTextStyleLight = TextStyle(
+  fontFamily: 'Sen',
+  fontSize: 22.0,
   letterSpacing: -0.1,
-  color: kPrimaryTextColor,
+  color: kPrimaryTextColorLight,
+);
+
+const TextStyle kHeaderTextStyleDark = TextStyle(
+  fontFamily: 'Righteous',
+  fontSize: 22.0,
+  letterSpacing: 1.0,
+  color: kPrimaryTextColorDark,
+);
+
+const TextStyle kTextFieldTextStyleDark = TextStyle(
+  fontFamily: 'Sen',
+  fontSize: 22.0,
+  letterSpacing: 1.0,
+  color: kPrimaryTextColorDark,
 );
 
 const TextStyle kSectionInfoTextStyle = TextStyle(
-  fontFamily: 'Bree Serif',
-  fontSize: 14.0,
-  letterSpacing: 1.2,
-  color: kSectionInfoTextColor,
+  fontFamily: 'Sen',
+  fontSize: 16.0,
+  color: kPrimaryTextColorDark,
 );
 
 const TextStyle kSectionHeaderTextStyle = TextStyle(
-  fontFamily: 'Heebo',
-  fontSize: 32.0,
-  letterSpacing: 1.8,
-  color: kPrimaryTextColor,
+  fontFamily: 'Righteous',
+  fontSize: 26.0,
+  letterSpacing: -0.5,
+  color: kPrimaryTextColorDark,
 );
 
 const TextStyle kActionButtonTextStyle = TextStyle(
-  fontFamily: 'Heebo',
-  fontSize: 24.0,
+  fontFamily: 'Sen',
+  fontSize: 14.0,
   letterSpacing: -0.1,
   color: kAccentColor,
+);
+
+const TextStyle kNavigationDestinationTextStyle = TextStyle(
+  fontFamily: 'Sen',
+  fontSize: 14.0,
+  letterSpacing: 2.1,
+  height: 0.9,
+  fontWeight: FontWeight.w100,
+  color: kSectionInfoTextColor,
 );
 
 const TextStyle kFlatAccentButtonTextStyle = TextStyle(

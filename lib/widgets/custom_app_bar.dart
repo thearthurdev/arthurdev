@@ -2,7 +2,7 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/arthurdev_banner.dart';
 import 'package:arthurdev/widgets/navigation_menu.dart';
-import 'package:arthurdev/widgets/navigation_bar.dart';
+import 'package:arthurdev/widgets/navigation_destinations.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -36,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
             children: [
               ArthurDevBanner(scrollController: scrollController),
               kIsDesktop(context)
-                  ? NavigationBar(
+                  ? NavigationDestinations(
                       currentSection: currentSection,
                       scrollController: scrollController,
                     )

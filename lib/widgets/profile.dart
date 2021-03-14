@@ -1,6 +1,5 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
-import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
@@ -21,7 +20,7 @@ class Profile extends StatelessWidget {
 
   Widget desktopLayout() {
     return Container(
-      width: 469.0,
+      width: 472.0,
       height: 333.0,
       child: Stack(
         children: [
@@ -71,18 +70,18 @@ class Profile extends StatelessWidget {
         children: [
           SizedBox(height: 48.0),
           Padding(
-            padding: const EdgeInsets.only(left: 6.0),
-            child: Text('Arthur', style: kLargeHeaderTextStyle),
+            padding: const EdgeInsets.only(left: 3.0),
+            child: Text('Meet', style: kSectionInfoTextStyle),
           ),
-          Text('Delords', style: kLargeHeaderTextStyle),
+          SizedBox(height: 8.0),
+          Text('Delords\nArthur', style: kLargeHeaderTextStyle),
           Container(
             width: 46.0,
             height: 8.0,
-            margin: const EdgeInsets.only(left: 4.0, top: 16.0),
-            color: kAccentColor,
+            margin: const EdgeInsets.only(left: 4.0, top: 8.0),
+            color: kAccentColorDeep,
           ),
           SizedBox(height: 10.0),
-          SocialsButtons(),
         ],
       ),
     );

@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialsButtons extends StatelessWidget {
+  SocialsButtons({this.size});
+
+  final double size;
+
   final Map<String, IconData> socials = {
     kGitHubURL: MyIcons.github,
     kLinkedInURL: MyIcons.linkedin,
@@ -14,7 +18,7 @@ class SocialsButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return FittedBox(
       child: Container(
-        width: 50.0 * socials.length,
+        width: 40.0 * socials.length,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +41,8 @@ class SocialsButtons extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
                       socials.values.elementAt(i),
-                      color: kPrimaryTextColor,
+                      color: kPrimaryTextColorLight,
+                      size: size ?? null,
                     ),
                   ),
                 ),
