@@ -1,5 +1,6 @@
 import 'package:arthurdev/providers/home_page_provider.dart';
 import 'package:arthurdev/utils/consts.dart';
+import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/page_view_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -168,7 +169,7 @@ class MobWearPortfolioView extends StatelessWidget {
                         'Customize smartphones with colors and textures',
                     toolTip: 'Click to view the code on GitHub',
                     onTap: () async {
-                      String url = 'https://github.com/thearthurdev/mobwear';
+                      String url = kMobWearGitHubURL;
 
                       if (await canLaunch(url)) {
                         await launch(url);
@@ -177,11 +178,9 @@ class MobWearPortfolioView extends StatelessWidget {
                       }
                     },
                   ),
-                  SizedBox(height: 32.0),
                   InkWell(
                     onTap: () async {
-                      String url =
-                          'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear';
+                      String url = kMobWearPlayStoreURL;
 
                       if (await canLaunch(url)) {
                         await launch(url);
@@ -189,8 +188,9 @@ class MobWearPortfolioView extends StatelessWidget {
                         throw 'Could not launch $url';
                       }
                     },
-                    child: SizedBox(
+                    child: Container(
                       width: 160.0,
+                      margin: EdgeInsets.only(right: 60.0, top: 32.0),
                       child: Image.asset(
                         'assets/images/play_store_button.png',
                       ),
@@ -275,8 +275,7 @@ class SneakPeakPortfolioView extends StatelessWidget {
                     'Experience delightful animations\nwhile sneaker shopping',
                 toolTip: 'Click to see the animations in action',
                 onTap: () async {
-                  String url =
-                      'https://twitter.com/_DeeArthur/status/1246287315707797505?s=20';
+                  String url = kSneakPeakTwitterURL;
 
                   if (await canLaunch(url)) {
                     await launch(url);
@@ -310,11 +309,27 @@ class MoreSoonPortfolioView extends StatelessWidget {
           ],
         ),
       ),
-      child: Center(
-        child: PortfolioInfoBox(
-          title: 'More Soon...',
-          description: 'There\'s more in the works so come\nback soon!',
-        ),
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: -kScreenHeight(context) * 0.3,
+            right: -200.0,
+            child: Opacity(
+              opacity: 0.02,
+              child: Icon(
+                Icons.library_add_rounded,
+                color: kPrimaryColorDark,
+                size: 800.0,
+              ),
+            ),
+          ),
+          Center(
+            child: PortfolioInfoBox(
+              title: 'More Soon...',
+              description: 'There\'s a lot in the works so stay on\nthe lookout',
+            ),
+          ),
+        ],
       ),
     );
   }

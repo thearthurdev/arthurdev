@@ -2,21 +2,24 @@ import 'package:http/http.dart' as http;
 import 'package:webfeed/webfeed.dart';
 
 class RssFeedService {
-  static Uri _feedUrl = Uri.https('arthur.hashnode.dev', 'rss.xml');
-
   static RssFeed _feed;
 
   static get feed => _feed;
 
   static Future<RssFeed> _getFeed() async {
+    final _authority = "arthur.hashnode.dev";
+    final _path = "/rss.xml";
+    final _params = {"q": "dart"};
+    final _feedUri = Uri.https(_authority, _path, _params);
+
     try {
       final client = http.Client();
-      final response = await client.get(_feedUrl);
+      final response = await client.get(_feedUri);
 
       print(response.body);
       return RssFeed.parse(response.body);
     } catch (e) {
-      print(e);
+      print('error: $e');
       return null;
     }
   }

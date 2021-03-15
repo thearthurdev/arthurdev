@@ -24,8 +24,7 @@ class PortfolioSectionRight extends StatelessWidget {
           InfoActionBox(
             sectionTitle: 'Portfolio',
             heading: 'Creative works,\nhighlighted projects',
-            body: 'Check out some of my side projects and'
-                '\ncreative works',
+            body: 'Check out some of my projects and\ncreative works',
             actionText: 'Explore more',
             onActionTap: () async {
               String url = kPortfolioURL;
