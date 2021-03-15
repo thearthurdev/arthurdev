@@ -23,10 +23,8 @@ class _HomePageState extends State<HomePage> {
   ScrollController _mainScrollController;
   ScrollController _secondaryScrollController;
   ScrollController _currentScrollController;
-  PageController _portfolioPageController;
   bool _freezeMainScrollController;
   int _currentSection;
-  int _currentPortfolioPage;
   double _initScreenHeight;
   // double _maxMainScrollExtent;
   double _maxSecondaryScrollExtent;
@@ -43,11 +41,9 @@ class _HomePageState extends State<HomePage> {
       ..addListener(_handleScrollEvents);
     _secondaryScrollController = ScrollController()
       ..addListener(_handleScrollEvents);
-    _portfolioPageController = PageController();
     _currentScrollController = _mainScrollController;
     _freezeMainScrollController = false;
     _currentSection = 0;
-    _currentPortfolioPage = 0;
     _secondaryScrollControllerOffset = 0.0;
     _mainScrollControllerExtentBefore = 0.0;
     _mainScrollControllerExtentAfter = 0.0;

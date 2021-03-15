@@ -25,7 +25,7 @@ class JobSectionRight extends StatelessWidget {
         children: [
           InfoActionBox(
             sectionTitle: 'Job',
-            heading: 'Impressed?\nGive me a job.',
+            heading: 'Impressed?\nGive me a job',
             body: 'I am looking for a part-time job or a\nfreelance project',
             actionText: 'Email me',
             onActionTap: () async {

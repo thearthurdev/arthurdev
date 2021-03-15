@@ -62,9 +62,9 @@ const Duration kLongDuration = Duration(milliseconds: 900);
 
 // TextStyles
 const TextStyle kLargeHeaderTextStyle = TextStyle(
-  fontFamily: 'Righteous',
-  fontSize: 64.0,
-  letterSpacing: -0.5,
+  fontFamily: 'SquadaOne',
+  fontSize: 72.0,
+  letterSpacing: 1.0,
   height: 0.9,
   color: kPrimaryTextColorDark,
 );
@@ -77,7 +77,7 @@ const TextStyle kHeaderTextStyleLight = TextStyle(
 );
 
 const TextStyle kHeaderTextStyleDark = TextStyle(
-  fontFamily: 'Righteous',
+  fontFamily: 'SquadaOne',
   fontSize: 22.0,
   letterSpacing: 1.0,
   color: kPrimaryTextColorDark,
@@ -97,9 +97,8 @@ const TextStyle kSectionInfoTextStyle = TextStyle(
 );
 
 const TextStyle kSectionHeaderTextStyle = TextStyle(
-  fontFamily: 'Righteous',
-  fontSize: 26.0,
-  letterSpacing: -0.5,
+  fontFamily: 'SquadaOne',
+  fontSize: 32.0,
   color: kPrimaryTextColorDark,
 );
 

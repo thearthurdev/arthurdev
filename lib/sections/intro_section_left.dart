@@ -22,8 +22,8 @@ class IntroSectionLeft extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.fromLTRB(
-        kScreenWidthAwareSize(80.0, context),
-        kScreenHeightAwareSize(160.0, context),
+        kScreenWidthAwareSize(90.0, context),
+        kScreenHeightAwareSize(150.0, context),
         kScreenWidthAwareSize(60.0, context),
         kScreenHeightAwareSize(00.0, context),
       ),

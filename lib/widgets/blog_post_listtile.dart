@@ -1,5 +1,4 @@
 import 'package:arthurdev/utils/consts.dart';
-import 'package:arthurdev/utils/my_icons.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/circular_arrow_icon.dart';
 import 'package:flutter/material.dart';

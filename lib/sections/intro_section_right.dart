@@ -26,7 +26,7 @@ class IntroSectionRight extends StatelessWidget {
         children: [
           InfoActionBox(
             sectionTitle: 'Intro',
-            heading: 'Software Developer,\nbased in Ghana.',
+            heading: 'Software Developer,\nbased in Ghana',
             body:
                 'I specialize in cross-platform mobile\ndevelopment, android and windows\nautomation',
             actionText: 'More about me',

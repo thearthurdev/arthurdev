@@ -28,6 +28,9 @@ flutter:
     - assets/images/
 
   fonts:
+    - family: SquadaOne
+      fonts:
+        - asset: assets/fonts/squadaone_regular.ttf
     - family: Righteous
       fonts:
         - asset: assets/fonts/righteous_regular.ttf

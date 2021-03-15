@@ -4,6 +4,7 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/page_view_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PortfolioSectionLeft extends StatefulWidget {
   const PortfolioSectionLeft({Key key}) : super(key: key);
@@ -19,10 +20,8 @@ class _PortfolioSectionLeftState extends State<PortfolioSectionLeft> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(
-      initialPage: context.read<HomePageProvider>().currentPortfolioPage,
-    );
-    _currentPage = 0;
+    _currentPage = context.read<HomePageProvider>().currentPortfolioPage;
+    _pageController = PageController(initialPage: _currentPage);
 
     _loadImageAssets(context);
   }
@@ -177,14 +176,35 @@ class _MobWearPortfolioViewState extends State<MobWearPortfolioView>
                     image: 'assets/images/mobwear_logo.png',
                     title: 'MobWear',
                     description:
-                        'Customize Smartphones with colors and textures',
+                        'Customize smartphones with colors and textures',
+                    toolTip: 'Click to view the code on GitHub',
+                    onTap: () async {
+                      String url = 'https://github.com/thearthurdev/mobwear';
+
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
                   ),
                   SizedBox(height: 32.0),
                   InkWell(
-                    onTap: () {},
+                    onTap: () async {
+                      String url =
+                          'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear';
+
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
                     child: SizedBox(
                       width: 160.0,
-                      child: Image.asset('assets/images/play_store_button.png'),
+                      child: Image.asset(
+                        'assets/images/play_store_button.png',
+                      ),
                     ),
                   ),
                 ],
@@ -286,6 +306,17 @@ class _SneakPeakPortfolioViewState extends State<SneakPeakPortfolioView>
                 title: 'Sneak Peak',
                 description:
                     'Experience delightful animations\nwhile sneaker shopping',
+                toolTip: 'Click to see the animations in action',
+                onTap: () async {
+                  String url =
+                      'https://twitter.com/_DeeArthur/status/1246287315707797505?s=20';
+
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
               ),
             ),
           ),
@@ -314,7 +345,7 @@ class MoreSoonPortfolioView extends StatelessWidget {
       ),
       child: Center(
         child: PortfolioInfoBox(
-          title: 'More Soon',
+          title: 'More Soon...',
           description: 'There\'s more in the works so come back soon!',
         ),
       ),
@@ -328,50 +359,81 @@ class PortfolioInfoBox extends StatelessWidget {
     this.description,
     this.image,
     this.width,
+    this.onTap,
+    this.toolTip,
   });
 
   final String image;
   final String title;
   final String description;
+  final String toolTip;
   final double width;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width ?? 350.0,
-      height: 100.0,
-      padding: EdgeInsets.only(right: 48.0),
-      child: Row(
-        children: [
-          image != null
-              ? Container(
-                  width: 100.0,
-                  height: 100.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(image),
+    if (toolTip == null) return buildView();
+
+    return Tooltip(
+      message: toolTip,
+      waitDuration: kShortDuration,
+      decoration: BoxDecoration(
+        color: kPrimaryColorDark,
+        borderRadius: kBorderRadius,
+      ),
+      textStyle: kSectionInfoTextStyle.copyWith(
+        fontSize: 12.0,
+        color: kPrimaryTextColorLight,
+      ),
+      padding: EdgeInsets.all(8.0),
+      preferBelow: true,
+      verticalOffset: 32.0,
+      child: buildView(),
+    );
+  }
+
+  InkWell buildView() {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        constraints: BoxConstraints(maxWidth: width ?? 350.0),
+        height: 100.0,
+        margin: EdgeInsets.only(right: 48.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            image != null
+                ? Container(
+                    width: 100.0,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(image),
+                      ),
+                    ),
+                  )
+                : SizedBox.shrink(),
+            image != null ? SizedBox(width: 8.0) : SizedBox.shrink(),
+            Flexible(
+              flex: 3,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: FittedBox(
+                      child: Text(title, style: kLargeHeaderTextStyle),
                     ),
                   ),
-                )
-              : SizedBox.shrink(),
-          image != null ? SizedBox(width: 8.0) : SizedBox.shrink(),
-          Flexible(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FittedBox(
-                  child: Text(title, style: kLargeHeaderTextStyle),
-                ),
-                SizedBox(height: 4.0),
-                Flexible(
-                  child: Text(description, style: kSectionInfoTextStyle),
-                ),
-              ],
+                  SizedBox(height: 4.0),
+                  Flexible(
+                    child: Text(description, style: kSectionInfoTextStyle),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

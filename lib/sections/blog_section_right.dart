@@ -23,7 +23,7 @@ class BlogSectionRight extends StatelessWidget {
         children: [
           InfoActionBox(
             sectionTitle: 'Blog',
-            heading: 'What\'s new?\nSee my latest blog posts.',
+            heading: 'What\'s new?\nSee my latest blog posts',
             body: 'I write about tech tips, software development,'
                 '\nmy experiences and opinions now and then',
             actionText: 'Visit blog',
