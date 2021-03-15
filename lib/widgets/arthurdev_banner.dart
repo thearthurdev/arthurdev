@@ -12,16 +12,17 @@ class ArthurDevBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: Container(
-        child: InkWell(
-          onTap: () {
-            scrollController.animateTo(
-              kSectionScrollOffsets[0],
-              curve: Curves.easeOut,
-              duration: kShortDuration,
-            );
-          },
-          borderRadius: kBorderRadius,
+      child: InkWell(
+        onTap: () {
+          scrollController.animateTo(
+            kSectionScrollOffsets[0],
+            curve: Curves.easeOut,
+            duration: kShortDuration,
+          );
+        },
+        borderRadius: kBorderRadius,
+        child: Container(
+                padding: EdgeInsets.all(4.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

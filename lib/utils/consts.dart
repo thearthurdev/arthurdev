@@ -105,8 +105,9 @@ const TextStyle kSectionHeaderTextStyle = TextStyle(
 const TextStyle kActionButtonTextStyle = TextStyle(
   fontFamily: 'Sen',
   fontSize: 14.0,
-  letterSpacing: -0.1,
+  letterSpacing: 0.5,
   color: kAccentColor,
+  fontWeight: FontWeight.bold,
 );
 
 const TextStyle kNavigationDestinationTextStyle = TextStyle(

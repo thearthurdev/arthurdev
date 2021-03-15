@@ -1,6 +1,5 @@
 import 'package:arthurdev/providers/home_page_provider.dart';
 import 'package:arthurdev/utils/consts.dart';
-import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/page_view_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -137,19 +136,9 @@ class _PortfolioSectionLeftState extends State<PortfolioSectionLeft> {
   }
 }
 
-class MobWearPortfolioView extends StatefulWidget {
-  @override
-  _MobWearPortfolioViewState createState() => _MobWearPortfolioViewState();
-}
-
-class _MobWearPortfolioViewState extends State<MobWearPortfolioView>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
-
+class MobWearPortfolioView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -217,19 +206,9 @@ class _MobWearPortfolioViewState extends State<MobWearPortfolioView>
   }
 }
 
-class PlayaPortfolioView extends StatefulWidget {
-  @override
-  _PlayaPortfolioViewState createState() => _PlayaPortfolioViewState();
-}
-
-class _PlayaPortfolioViewState extends State<PlayaPortfolioView>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
-
+class PlayaPortfolioView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -241,50 +220,38 @@ class _PlayaPortfolioViewState extends State<PlayaPortfolioView>
           ],
         ),
       ),
-      child: FittedBox(
-        child: Stack(
-          children: [
-            Positioned(
-              top: 48.0,
-              left: 48.0,
-              child: PortfolioInfoBox(
-                title: 'Playa',
-                description: 'For music that looks as\ngood as it sounds',
-              ),
+      child: Stack(
+        children: [
+          Positioned(
+            top: 48.0,
+            left: 48.0,
+            child: PortfolioInfoBox(
+              title: 'Playa',
+              description: 'For music that looks as\ngood as it sounds',
             ),
-            Column(
-              children: [
-                Container(height: kScreenHeight(context) * 0.15),
-                Container(
-                  height: kScreenHeight(context) * 0.85,
-                  width: kScreenWidth(context) * 0.6,
-                  child: Image.asset(
-                    'assets/images/playa_devices.png',
-                    fit: BoxFit.fitHeight,
-                  ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(child: Container()),
+              Container(
+                child: Image.asset(
+                  'assets/images/playa_devices.png',
+                  fit: BoxFit.fitHeight,
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 }
 
-class SneakPeakPortfolioView extends StatefulWidget {
-  @override
-  _SneakPeakPortfolioViewState createState() => _SneakPeakPortfolioViewState();
-}
-
-class _SneakPeakPortfolioViewState extends State<SneakPeakPortfolioView>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
-
+class SneakPeakPortfolioView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -346,7 +313,7 @@ class MoreSoonPortfolioView extends StatelessWidget {
       child: Center(
         child: PortfolioInfoBox(
           title: 'More Soon...',
-          description: 'There\'s more in the works so come back soon!',
+          description: 'There\'s more in the works so come\nback soon!',
         ),
       ),
     );
@@ -376,7 +343,7 @@ class PortfolioInfoBox extends StatelessWidget {
 
     return Tooltip(
       message: toolTip,
-      waitDuration: kShortDuration,
+      waitDuration: kMediumDuration,
       decoration: BoxDecoration(
         color: kPrimaryColorDark,
         borderRadius: kBorderRadius,

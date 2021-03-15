@@ -8,41 +8,59 @@ class SocialsButtons extends StatelessWidget {
 
   final double size;
 
-  final Map<String, IconData> socials = {
+  final Map<String, IconData> _socials = {
     kGitHubURL: MyIcons.github,
     kLinkedInURL: MyIcons.linkedin,
     kTwitterURL: MyIcons.twitter,
   };
 
+  final List<String> _socialsToolTips = [
+    'Check out my repos',
+    'View my professional profile',
+    'See what\'s happening',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return FittedBox(
       child: Container(
-        width: 40.0 * socials.length,
+        width: 40.0 * _socials.length,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(
-            socials.length,
+            _socials.length,
             (i) {
-              return Material(
-                type: MaterialType.transparency,
-                child: InkWell(
-                  customBorder: CircleBorder(),
-                  onTap: () async {
-                    String url = socials.keys.elementAt(i);
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      socials.values.elementAt(i),
-                      color: kPrimaryTextColorLight,
-                      size: size ?? null,
+              return Tooltip(
+                message: _socialsToolTips[i],
+                waitDuration: kMediumDuration,
+                decoration: BoxDecoration(
+                  color: kPrimaryColorLight1,
+                  borderRadius: kBorderRadius,
+                ),
+                textStyle: kSectionInfoTextStyle.copyWith(fontSize: 12.0),
+                padding: EdgeInsets.all(8.0),
+                preferBelow: true,
+                verticalOffset: 32.0,
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    customBorder: CircleBorder(),
+                    onTap: () async {
+                      String url = _socials.keys.elementAt(i);
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        _socials.values.elementAt(i),
+                        color: kPrimaryTextColorLight,
+                        size: size ?? null,
+                      ),
                     ),
                   ),
                 ),
