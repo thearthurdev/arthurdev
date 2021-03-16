@@ -7,16 +7,18 @@ class RssFeedService {
   static get feed => _feed;
 
   static Future<RssFeed> _getFeed() async {
-    final _authority = "arthur.hashnode.dev";
-    final _path = "/rss.xml";
-    final _params = {"q": "dart"};
-    final _feedUri = Uri.https(_authority, _path, _params);
+    final _authority = "lorem-rss.herokuapp.com";
+    final _path = "/feed";
+    final _feedUri = Uri.https(_authority, _path);
+
+    print(_feedUri.toString());
 
     try {
       final client = http.Client();
       final response = await client.get(_feedUri);
 
       print(response.body);
+
       return RssFeed.parse(response.body);
     } catch (e) {
       print('error: $e');

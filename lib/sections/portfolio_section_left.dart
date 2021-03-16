@@ -1,4 +1,5 @@
 import 'package:arthurdev/providers/home_page_provider.dart';
+import 'package:arthurdev/services/blog_rss_feed_service.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/page_view_action_button.dart';
@@ -22,36 +23,6 @@ class _PortfolioSectionLeftState extends State<PortfolioSectionLeft> {
     super.initState();
     _currentPage = context.read<HomePageProvider>().currentPortfolioPage;
     _pageController = PageController(initialPage: _currentPage);
-
-    _loadImageAssets(context);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    _precacheImageAssets(context);
-  }
-
-  static List<String> _portfolioImageAssets = [
-    'assets/images/mobwear_device.png',
-    'assets/images/playa_devices.png',
-    'assets/images/sneak_peak_device.png',
-  ];
-
-  static List<Image> imageAssets = [];
-
-  static void _loadImageAssets(BuildContext context) {
-    imageAssets.clear();
-    for (String asset in _portfolioImageAssets) {
-      imageAssets.add(Image.asset(asset));
-    }
-  }
-
-  static Future<void> _precacheImageAssets(BuildContext context) async {
-    for (Image asset in imageAssets) {
-      await precacheImage(asset.image, context);
-    }
   }
 
   @override
@@ -151,54 +122,70 @@ class MobWearPortfolioView extends StatelessWidget {
           ],
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: Stack(
         children: [
-          Flexible(
-            child: Image.asset('assets/images/mobwear_device.png'),
-          ),
-          Flexible(
-            child: FittedBox(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  PortfolioInfoBox(
-                    image: 'assets/images/mobwear_logo.png',
-                    title: 'MobWear',
-                    description:
-                        'Customize smartphones with colors and textures',
-                    toolTip: 'Click to view the code on GitHub',
-                    onTap: () async {
-                      String url = kMobWearGitHubURL;
-
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                  ),
-                  InkWell(
-                    onTap: () async {
-                      String url = kMobWearPlayStoreURL;
-
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                    child: Container(
-                      width: 160.0,
-                      margin: EdgeInsets.only(right: 60.0, top: 32.0),
-                      child: Image.asset(
-                        'assets/images/play_store_button.png',
-                      ),
-                    ),
-                  ),
-                ],
+          Positioned(
+            top: -kScreenHeight(context) * 0.2,
+            right: -300.0,
+            child: Opacity(
+              opacity: 0.02,
+              child: Icon(
+                Icons.phone_android_rounded,
+                color: kPrimaryColorDark,
+                size: 800.0,
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Flexible(
+                child: Image.asset(kImageAssets['MobWearDevice']),
+              ),
+              Flexible(
+                child: FittedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      PortfolioInfoBox(
+                        image: kImageAssets['MobWearLogo'],
+                        title: 'MobWear',
+                        description:
+                            'Customize smartphones with colors and textures',
+                        toolTip: 'Click to view the code on GitHub',
+                        onTap: () async {
+                          String url = kMobWearGitHubURL;
+
+                          if (await canLaunch(url)) {
+                            await launch(url);
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                        },
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          String url = kMobWearPlayStoreURL;
+
+                          if (await canLaunch(url)) {
+                            await launch(url);
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                        },
+                        child: Container(
+                          width: 160.0,
+                          margin: EdgeInsets.only(right: 60.0, top: 32.0),
+                          child: Image.asset(
+                            kImageAssets['PlayStoreButton'],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -223,25 +210,62 @@ class PlayaPortfolioView extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 48.0,
-            left: 48.0,
-            child: PortfolioInfoBox(
-              title: 'Playa',
-              description: 'For music that looks as\ngood as it sounds',
+            top: -kScreenHeight(context) * 0.4,
+            left: -160.0,
+            child: Opacity(
+              opacity: 0.02,
+              child: Icon(
+                Icons.play_circle_outline_rounded,
+                color: kPrimaryColorDark,
+                size: 800.0,
+              ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Flexible(child: Container()),
-              Container(
+          Positioned(
+            top: 32.0,
+            left: 62.0,
+            child: PortfolioInfoBox(
+                title: 'Playa',
+                description: 'For music that looks as\ngood as it sounds',
+                toolTip:
+                    'Click to see the mockup in its full\ntwitter-compression glory',
+                onTap: () async {
+                  String url = kPlayaTwitterURL;
+
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                }),
+          ),
+          Positioned(
+            top: kScreenHeightAwareSize(130.0, context),
+            right: kScreenWidthAwareSize(-50.0, context),
+            child: FittedBox(
+              child: Container(
+                width: kScreenWidthAwareSize(250.0, context),
+                height: kScreenHeightAwareSize(350.0, context),
                 child: Image.asset(
-                  'assets/images/playa_devices.png',
+                  kImageAssets['PlayaDevicePhone'],
                   fit: BoxFit.fitHeight,
                 ),
               ),
-            ],
+            ),
+          ),
+          Positioned(
+            bottom: kScreenHeightAwareSize(-20.0, context),
+            left: kScreenWidthAwareSize(-210.0, context),
+            child: FittedBox(
+              child: Container(
+                width: kScreenWidthAwareSize(750.0, context),
+                height: kScreenHeightAwareSize(550.0, context),
+                child: Image.asset(
+                  kImageAssets['PlayaDeviceLaptop'],
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -263,31 +287,47 @@ class SneakPeakPortfolioView extends StatelessWidget {
           ],
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: Stack(
         children: [
-          SizedBox(width: 32.0),
-          Flexible(
-            child: FittedBox(
-              child: PortfolioInfoBox(
-                title: 'Sneak Peak',
-                description:
-                    'Experience delightful animations\nwhile sneaker shopping',
-                toolTip: 'Click to see the animations in action',
-                onTap: () async {
-                  String url = kSneakPeakTwitterURL;
-
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
-                  }
-                },
+          Positioned(
+            bottom: kScreenHeight(context) * 0.1,
+            left: -140.0,
+            child: Opacity(
+              opacity: 0.02,
+              child: Icon(
+                Icons.shopping_cart_outlined,
+                color: kPrimaryColorDark,
+                size: 600.0,
               ),
             ),
           ),
-          Flexible(
-            child: Image.asset('assets/images/sneak_peak_device.png'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(width: 32.0),
+              Flexible(
+                child: FittedBox(
+                  child: PortfolioInfoBox(
+                    title: 'Sneak Peak',
+                    description:
+                        'Experience delightful animations\nwhile sneaker shopping',
+                    toolTip: 'Click to see the animations in action',
+                    onTap: () async {
+                      String url = kSneakPeakTwitterURL;
+
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Image.asset(kImageAssets['SneakPeakDevice']),
+              ),
+            ],
           ),
         ],
       ),
@@ -326,7 +366,8 @@ class MoreSoonPortfolioView extends StatelessWidget {
           Center(
             child: PortfolioInfoBox(
               title: 'More Soon...',
-              description: 'There\'s a lot in the works so stay on\nthe lookout',
+              description:
+                  'There\'s a lot in the works so stay on\nthe lookout',
             ),
           ),
         ],

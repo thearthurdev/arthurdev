@@ -49,6 +49,9 @@ class _HomePageState extends State<HomePage> {
     _mainScrollControllerExtentAfter = 0.0;
     _secondaryScrollControllerExtentBefore = 0.0;
     _currentScrollControllerExtentBefore = 0.0;
+
+    // RssFeedService.loadFeed();
+
   }
 
   @override
@@ -76,6 +79,8 @@ class _HomePageState extends State<HomePage> {
         }
       }
     });
+
+    _precacheImageAssets(context);
   }
 
   @override
@@ -169,6 +174,22 @@ class _HomePageState extends State<HomePage> {
       setState(() => _currentSection = 3);
   }
 
+  static List<Image> _loadImageAssets(BuildContext context) {
+    List<Image> imageAssets = [];
+
+    kImageAssets.forEach((key, value) {
+      imageAssets.add(Image.asset(value));
+    });
+
+    return imageAssets;
+  }
+
+  static Future<void> _precacheImageAssets(BuildContext context) async {
+    for (Image asset in _loadImageAssets(context)) {
+      await precacheImage(asset.image, context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -234,7 +255,7 @@ class LeftPanel extends StatelessWidget {
 
   Widget buildSection(BuildContext context) {
     switch (currentSection) {
-      case 0:
+      case 3:
         return StackClip(
           backgroundWidget: IntroSectionLeft(),
           foregroundWidget: PortfolioSectionLeft(),
@@ -257,7 +278,7 @@ class LeftPanel extends StatelessWidget {
               (kScreenHeight(context) * currentSection) -
               (kToolbarHeight * currentSection),
         );
-      case 3:
+      case 0:
         return JobSectionLeft();
         break;
       default:

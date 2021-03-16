@@ -52,7 +52,7 @@ class Profile extends StatelessWidget {
         width: 296.0,
         height: 333.0,
         child: Image.asset(
-          'assets/images/profile_pic.png',
+          kImageAssets['ProfilePic'],
           fit: BoxFit.fitHeight,
         ),
       ),

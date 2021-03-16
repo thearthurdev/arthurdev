@@ -104,7 +104,7 @@ class JobSectionRight extends StatelessWidget {
   //         width: 88.0,
   //         height: 88.0,
   //         child: Image.asset(
-  //           'assets/images/arthurdev_logo.png',
+  //           kImageAssets['ArthurDevLogo'],
   //           fit: BoxFit.fitWidth,
   //         ),
   //       ),
@@ -142,7 +142,7 @@ class JobSectionRight extends StatelessWidget {
   //                     width: 64.0,
   //                     height: 64.0,
   //                     child: Image.asset(
-  //                       'assets/images/arthurdev_logo.png',
+  //                       kImageAssets['ArthurDevLogo'],
   //                       fit: BoxFit.fitWidth,
   //                     ),
   //                   ),

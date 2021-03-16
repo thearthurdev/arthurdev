@@ -22,7 +22,7 @@ class ArthurDevBanner extends StatelessWidget {
         },
         borderRadius: kBorderRadius,
         child: Container(
-                padding: EdgeInsets.all(4.0),
+          padding: EdgeInsets.all(4.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -31,7 +31,7 @@ class ArthurDevBanner extends StatelessWidget {
                 height: isLarge ? 48.0 : 32.0,
                 padding: EdgeInsets.only(left: 8.0),
                 child: Image.asset(
-                  'assets/images/arthurdev_logo.png',
+                  kImageAssets['ArthurDevLogo'],
                   fit: BoxFit.fitWidth,
                 ),
               ),

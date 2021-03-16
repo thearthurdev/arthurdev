@@ -2,10 +2,15 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/circular_arrow_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BlogPostListTile extends StatelessWidget {
-  const BlogPostListTile({Key key, this.date, this.title, this.url})
-      : super(key: key);
+  const BlogPostListTile({
+    Key key,
+    @required this.date,
+    @required this.title,
+    @required this.url,
+  }) : super(key: key);
 
   final String date;
   final String title;
@@ -16,77 +21,103 @@ class BlogPostListTile extends StatelessWidget {
     return kIsDesktop(context) ? desktopLayout() : tabletLayout();
   }
 
+  Future<void> _openBlogPost() async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   Material desktopLayout() {
     return Material(
       type: MaterialType.transparency,
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 32.0),
-            child: Row(
-              children: [
-                Container(
-                  width: 120.0,
-                  child: Text(
-                    date,
-                    style: kSectionInfoTextStyle,
-                  ),
-                ),
-                Expanded(
-                  child: Container(
+      child: InkWell(
+        onTap: () => _openBlogPost(),
+        borderRadius: kBorderRadius,
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: 80.0,
                     child: Text(
-                      title,
-                      maxLines: 2,
+                      date,
+                      style: kSectionInfoTextStyle,
                       overflow: TextOverflow.ellipsis,
-                      style: kHeaderTextStyleDark,
+                      maxLines: 1,
                     ),
                   ),
-                ),
-                SizedBox(width: 16.0),
-                CircularArrowIcon(),
-              ],
+                  Expanded(
+                    child: Container(
+                      child: Text(
+                        title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: kHeaderTextStyleDark,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 16.0),
+                  CircularArrowIcon(),
+                ],
+              ),
             ),
-          ),
-          Container(
-            height: 1.0,
-            color: kDividerColor,
-          ),
-        ],
+            Container(
+              height: 1.0,
+              margin: EdgeInsets.symmetric(horizontal: 8.0),
+              color: kDividerColor,
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Material tabletLayout() {
+  Widget tabletLayout() {
     return Material(
       type: MaterialType.transparency,
-      child: Column(
-        children: [
-          ListTile(
-            onTap: () {},
-            shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            leading: Text(
-              date,
-              style: kSectionInfoTextStyle,
-            ),
-            title: Container(
-              margin: const EdgeInsets.only(left: 32.0),
-              child: Text(
-                title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: kHeaderTextStyleLight.copyWith(
-                    fontSize: 18.0, letterSpacing: 1.0),
+      child: InkWell(
+        onTap: () => _openBlogPost(),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(24.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: 72.0,
+                    child: Text(
+                      date,
+                      style: kSectionInfoTextStyle,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Text(
+                        title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: kHeaderTextStyleDark.copyWith(fontSize: 18.0),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 16.0),
+                  CircularArrowIcon(),
+                ],
               ),
             ),
-            trailing: CircularArrowIcon(),
-          ),
-          Container(
-            height: 1.0,
-            color: kDividerColor,
-          ),
-        ],
+            Container(
+              height: 1.0,
+              margin: EdgeInsets.symmetric(horizontal: 8.0),
+              color: kDividerColor,
+            ),
+          ],
+        ),
       ),
     );
   }

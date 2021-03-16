@@ -2,12 +2,27 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/circular_arrow_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-
-class JobSectionLeft extends StatelessWidget {
+class JobSectionLeft extends StatefulWidget {
   const JobSectionLeft({
     Key key,
   }) : super(key: key);
+
+  @override
+  _JobSectionLeftState createState() => _JobSectionLeftState();
+}
+
+class _JobSectionLeftState extends State<JobSectionLeft> {
+  TextEditingController _nameFieldController;
+  TextEditingController _emailFieldController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameFieldController = TextEditingController();
+    _emailFieldController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,19 +71,33 @@ class JobSectionLeft extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       JobInfoTextField(
-                        'What\'s your name?',
-                        TextInputType.name,
+                        controller: _nameFieldController,
+                        hint: 'What\'s your name?',
+                        inputType: TextInputType.name,
                       ),
                       JobInfoTextField(
-                        'And your fancy email?',
-                        TextInputType.emailAddress,
+                        controller: _emailFieldController,
+                        hint: 'And your fancy email?',
+                        inputType: TextInputType.emailAddress,
                       ),
                       Container(
                         margin: const EdgeInsets.symmetric(vertical: 24.0),
                         child: Material(
                           type: MaterialType.transparency,
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () async {
+                              String name = _nameFieldController.text;
+                              String email = _emailFieldController.text;
+
+                              String url =
+                                  "$kEmailURL?subject=Project Collaboration Proposal&body=Hi Delords,%0D%0A%0D%0AI'm $name and I would like to collaborate with you on a project.%0D%0A%0D%0AHere's my fancy email, $email. Reach back to me and let's talk!";
+
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
                             borderRadius: kBorderRadius,
                             child: Container(
                               padding:
@@ -107,14 +136,20 @@ class JobSectionLeft extends StatelessWidget {
 }
 
 class JobInfoTextField extends StatelessWidget {
-  JobInfoTextField(this.hint, this.inputType);
+  JobInfoTextField({
+    this.controller,
+    this.hint,
+    this.inputType,
+  });
 
+  final TextEditingController controller;
   final String hint;
   final TextInputType inputType;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       autocorrect: false,
       textCapitalization: TextCapitalization.words,
       cursorColor: kAccentColorDeep,
@@ -122,7 +157,7 @@ class JobInfoTextField extends StatelessWidget {
       style: kTextFieldTextStyleDark,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: kTextFieldTextStyleDark.copyWith(fontSize: 18.0),
+        hintStyle: kTextFieldTextStyleDark,
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: kDividerColor,

@@ -84,6 +84,7 @@ class BlogSectionLeft extends StatelessWidget {
           Center(
             child: Container(
               width: 560.0,
+              margin: EdgeInsets.all(24.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,6 +93,7 @@ class BlogSectionLeft extends StatelessWidget {
                   (i) => BlogPostListTile(
                     date: blogPosts.keys.elementAt(i),
                     title: blogPosts.values.elementAt(i),
+                    url: kBlogPostURLs[i],
                   ),
                 ),
               ),

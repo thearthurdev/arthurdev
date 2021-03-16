@@ -33,6 +33,18 @@ List<GlobalKey> kSectionKeys = [
   kJobSectionKey,
 ];
 
+// Images
+Map<String, String> kImageAssets = {
+  'ArthurDevLogo': 'assets/images/arthurdev_logo.png',
+  'ProfilePic': 'assets/images/profile_pic.png',
+  'PlayStoreButton': 'assets/images/play_store_button.png',
+  'MobWearLogo': 'assets/images/mobwear_logo.png',
+  'MobWearDevice': 'assets/images/mobwear_device.png',
+  'PlayaDeviceLaptop': 'assets/images/playa_device_laptop.png',
+  'PlayaDevicePhone': 'assets/images/playa_device_phone.png',
+  'SneakPeakDevice': 'assets/images/sneak_peak_device.png',
+};
+
 // URLs
 const String kGitHubURL = 'https://github.com/thearthurdev';
 const String kLinkedInURL = 'https://www.linkedin.com/in/arthurdelords/';
@@ -41,9 +53,19 @@ const String kEmailURL = 'mailto:arthurdelords@gmail.com';
 const String kPortfolioURL = 'https://arthur.hashnode.dev/arthurdev-portfolio';
 const String kBlogURL = 'https://arthur.hashnode.dev';
 const String kMobWearGitHubURL = 'https://github.com/thearthurdev/mobwear';
-const String kMobWearPlayStoreURL = 'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear';
-const String kSneakPeakTwitterURL = 'https://twitter.com/_DeeArthur/status/1246287315707797505?s=20';
+const String kMobWearPlayStoreURL =
+    'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear';
+const String kSneakPeakTwitterURL =
+    'https://twitter.com/_DeeArthur/status/1246287315707797505';
+const String kPlayaTwitterURL =
+    'https://twitter.com/_DeeArthur/status/1356754726809960449';
 const String kBlogRSSURL = 'https://arthur.hashnode.dev/rss.xml';
+
+const List<String> kBlogPostURLs = [
+  'https://arthur.hashnode.dev/recreating-the-iconic-star-wars-intro-in-flutter',
+  'https://arthur.hashnode.dev/how-to-migrate-your-whatsapp-chats-to-telegram',
+  'https://arthur.hashnode.dev/scrcpy-mirror-your-devices-screen-linux-edition',
+];
 
 // Colors
 const Color kPrimaryColor = Color(0xFFFFFFFF);
@@ -89,8 +111,7 @@ const TextStyle kHeaderTextStyleDark = TextStyle(
 
 const TextStyle kTextFieldTextStyleDark = TextStyle(
   fontFamily: 'Sen',
-  fontSize: 22.0,
-  letterSpacing: 1.0,
+  fontSize: 18.0,
   color: kPrimaryTextColorDark,
 );
 

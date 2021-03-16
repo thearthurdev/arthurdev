@@ -19,7 +19,7 @@ class FooterSection extends StatelessWidget {
                   width: 88.0,
                   height: 88.0,
                   child: Image.asset(
-                    'assets/images/arthurdev_logo.png',
+                    kImageAssets['ArthurDevLogo'],
                     fit: BoxFit.fitWidth,
                   ),
                 ),
