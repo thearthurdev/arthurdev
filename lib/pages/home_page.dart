@@ -255,7 +255,7 @@ class LeftPanel extends StatelessWidget {
 
   Widget buildSection(BuildContext context) {
     switch (currentSection) {
-      case 3:
+      case 0:
         return StackClip(
           backgroundWidget: IntroSectionLeft(),
           foregroundWidget: PortfolioSectionLeft(),
@@ -278,7 +278,7 @@ class LeftPanel extends StatelessWidget {
               (kScreenHeight(context) * currentSection) -
               (kToolbarHeight * currentSection),
         );
-      case 0:
+      case 3:
         return JobSectionLeft();
         break;
       default:
