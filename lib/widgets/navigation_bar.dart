@@ -32,7 +32,7 @@ class NavigationBar extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ArthurDevBanner(scrollController: scrollController),
+                    Flexible(child: ArthurDevBanner(scrollController: scrollController),),
                     SizedBox(width: 24.0),
                     NavigationDestinations(
                       currentSection: currentSection,

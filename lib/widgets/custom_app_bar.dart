@@ -34,16 +34,15 @@ class CustomAppBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ArthurDevBanner(scrollController: scrollController),
+              Flexible(
+                child: ArthurDevBanner(scrollController: scrollController),
+              ),
               kIsDesktop(context)
                   ? NavigationDestinations(
                       currentSection: currentSection,
                       scrollController: scrollController,
                     )
-                  : NavigationMenu(
-                      currentSection: currentSection,
-                      scrollController: scrollController,
-                    ),
+                  : NavigationMenu(scrollController: scrollController),
             ],
           ),
         ),

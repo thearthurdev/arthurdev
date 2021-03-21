@@ -90,7 +90,11 @@ class _JobSectionLeftState extends State<JobSectionLeft> {
                               String email = _emailFieldController.text;
 
                               String url =
-                                  "$kEmailURL?subject=Project Collaboration Proposal&body=Hi Delords,%0D%0A%0D%0AI'm $name and I would like to collaborate with you on a project.%0D%0A%0D%0AHere's my fancy email, $email. Reach back to me and let's talk!";
+                                  "$kEmailURL?subject=Project Collaboration Proposal"
+                                  "&body=Hi Delords,%0D%0A%0D%0AI'm $name"
+                                  " and I would like to collaborate with you on a project."
+                                  "%0D%0A%0D%0A[Please tell me about your idea here]%0D%0A%0D%0A"
+                                  "Here's my fancy email, $email. Reach back to me and let's talk!";
 
                               if (await canLaunch(url)) {
                                 await launch(url);
@@ -167,7 +171,7 @@ class JobInfoTextField extends StatelessWidget {
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             color: kDividerColor,
-            width: 2.0,
+            width: 1.0,
           ),
         ),
         contentPadding: EdgeInsets.symmetric(vertical: 32.0),

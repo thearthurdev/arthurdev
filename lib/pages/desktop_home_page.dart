@@ -1,8 +1,9 @@
+import 'package:arthurdev/providers/home_page_provider.dart';
 import 'package:arthurdev/sections/blog_section_left.dart';
 import 'package:arthurdev/sections/blog_section_right.dart';
 import 'package:arthurdev/sections/footer_section.dart';
-import 'package:arthurdev/sections/intro_section_left.dart';
-import 'package:arthurdev/sections/intro_section_right.dart';
+import 'package:arthurdev/sections/intro_details_section.dart';
+import 'package:arthurdev/sections/intro_info_section.dart';
 import 'package:arthurdev/sections/job_section_left.dart';
 import 'package:arthurdev/sections/job_section_right.dart';
 import 'package:arthurdev/sections/portfolio_section_left.dart';
@@ -13,19 +14,18 @@ import 'package:arthurdev/widgets/navigation_bar.dart';
 import 'package:arthurdev/widgets/stack_clip.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
+class DesktopHomePage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _DesktopHomePageState createState() => _DesktopHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DesktopHomePageState extends State<DesktopHomePage> {
   ScrollController _mainScrollController;
   ScrollController _secondaryScrollController;
   ScrollController _currentScrollController;
   bool _freezeMainScrollController;
-  int _currentSection;
-  double _initScreenHeight;
   // double _maxMainScrollExtent;
   double _maxSecondaryScrollExtent;
   double _secondaryScrollControllerOffset;
@@ -43,44 +43,24 @@ class _HomePageState extends State<HomePage> {
       ..addListener(_handleScrollEvents);
     _currentScrollController = _mainScrollController;
     _freezeMainScrollController = false;
-    _currentSection = 0;
     _secondaryScrollControllerOffset = 0.0;
     _mainScrollControllerExtentBefore = 0.0;
     _mainScrollControllerExtentAfter = 0.0;
     _secondaryScrollControllerExtentBefore = 0.0;
     _currentScrollControllerExtentBefore = 0.0;
-
-    // RssFeedService.loadFeed();
-
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _initScreenHeight = _initScreenHeight ?? kScreenHeight(context) - 128.0;
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // _maxMainScrollExtent = _mainScrollController.position.maxScrollExtent;
-      _maxSecondaryScrollExtent =
-          _secondaryScrollController.position.maxScrollExtent;
-
-      int sectionIndex = -1;
-      for (GlobalKey sectionKey in kSectionKeys) {
-        sectionIndex++;
-        try {
-          final RenderBox sectionRenderBox =
-              sectionKey.currentContext.findRenderObject();
-          final sectionPosition = sectionRenderBox
-              .localToGlobal(Offset(0.0, _secondaryScrollController.offset));
-          kSectionScrollOffsets[sectionIndex] =
-              sectionPosition.dy - (sectionIndex == 0 ? kToolbarHeight : 0.0);
-        } catch (e) {
-          print(e);
-        }
-      }
-    });
-
-    _precacheImageAssets(context);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        // _maxMainScrollExtent = _mainScrollController.position.maxScrollExtent;
+        _maxSecondaryScrollExtent =
+            _secondaryScrollController.position.maxScrollExtent;
+      },
+    );
   }
 
   @override
@@ -95,7 +75,9 @@ class _HomePageState extends State<HomePage> {
       _secondaryScrollControllerOffset = _secondaryScrollController.offset;
     });
 
-    _changeCurrentSection();
+    context
+        .read<HomePageProvider>()
+        .changeCurrentSection(_secondaryScrollController);
   }
 
   void _handleWheelScrollEvents(PointerSignalEvent pointerSignal) {
@@ -159,34 +141,9 @@ class _HomePageState extends State<HomePage> {
         );
       }
 
-      _changeCurrentSection();
-    }
-  }
-
-  void _changeCurrentSection() {
-    if (_secondaryScrollControllerOffset <= kSectionScrollOffsets[1])
-      setState(() => _currentSection = 0);
-    if (_secondaryScrollControllerOffset >= kSectionScrollOffsets[1])
-      setState(() => _currentSection = 1);
-    if (_secondaryScrollControllerOffset >= kSectionScrollOffsets[2])
-      setState(() => _currentSection = 2);
-    if (_secondaryScrollControllerOffset >= kSectionScrollOffsets[3])
-      setState(() => _currentSection = 3);
-  }
-
-  static List<Image> _loadImageAssets(BuildContext context) {
-    List<Image> imageAssets = [];
-
-    kImageAssets.forEach((key, value) {
-      imageAssets.add(Image.asset(value));
-    });
-
-    return imageAssets;
-  }
-
-  static Future<void> _precacheImageAssets(BuildContext context) async {
-    for (Image asset in _loadImageAssets(context)) {
-      await precacheImage(asset.image, context);
+      context
+          .read<HomePageProvider>()
+          .changeCurrentSection(_secondaryScrollController);
     }
   }
 
@@ -201,23 +158,24 @@ class _HomePageState extends State<HomePage> {
           },
           child: SingleChildScrollView(
             controller: _mainScrollController,
-            physics: NeverScrollableScrollPhysics(),
+            // physics: NeverScrollableScrollPhysics(),
             child: Column(
               children: [
                 NavigationBar(
-                  currentSection: _currentSection,
+                  currentSection:
+                      context.read<HomePageProvider>().currentSection,
                   scrollController: _secondaryScrollController,
                 ),
                 Container(
                   height: kScreenHeight(context),
                   child: Row(
                     children: [
-                      LeftPanel(
-                        _currentSection,
+                      DetailsPanel(
+                        context.read<HomePageProvider>().currentSection,
                         _secondaryScrollControllerOffset,
                         _secondaryScrollController,
                       ),
-                      RightPanel(_secondaryScrollController),
+                      InfoPanel(_secondaryScrollController),
                     ],
                   ),
                 ),
@@ -231,8 +189,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class LeftPanel extends StatelessWidget {
-  const LeftPanel(
+class DetailsPanel extends StatelessWidget {
+  const DetailsPanel(
     this.currentSection,
     this.secondaryScrollControllerOffset,
     this.secondaryScrollController,
@@ -257,7 +215,7 @@ class LeftPanel extends StatelessWidget {
     switch (currentSection) {
       case 0:
         return StackClip(
-          backgroundWidget: IntroSectionLeft(),
+          backgroundWidget: IntroDetailsSection(),
           foregroundWidget: PortfolioSectionLeft(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection),
@@ -287,8 +245,8 @@ class LeftPanel extends StatelessWidget {
   }
 }
 
-class RightPanel extends StatelessWidget {
-  const RightPanel(this.secondaryScrollController);
+class InfoPanel extends StatelessWidget {
+  const InfoPanel(this.secondaryScrollController);
 
   final ScrollController secondaryScrollController;
 
@@ -298,7 +256,7 @@ class RightPanel extends StatelessWidget {
       flex: 4,
       child: SingleChildScrollView(
         controller: secondaryScrollController,
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
         child: Container(
           color: kPrimaryColor,
           padding: EdgeInsets.only(
@@ -308,7 +266,7 @@ class RightPanel extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IntroSectionRight(),
+              IntroInfoSection(),
               PortfolioSectionRight(),
               BlogSectionRight(),
               JobSectionRight(),

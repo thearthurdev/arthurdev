@@ -29,7 +29,7 @@ class JobSectionRight extends StatelessWidget {
             body: 'I am looking for a part-time job or a\nfreelance project',
             actionText: 'Email me',
             onActionTap: () async {
-              String url = kEmailURL;
+              String url = '$kEmailURL?subject=Job Offer';
               if (await canLaunch(url)) {
                 await launch(url);
               } else {

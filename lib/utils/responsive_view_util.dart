@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const double mobileBreakPoint = 620.0;
-const double tabletBreakPoint = 980.0;
+const double mobileBreakPoint = 690.0;
+const double tabletBreakPoint = 820.0;
 
 double kScreenWidth(BuildContext context) {
   return MediaQuery.of(context).size.width;
@@ -40,11 +40,12 @@ dynamic kResponsiveAttribute(
 }) {
   dynamic attribute;
 
-  if (desktop != null && kIsDesktop(context) || tablet == null) {
+  if (desktop != null && kIsDesktop(context) ||
+      tablet == null && mobile == null) {
     attribute = desktop;
   } else if (tablet != null && kIsTablet(context) || mobile == null) {
     attribute = tablet;
-  } else if (mobile != null && kIsMobile(context)) {
+  } else if (mobile != null && kIsMobile(context) || tablet == null) {
     attribute = mobile;
   }
 

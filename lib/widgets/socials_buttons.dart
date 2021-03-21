@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialsButtons extends StatelessWidget {
-  SocialsButtons({this.size});
+  SocialsButtons({this.size, this.color});
 
   final double size;
+  final Color color;
 
   final Map<String, IconData> _socials = {
     kGitHubURL: MyIcons.github,
@@ -58,7 +59,7 @@ class SocialsButtons extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(
                         _socials.values.elementAt(i),
-                        color: kPrimaryTextColorLight,
+                        color: color ?? kPrimaryTextColorLight,
                         size: size ?? null,
                       ),
                     ),

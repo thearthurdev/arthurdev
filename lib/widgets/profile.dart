@@ -9,81 +9,98 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return kIsDesktop(context) ? buildDesktopView() : buildMobileView(context);
+  }
+
+  Widget buildDesktopView() {
     return FittedBox(
-      child: kIsDesktop(context)
-          ? desktopLayout()
-          : kIsTablet(context)
-              ? desktopLayout()
-              : mobileLayout(),
-    );
-  }
-
-  Widget desktopLayout() {
-    return Container(
-      width: 436.0,
-      height: 333.0,
-      child: Stack(
-        children: [
-          profilePic(),
-          profileName(Alignment.centerLeft),
-        ],
-      ),
-    );
-  }
-
-  Widget mobileLayout() {
-    return Container(
-      width: 288.0,
-      height: 400.0,
-      child: Stack(
-        children: [
-          profilePic(),
-          profileName(Alignment.bottomCenter),
-        ],
-      ),
-    );
-  }
-
-  Positioned profilePic() {
-    return Positioned(
-      top: 0.0,
-      right: 0.0,
-      child: SizedBox(
-        width: 296.0,
+      child: Container(
+        width: 436.0,
         height: 333.0,
-        child: Image.asset(
-          kImageAssets['ProfilePic'],
-          fit: BoxFit.fitHeight,
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0.0,
+              right: 0.0,
+              child: profilePic(),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 48.0,
+                  bottom: 10.0,
+                ),
+                child: profileName(),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget profileName(AlignmentGeometry alignment) {
-    return Align(
-      alignment: alignment,
-      child: Column(
-        crossAxisAlignment: alignment == Alignment.centerLeft
-            ? CrossAxisAlignment.start
-            : CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(height: 48.0),
-          Padding(
-            padding: const EdgeInsets.only(left: 3.0),
-            child: Text('Meet', style: kSectionInfoTextStyle),
-          ),
-          SizedBox(height: 8.0),
-          Text('Delords\nArthur', style: kLargeHeaderTextStyle),
-          Container(
-            width: 46.0,
-            height: 8.0,
-            margin: const EdgeInsets.only(left: 4.0, top: 8.0),
-            color: kAccentColorDeep,
-          ),
-          SizedBox(height: 10.0),
-        ],
+  Widget buildMobileView(BuildContext context) {
+    return SingleChildScrollView(
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.fromLTRB(
+        kScreenWidthAwareSize(60.0, context),
+        kScreenHeightAwareSize(30.0, context),
+        kScreenWidthAwareSize(60.0, context),
+        kScreenHeightAwareSize(30.0, context),
       ),
+      child: Center(
+        child: FittedBox(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              profilePic(
+                width: 200.0,
+                height: 240.0,
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: profileName(),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget profilePic({double width, double height}) {
+    return SizedBox(
+      width: width ?? 296.0,
+      height: height ?? 333.0,
+      child: Image.asset(
+        kImageAssets['ProfilePic'],
+        fit: BoxFit.fitHeight,
+      ),
+    );
+  }
+
+  Widget profileName() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 3.0),
+          child: Text('Meet', style: kSectionInfoTextStyle),
+        ),
+        SizedBox(height: 8.0),
+        Text('Delords\nArthur', style: kLargeHeaderTextStyle),
+        Container(
+          width: 46.0,
+          height: 8.0,
+          margin: const EdgeInsets.only(left: 4.0, top: 8.0),
+          color: kAccentColorDeep,
+        ),
+      ],
     );
   }
 }

@@ -11,47 +11,45 @@ class ArthurDevBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: InkWell(
-        onTap: () {
-          scrollController.animateTo(
-            kSectionScrollOffsets[0],
-            curve: Curves.easeOut,
-            duration: kShortDuration,
-          );
-        },
-        borderRadius: kBorderRadius,
-        child: Container(
-          padding: EdgeInsets.all(4.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: isLarge ? 80.0 : 42.0,
-                height: isLarge ? 48.0 : 32.0,
-                padding: EdgeInsets.only(left: 8.0),
-                child: Image.asset(
-                  kImageAssets['ArthurDevLogo'],
-                  fit: BoxFit.fitWidth,
-                ),
+    return InkWell(
+      onTap: () {
+        scrollController.animateTo(
+          kSectionScrollOffsets[0],
+          curve: Curves.easeOut,
+          duration: kShortDuration,
+        );
+      },
+      borderRadius: kBorderRadius,
+      child: Container(
+        padding: EdgeInsets.all(4.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: isLarge ? 80.0 : 42.0,
+              height: isLarge ? 48.0 : 32.0,
+              padding: EdgeInsets.only(left: 8.0),
+              child: Image.asset(
+                kImageAssets['ArthurDevLogo'],
+                fit: BoxFit.fitWidth,
               ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16.0, 0.0, 8.0, 0.0),
-                  child: Text(
-                    'ArthurDev',
-                    maxLines: 1,
-                    softWrap: false,
-                    overflow: TextOverflow.fade,
-                    style: kHeaderTextStyleLight.copyWith(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+            ),
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 0.0, 8.0, 0.0),
+                child: Text(
+                  'ArthurDev',
+                  maxLines: 1,
+                  softWrap: false,
+                  overflow: TextOverflow.fade,
+                  style: kHeaderTextStyleLight.copyWith(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

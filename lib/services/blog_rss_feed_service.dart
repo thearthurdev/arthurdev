@@ -7,8 +7,8 @@ class RssFeedService {
   static get feed => _feed;
 
   static Future<RssFeed> _getFeed() async {
-    final _authority = "lorem-rss.herokuapp.com";
-    final _path = "/feed";
+    final _authority = "thearthur.hashnode.dev";
+    final _path = "rss.xml";
     final _feedUri = Uri.https(_authority, _path);
 
     print(_feedUri.toString());

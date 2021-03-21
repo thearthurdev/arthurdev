@@ -50,8 +50,9 @@ const String kGitHubURL = 'https://github.com/thearthurdev';
 const String kLinkedInURL = 'https://www.linkedin.com/in/arthurdelords/';
 const String kTwitterURL = 'https://twitter.com/_DeeArthur';
 const String kEmailURL = 'mailto:arthurdelords@gmail.com';
-const String kPortfolioURL = 'https://arthur.hashnode.dev/arthurdev-portfolio';
-const String kBlogURL = 'https://arthur.hashnode.dev';
+const String kPortfolioURL =
+    'https://thearthur.hashnode.dev/arthurdev-portfolio';
+const String kBlogURL = 'https://thearthur.hashnode.dev';
 const String kMobWearGitHubURL = 'https://github.com/thearthurdev/mobwear';
 const String kMobWearPlayStoreURL =
     'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear';
@@ -59,12 +60,12 @@ const String kSneakPeakTwitterURL =
     'https://twitter.com/_DeeArthur/status/1246287315707797505';
 const String kPlayaTwitterURL =
     'https://twitter.com/_DeeArthur/status/1356754726809960449';
-const String kBlogRSSURL = 'https://arthur.hashnode.dev/rss.xml';
+const String kBlogRSSURL = 'https://thearthur.hashnode.dev/rss.xml';
 
 const List<String> kBlogPostURLs = [
-  'https://arthur.hashnode.dev/recreating-the-iconic-star-wars-intro-in-flutter',
-  'https://arthur.hashnode.dev/how-to-migrate-your-whatsapp-chats-to-telegram',
-  'https://arthur.hashnode.dev/scrcpy-mirror-your-devices-screen-linux-edition',
+  'https://thearthur.hashnode.dev/recreating-the-iconic-star-wars-intro-in-flutter',
+  'https://thearthur.hashnode.dev/how-to-migrate-your-whatsapp-chats-to-telegram',
+  'https://thearthur.hashnode.dev/scrcpy-mirror-your-devices-screen-linux-edition',
 ];
 
 // Colors

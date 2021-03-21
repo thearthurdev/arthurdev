@@ -21,74 +21,76 @@ class InfoActionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: leftIndent ?? 0.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          sectionTitle == null
-              ? SizedBox()
-              : Text(
-                  '— $sectionTitle',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: kSectionInfoTextStyle,
-                ),
-          SizedBox(height: sectionTitle == null ? 0.0 : 8.0),
-          heading == null
-              ? SizedBox()
-              : Text(
-                  heading.toUpperCase(),
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                  style: kSectionHeaderTextStyle,
-                ),
-          SizedBox(height: body == null ? 0.0 : 16.0),
-          body == null
-              ? SizedBox()
-              : Text(
-                  body,
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                  style: kSectionInfoTextStyle,
-                ),
-          SizedBox(height: actionText == null ? 0.0 : 32.0),
-          actionText == null
-              ? SizedBox()
-              : Container(
-                  decoration: BoxDecoration(
-                    color: kPrimaryColorDark,
-                    borderRadius: kBorderRadius,
+    return FittedBox(
+      child: Container(
+        margin: EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            sectionTitle == null
+                ? SizedBox()
+                : Text(
+                    '— $sectionTitle',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: kSectionInfoTextStyle,
                   ),
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: InkWell(
-                      onTap: onActionTap ?? () {},
+            SizedBox(height: sectionTitle == null ? 0.0 : 8.0),
+            heading == null
+                ? SizedBox()
+                : Text(
+                    heading.toUpperCase(),
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: kSectionHeaderTextStyle,
+                  ),
+            SizedBox(height: body == null ? 0.0 : 16.0),
+            body == null
+                ? SizedBox()
+                : Text(
+                    body,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: kSectionInfoTextStyle,
+                  ),
+            SizedBox(height: actionText == null ? 0.0 : 32.0),
+            actionText == null
+                ? SizedBox()
+                : Container(
+                    decoration: BoxDecoration(
+                      color: kPrimaryColorDark,
                       borderRadius: kBorderRadius,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 8.0,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: Text(
-                                actionText.toUpperCase(),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: kActionButtonTextStyle,
+                    ),
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: InkWell(
+                        onTap: onActionTap ?? () {},
+                        borderRadius: kBorderRadius,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 8.0,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  actionText.toUpperCase(),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: kActionButtonTextStyle,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }

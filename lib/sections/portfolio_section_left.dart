@@ -42,7 +42,7 @@ class _PortfolioSectionLeftState extends State<PortfolioSectionLeft> {
         children: [
           PageView(
             controller: _pageController,
-            physics: NeverScrollableScrollPhysics(),
+            // physics: NeverScrollableScrollPhysics(),
             children: [
               MobWearPortfolioView(),
               PlayaPortfolioView(),
