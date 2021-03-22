@@ -1,7 +1,6 @@
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
 
 class PlatformAdaptiveScrollBehavior extends ScrollBehavior {
   @override
@@ -16,7 +15,6 @@ class PlatformAdaptiveScrollBehavior extends ScrollBehavior {
       return NeverScrollableScrollPhysics();
     }
 
-    if (Platform.isIOS) return BouncingScrollPhysics();
 
     return ClampingScrollPhysics();
   }
