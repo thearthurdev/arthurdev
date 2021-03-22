@@ -112,7 +112,7 @@ const TextStyle kHeaderTextStyleDark = TextStyle(
 
 const TextStyle kTextFieldTextStyleDark = TextStyle(
   fontFamily: 'Sen',
-  fontSize: 18.0,
+  fontSize: 16.0,
   color: kPrimaryTextColorDark,
 );
 

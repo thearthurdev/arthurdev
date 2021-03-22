@@ -11,11 +11,11 @@ class IntroDetailsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return kIsDesktop(context)
-        ? buildDesktopView(context)
-        : buildMobileView(context);
+        ? _buildDesktopView(context)
+        : _buildMobileView(context);
   }
 
-  Widget buildDesktopView(BuildContext context) {
+  Widget _buildDesktopView(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -56,7 +56,7 @@ class IntroDetailsSection extends StatelessWidget {
     );
   }
 
-  Widget buildMobileView(BuildContext context) {
+  Widget _buildMobileView(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(

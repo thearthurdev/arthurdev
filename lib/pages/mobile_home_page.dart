@@ -1,13 +1,13 @@
 import 'package:arthurdev/providers/home_page_provider.dart';
-import 'package:arthurdev/sections/blog_section_left.dart';
-import 'package:arthurdev/sections/blog_section_right.dart';
+import 'package:arthurdev/sections/blog_details_section.dart';
+import 'package:arthurdev/sections/blog_info_section.dart';
 import 'package:arthurdev/sections/footer_section.dart';
 import 'package:arthurdev/sections/intro_details_section.dart';
 import 'package:arthurdev/sections/intro_info_section.dart';
-import 'package:arthurdev/sections/job_section_left.dart';
-import 'package:arthurdev/sections/job_section_right.dart';
-import 'package:arthurdev/sections/portfolio_section_left.dart';
-import 'package:arthurdev/sections/portfolio_section_right.dart';
+import 'package:arthurdev/sections/job_details_section.dart';
+import 'package:arthurdev/sections/job_info_section.dart';
+import 'package:arthurdev/sections/portfolio_details_section.dart';
+import 'package:arthurdev/sections/portfolio_info_section.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/persistent_header_delegate.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
@@ -25,12 +25,31 @@ class MobileHomePage extends StatefulWidget {
 class _MobileHomePageState extends State<MobileHomePage> {
   ScrollController _scrollController;
   double _scrollControllerExtentBefore;
+  double _scrollControllerOffset;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+
+    _scrollController = ScrollController()..addListener(_handleScrollEvents);
     _scrollControllerExtentBefore = 0.0;
+    _scrollControllerOffset = 0.0;
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_handleScrollEvents);
+    super.dispose();
+  }
+
+  void _handleScrollEvents() {
+    setState(() {
+      _scrollControllerOffset = _scrollController.offset;
+    });
+
+    context
+        .read<HomePageProvider>()
+        .changeCurrentSection(_scrollController.offset);
   }
 
   void _handleWheelScrollEvents(PointerSignalEvent pointerSignal) {
@@ -60,7 +79,9 @@ class _MobileHomePageState extends State<MobileHomePage> {
         );
       }
 
-      context.read<HomePageProvider>().changeCurrentSection(_scrollController);
+      context
+          .read<HomePageProvider>()
+          .changeCurrentSection(_scrollController.offset);
     }
   }
 
@@ -80,8 +101,6 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 centerTitle: true,
                 backgroundColor: kPrimaryColorDark,
                 title: ArthurDevBanner(scrollController: _scrollController),
-                floating: true,
-                pinned: false,
                 actions: [
                   NavigationMenu(
                     scrollController: _scrollController,
@@ -89,31 +108,40 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 ],
               ),
               SliverDetailsSection(
+                scrollOffset: _scrollControllerOffset -
+                    (kScreenHeight(context) * 0) -
+                    (kToolbarHeight * 0),
                 child: IntroDetailsSection(),
               ),
               SliverInfoSection(
                 child: IntroInfoSection(),
               ),
               SliverDetailsSection(
-                // sectionKey: kPortfolioSectionKey,
-                child: PortfolioSectionTop(),
+                scrollOffset: _scrollControllerOffset -
+                    (kScreenHeight(context) * 1) -
+                    (kToolbarHeight * 1),
+                child: PortfolioDetailsSection(),
               ),
               SliverInfoSection(
-                child: PortfolioSectionBottom(),
+                child: PortfolioInfoSection(),
               ),
               SliverDetailsSection(
-                // sectionKey: kBlogSectionKey,
-                child: BlogSectionTop(),
+                scrollOffset: _scrollControllerOffset -
+                    (kScreenHeight(context) * 2) -
+                    (kToolbarHeight * 2),
+                child: BlogDetailsSection(),
               ),
               SliverInfoSection(
-                child: BlogSectionBottom(),
+                child: BlogInfoSection(),
               ),
               SliverDetailsSection(
-                // sectionKey: kJobSectionKey,
-                child: JobSectionTop(),
+                scrollOffset: _scrollControllerOffset -
+                    (kScreenHeight(context) * 3) -
+                    (kToolbarHeight * 3),
+                child: JobDetailsSection(),
               ),
               SliverInfoSection(
-                child: JobSectionBottom(),
+                child: JobInfoSection(),
               ),
               SliverToBoxAdapter(
                 child: FooterSection(),
@@ -126,23 +154,45 @@ class _MobileHomePageState extends State<MobileHomePage> {
   }
 }
 
-class SliverDetailsSection extends StatelessWidget {
+class SliverDetailsSection extends StatefulWidget {
   const SliverDetailsSection({
     @required this.child,
+    this.scrollOffset,
+    this.sectionIndex,
   });
 
   final Widget child;
+  final double scrollOffset;
+  final int sectionIndex;
+
+  @override
+  _SliverDetailsSectionState createState() => _SliverDetailsSectionState();
+}
+
+class _SliverDetailsSectionState extends State<SliverDetailsSection> {
+  double _offset;
+
+  @override
+  void initState() {
+    super.initState();
+    _offset = 0.0;
+  }
 
   @override
   Widget build(BuildContext context) {
+    _offset = widget.scrollOffset;
+
     return SliverPersistentHeader(
       pinned: true,
       delegate: PersistentHeaderDelegate(
         minHeight: 0.0,
         maxHeight: kScreenHeight(context) * 0.6,
-        child: Container(
-          height: kScreenHeight(context) * 0.6,
-          child: child,
+        child: Opacity(
+          opacity: (1 - _offset / 500).clamp(0.4, 1.0),
+          child: Container(
+            height: kScreenHeight(context) * 0.6,
+            child: widget.child,
+          ),
         ),
       ),
     );
@@ -150,10 +200,7 @@ class SliverDetailsSection extends StatelessWidget {
 }
 
 class SliverInfoSection extends StatelessWidget {
-  const SliverInfoSection({
-    Key key,
-    @required this.child,
-  }) : super(key: key);
+  const SliverInfoSection({@required this.child});
 
   final Widget child;
 
@@ -165,47 +212,5 @@ class SliverInfoSection extends StatelessWidget {
         child: child,
       ),
     );
-  }
-}
-
-class PortfolioSectionTop extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return PortfolioSectionLeft();
-  }
-}
-
-class PortfolioSectionBottom extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return PortfolioSectionRight();
-  }
-}
-
-class BlogSectionTop extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlogSectionLeft();
-  }
-}
-
-class BlogSectionBottom extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlogSectionRight();
-  }
-}
-
-class JobSectionTop extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return JobSectionLeft();
-  }
-}
-
-class JobSectionBottom extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return JobSectionRight();
   }
 }

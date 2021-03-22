@@ -9,10 +9,12 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return kIsDesktop(context) ? buildDesktopView() : buildMobileView(context);
+    return kIsDesktop(context)
+        ? _buildDesktopView()
+        : _buildMobileView(context);
   }
 
-  Widget buildDesktopView() {
+  Widget _buildDesktopView() {
     return FittedBox(
       child: Container(
         width: 436.0,
@@ -40,7 +42,7 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget buildMobileView(BuildContext context) {
+  Widget _buildMobileView(BuildContext context) {
     return SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.fromLTRB(

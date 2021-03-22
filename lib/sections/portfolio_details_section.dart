@@ -1,5 +1,4 @@
 import 'package:arthurdev/providers/home_page_provider.dart';
-import 'package:arthurdev/services/blog_rss_feed_service.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/page_view_action_button.dart';
@@ -7,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PortfolioSectionLeft extends StatefulWidget {
-  const PortfolioSectionLeft({Key key}) : super(key: key);
+class PortfolioDetailsSection extends StatefulWidget {
+  const PortfolioDetailsSection({Key key}) : super(key: key);
 
   @override
-  _PortfolioSectionLeftState createState() => _PortfolioSectionLeftState();
+  _PortfolioDetailsSectionState createState() => _PortfolioDetailsSectionState();
 }
 
-class _PortfolioSectionLeftState extends State<PortfolioSectionLeft> {
+class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
   PageController _pageController;
   int _currentPage;
 

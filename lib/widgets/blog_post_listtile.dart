@@ -18,7 +18,7 @@ class BlogPostListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return kIsDesktop(context) ? desktopLayout() : tabletLayout();
+    return kIsDesktop(context) ? _buildDesktopView() : _buildMobileView();
   }
 
   Future<void> _openBlogPost() async {
@@ -29,7 +29,7 @@ class BlogPostListTile extends StatelessWidget {
     }
   }
 
-  Material desktopLayout() {
+  Material _buildDesktopView() {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -76,22 +76,23 @@ class BlogPostListTile extends StatelessWidget {
     );
   }
 
-  Widget tabletLayout() {
+  Widget _buildMobileView() {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
         onTap: () => _openBlogPost(),
+        borderRadius: kBorderRadius,
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(24.0),
+              padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
               child: Row(
                 children: [
                   Container(
-                    width: 72.0,
+                    width: 48.0,
                     child: Text(
                       date,
-                      style: kSectionInfoTextStyle,
+                      style: kSectionInfoTextStyle.copyWith(fontSize: 12.0),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
@@ -100,7 +101,7 @@ class BlogPostListTile extends StatelessWidget {
                     child: Container(
                       child: Text(
                         title,
-                        maxLines: 2,
+                        maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: kHeaderTextStyleDark.copyWith(fontSize: 18.0),
                       ),

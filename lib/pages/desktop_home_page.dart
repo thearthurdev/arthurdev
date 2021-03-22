@@ -1,13 +1,13 @@
 import 'package:arthurdev/providers/home_page_provider.dart';
-import 'package:arthurdev/sections/blog_section_left.dart';
-import 'package:arthurdev/sections/blog_section_right.dart';
+import 'package:arthurdev/sections/blog_details_section.dart';
+import 'package:arthurdev/sections/blog_info_section.dart';
 import 'package:arthurdev/sections/footer_section.dart';
 import 'package:arthurdev/sections/intro_details_section.dart';
 import 'package:arthurdev/sections/intro_info_section.dart';
-import 'package:arthurdev/sections/job_section_left.dart';
-import 'package:arthurdev/sections/job_section_right.dart';
-import 'package:arthurdev/sections/portfolio_section_left.dart';
-import 'package:arthurdev/sections/portfolio_section_right.dart';
+import 'package:arthurdev/sections/job_details_section.dart';
+import 'package:arthurdev/sections/job_info_section.dart';
+import 'package:arthurdev/sections/portfolio_details_section.dart';
+import 'package:arthurdev/sections/portfolio_info_section.dart';
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/navigation_bar.dart';
@@ -77,7 +77,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
 
     context
         .read<HomePageProvider>()
-        .changeCurrentSection(_secondaryScrollController);
+        .changeCurrentSection(_secondaryScrollController.offset);
   }
 
   void _handleWheelScrollEvents(PointerSignalEvent pointerSignal) {
@@ -143,7 +143,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
 
       context
           .read<HomePageProvider>()
-          .changeCurrentSection(_secondaryScrollController);
+          .changeCurrentSection(_secondaryScrollController.offset);
     }
   }
 
@@ -216,28 +216,28 @@ class DetailsPanel extends StatelessWidget {
       case 0:
         return StackClip(
           backgroundWidget: IntroDetailsSection(),
-          foregroundWidget: PortfolioSectionLeft(),
+          foregroundWidget: PortfolioDetailsSection(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection),
         );
       case 1:
         return StackClip(
-          backgroundWidget: PortfolioSectionLeft(),
-          foregroundWidget: BlogSectionLeft(),
+          backgroundWidget: PortfolioDetailsSection(),
+          foregroundWidget: BlogDetailsSection(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection) -
               (kToolbarHeight * currentSection),
         );
       case 2:
         return StackClip(
-          backgroundWidget: BlogSectionLeft(),
-          foregroundWidget: JobSectionLeft(),
+          backgroundWidget: BlogDetailsSection(),
+          foregroundWidget: JobDetailsSection(),
           scrollOffset: secondaryScrollControllerOffset -
               (kScreenHeight(context) * currentSection) -
               (kToolbarHeight * currentSection),
         );
       case 3:
-        return JobSectionLeft();
+        return JobDetailsSection();
         break;
       default:
         return SizedBox.shrink();
@@ -267,9 +267,9 @@ class InfoPanel extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IntroInfoSection(),
-              PortfolioSectionRight(),
-              BlogSectionRight(),
-              JobSectionRight(),
+              PortfolioInfoSection(),
+              BlogInfoSection(),
+              JobInfoSection(),
             ],
           ),
         ),
