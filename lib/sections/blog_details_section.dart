@@ -68,6 +68,7 @@ class BlogDetailsSection extends StatelessWidget {
 
   Widget _buildMobileView(BuildContext context) {
     return Container(
+      key: kBlogSectionKey,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topRight,

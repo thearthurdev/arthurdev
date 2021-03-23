@@ -27,6 +27,7 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: kIsDesktop(context) ? null : kJobSectionKey,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,

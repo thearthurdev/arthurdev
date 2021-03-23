@@ -25,7 +25,6 @@ class MobileHomePage extends StatefulWidget {
 class _MobileHomePageState extends State<MobileHomePage> {
   ScrollController _scrollController;
   double _scrollControllerExtentBefore;
-  double _scrollControllerOffset;
 
   @override
   void initState() {
@@ -33,7 +32,6 @@ class _MobileHomePageState extends State<MobileHomePage> {
 
     _scrollController = ScrollController()..addListener(_handleScrollEvents);
     _scrollControllerExtentBefore = 0.0;
-    _scrollControllerOffset = 0.0;
   }
 
   @override
@@ -43,9 +41,9 @@ class _MobileHomePageState extends State<MobileHomePage> {
   }
 
   void _handleScrollEvents() {
-    setState(() {
-      _scrollControllerOffset = _scrollController.offset;
-    });
+    context
+        .read<HomePageProvider>()
+        .changeScrollOffset(_scrollController.offset);
 
     context
         .read<HomePageProvider>()
@@ -108,39 +106,35 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 ],
               ),
               SliverDetailsSection(
-                scrollOffset: _scrollControllerOffset -
-                    (kScreenHeight(context) * 0) -
-                    (kToolbarHeight * 0),
+                sectionIndex: 0,
                 child: IntroDetailsSection(),
               ),
               SliverInfoSection(
+                sectionIndex: 0,
                 child: IntroInfoSection(),
               ),
               SliverDetailsSection(
-                scrollOffset: _scrollControllerOffset -
-                    (kScreenHeight(context) * 1) -
-                    (kToolbarHeight * 1),
+                sectionIndex: 1,
                 child: PortfolioDetailsSection(),
               ),
               SliverInfoSection(
+                sectionIndex: 1,
                 child: PortfolioInfoSection(),
               ),
               SliverDetailsSection(
-                scrollOffset: _scrollControllerOffset -
-                    (kScreenHeight(context) * 2) -
-                    (kToolbarHeight * 2),
+                sectionIndex: 2,
                 child: BlogDetailsSection(),
               ),
               SliverInfoSection(
+                sectionIndex: 2,
                 child: BlogInfoSection(),
               ),
               SliverDetailsSection(
-                scrollOffset: _scrollControllerOffset -
-                    (kScreenHeight(context) * 3) -
-                    (kToolbarHeight * 3),
+                sectionIndex: 3,
                 child: JobDetailsSection(),
               ),
               SliverInfoSection(
+                sectionIndex: 3,
                 child: JobInfoSection(),
               ),
               SliverToBoxAdapter(
@@ -154,33 +148,23 @@ class _MobileHomePageState extends State<MobileHomePage> {
   }
 }
 
-class SliverDetailsSection extends StatefulWidget {
+class SliverDetailsSection extends StatelessWidget {
   const SliverDetailsSection({
     @required this.child,
-    this.scrollOffset,
     this.sectionIndex,
   });
 
   final Widget child;
-  final double scrollOffset;
   final int sectionIndex;
 
   @override
-  _SliverDetailsSectionState createState() => _SliverDetailsSectionState();
-}
-
-class _SliverDetailsSectionState extends State<SliverDetailsSection> {
-  double _offset;
-
-  @override
-  void initState() {
-    super.initState();
-    _offset = 0.0;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    _offset = widget.scrollOffset;
+    double scrollOffset =
+        context.watch<HomePageProvider>().mobileViewScrollControllerOffset;
+
+    double opacityOffset = scrollOffset -
+        kToolbarHeight -
+        (kScreenHeight(context) * sectionIndex);
 
     return SliverPersistentHeader(
       pinned: true,
@@ -188,10 +172,10 @@ class _SliverDetailsSectionState extends State<SliverDetailsSection> {
         minHeight: 0.0,
         maxHeight: kScreenHeight(context) * 0.6,
         child: Opacity(
-          opacity: (1 - _offset / 500).clamp(0.4, 1.0),
+          opacity: (1 - opacityOffset / 500).clamp(0.4, 1.0),
           child: Container(
             height: kScreenHeight(context) * 0.6,
-            child: widget.child,
+            child: child,
           ),
         ),
       ),
@@ -200,16 +184,35 @@ class _SliverDetailsSectionState extends State<SliverDetailsSection> {
 }
 
 class SliverInfoSection extends StatelessWidget {
-  const SliverInfoSection({@required this.child});
+  const SliverInfoSection({
+    @required this.child,
+    this.sectionIndex,
+  });
 
   final Widget child;
+  final int sectionIndex;
 
   @override
   Widget build(BuildContext context) {
+    double scrollOffset =
+        context.watch<HomePageProvider>().mobileViewScrollControllerOffset;
+
+    double opacityOffset = scrollOffset -
+        kToolbarHeight -
+        (kScreenHeight(context) * 0.4) -
+        (kScreenHeight(context) * sectionIndex);
+
     return SliverToBoxAdapter(
-      child: Container(
-        height: kScreenHeight(context) * 0.4,
-        child: child,
+      child: Opacity(
+        opacity: (1 - opacityOffset / 500).clamp(0.0, 1.0),
+        child: Container(
+          height: kScreenHeight(context) * 0.4,
+          child: FittedBox(
+            child: Center(
+              child: child,
+            ),
+          ),
+        ),
       ),
     );
   }

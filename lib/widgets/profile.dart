@@ -45,29 +45,26 @@ class Profile extends StatelessWidget {
   Widget _buildMobileView(BuildContext context) {
     return SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.fromLTRB(
-        kScreenWidthAwareSize(60.0, context),
-        kScreenHeightAwareSize(30.0, context),
-        kScreenWidthAwareSize(60.0, context),
-        kScreenHeightAwareSize(30.0, context),
-      ),
       child: Center(
-        child: FittedBox(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              profilePic(
-                width: 200.0,
-                height: 240.0,
-              ),
-              Flexible(
-                child: Padding(
+        child: Container(
+          padding: EdgeInsets.all(
+            kScreenWidthAwareSize(30.0, context),
+          ),
+          height: kScreenHeight(context) * 0.6,
+          child: FittedBox(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                profilePic(
+                  height: 200.0,
+                ),
+                Padding(
                   padding: const EdgeInsets.only(left: 16.0),
                   child: profileName(),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

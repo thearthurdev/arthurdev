@@ -58,6 +58,7 @@ class IntroDetailsSection extends StatelessWidget {
 
   Widget _buildMobileView(BuildContext context) {
     return Container(
+      key: kIntroSectionKey,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -71,7 +72,7 @@ class IntroDetailsSection extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: kScreenHeight(context) * 0.03,
+            bottom: -160.0,
             left: -300.0,
             child: Opacity(
               opacity: 0.02,

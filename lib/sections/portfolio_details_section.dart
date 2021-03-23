@@ -10,7 +10,8 @@ class PortfolioDetailsSection extends StatefulWidget {
   const PortfolioDetailsSection({Key key}) : super(key: key);
 
   @override
-  _PortfolioDetailsSectionState createState() => _PortfolioDetailsSectionState();
+  _PortfolioDetailsSectionState createState() =>
+      _PortfolioDetailsSectionState();
 }
 
 class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
@@ -27,6 +28,7 @@ class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: kIsDesktop(context) ? null : kPortfolioSectionKey,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,

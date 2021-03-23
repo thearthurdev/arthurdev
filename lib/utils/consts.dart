@@ -141,27 +141,5 @@ const TextStyle kNavigationDestinationTextStyle = TextStyle(
   fontSize: 14.0,
   letterSpacing: 2.1,
   height: 0.9,
-  fontWeight: FontWeight.w100,
   color: kSectionInfoTextColor,
-);
-
-const TextStyle kFlatAccentButtonTextStyle = TextStyle(
-  fontFamily: 'sen',
-  fontSize: 16.0,
-  letterSpacing: -0.1,
-  color: kAccentColor,
-  fontWeight: FontWeight.w500,
-);
-
-const TextStyle kRaisedAccentButtonTextStyle = TextStyle(
-  fontFamily: 'sen',
-  fontSize: 16.0,
-  color: kPrimaryColor,
-  fontWeight: FontWeight.bold,
-);
-
-const TextStyle kErrorTextStyle = TextStyle(
-  fontFamily: 'sen',
-  fontSize: 12.0,
-  // color: kErrorTextColor,
 );

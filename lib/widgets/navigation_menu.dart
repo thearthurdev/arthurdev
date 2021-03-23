@@ -30,31 +30,30 @@ class NavigationMenu extends StatelessWidget {
         itemBuilder: (context) {
           return List.generate(kNavigationDestinations.length + 1, (i) {
             return PopupMenuItem(
-                value: i,
-                child: i < kNavigationDestinations.length
-                    ? Container(
-                        padding: EdgeInsets.fromLTRB(16.0, 4.0, 4.0, 0.0),
-                        child: Text(
-                          kNavigationDestinations[i].toUpperCase(),
-                          style: kNavigationDestinationTextStyle.copyWith(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w400,
+              value: i,
+              child: i < kNavigationDestinations.length
+                  ? Container(
+                      padding: EdgeInsets.fromLTRB(16.0, 4.0, 4.0, 0.0),
+                      child: Text(
+                        kNavigationDestinations[i].toUpperCase(),
+                        style: kNavigationDestinationTextStyle.copyWith(
+                          fontSize: 14.0,
+                          color: kPrimaryColorDark,
+                        ),
+                      ),
+                    )
+                  : Column(
+                      children: [
+                        Divider(color: kDividerColor),
+                        Container(
+                          child: SocialsButtons(
                             color: kPrimaryColorDark,
+                            size: 18.0,
                           ),
                         ),
-                      )
-                    : Column(
-                        children: [
-                          Divider(color: kDividerColor),
-                          Container(
-                            child: SocialsButtons(
-                              color: kPrimaryColorDark,
-                              size: 18.0,
-                            ),
-                          ),
-                        ],
-                      ),
-              );
+                      ],
+                    ),
+            );
           });
         },
       ),

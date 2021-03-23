@@ -1,19 +1,19 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:flutter/material.dart';
-import 'package:arthurdev/widgets/info_action_box.dart';
+import 'package:arthurdev/widgets/info_action_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class IntroInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      key: kIntroSectionKey,
-      height: kScreenHeight(context),
+      key: kIsDesktop(context) ? kIntroSectionKey : null,
+      height: kIsDesktop(context) ? kScreenHeight(context) : null,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          InfoActionBox(
+          InfoActionWidget(
             sectionTitle: 'Intro',
             heading: 'Software Developer,\nbased in Ghana',
             body:
