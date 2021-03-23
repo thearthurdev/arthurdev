@@ -10,6 +10,11 @@ class IntroInfoSection extends StatelessWidget {
     return Container(
       key: kIsDesktop(context) ? kIntroSectionKey : null,
       height: kIsDesktop(context) ? kScreenHeight(context) : null,
+      padding: kIsDesktop(context)
+          ? null
+          : EdgeInsets.symmetric(
+              horizontal: kScreenWidthAwareSize(140.0, context),
+            ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

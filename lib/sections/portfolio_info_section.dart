@@ -11,6 +11,11 @@ class PortfolioInfoSection extends StatelessWidget {
       key: kIsDesktop(context) ? kPortfolioSectionKey : null,
       height:
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
+      padding: kIsDesktop(context)
+          ? null
+          : EdgeInsets.symmetric(
+              horizontal: kScreenWidthAwareSize(140.0, context),
+            ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -11,6 +11,11 @@ class BlogInfoSection extends StatelessWidget {
       key: kIsDesktop(context) ? kBlogSectionKey : null,
       height:
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
+      padding: kIsDesktop(context)
+          ? null
+          : EdgeInsets.symmetric(
+              horizontal: kScreenWidthAwareSize(100.0, context),
+            ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

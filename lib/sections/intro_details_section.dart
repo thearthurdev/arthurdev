@@ -72,7 +72,7 @@ class IntroDetailsSection extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            bottom: -160.0,
+            top: -kScreenHeight(context) * 0.02,
             left: -300.0,
             child: Opacity(
               opacity: 0.02,

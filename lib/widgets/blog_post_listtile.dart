@@ -35,42 +35,33 @@ class BlogPostListTile extends StatelessWidget {
       child: InkWell(
         onTap: () => _openBlogPost(),
         borderRadius: kBorderRadius,
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(24.0),
-              child: Row(
-                children: [
-                  Container(
-                    width: 80.0,
-                    child: Text(
-                      date,
-                      style: kSectionInfoTextStyle,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      child: Text(
-                        title,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: kHeaderTextStyleDark,
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 16.0),
-                  CircularArrowIcon(),
-                ],
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+          child: Row(
+            children: [
+              Container(
+                width: 80.0,
+                child: Text(
+                  date,
+                  style: kSectionInfoTextStyle,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
               ),
-            ),
-            Container(
-              height: 1.0,
-              margin: EdgeInsets.symmetric(horizontal: 8.0),
-              color: kDividerColor,
-            ),
-          ],
+              Expanded(
+                child: Container(
+                  child: Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: kHeaderTextStyleDark,
+                  ),
+                ),
+              ),
+              SizedBox(width: 16.0),
+              CircularArrowIcon(),
+            ],
+          ),
         ),
       ),
     );
@@ -82,42 +73,34 @@ class BlogPostListTile extends StatelessWidget {
       child: InkWell(
         onTap: () => _openBlogPost(),
         borderRadius: kBorderRadius,
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
-              child: Row(
-                children: [
-                  Container(
-                    width: 48.0,
-                    child: Text(
-                      date,
-                      style: kSectionInfoTextStyle.copyWith(fontSize: 12.0),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      child: Text(
-                        title,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        style: kHeaderTextStyleDark.copyWith(fontSize: 18.0),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 16.0),
-                  CircularArrowIcon(),
-                ],
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 48.0, horizontal: 16.0),
+          child: Row(
+            children: [
+              Container(
+                width: 48.0,
+                child: Text(
+                  date,
+                  style: kSectionInfoTextStyle.copyWith(fontSize: 16.0),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
               ),
-            ),
-            Container(
-              height: 1.0,
-              margin: EdgeInsets.symmetric(horizontal: 8.0),
-              color: kDividerColor,
-            ),
-          ],
+              SizedBox(width: 16.0),
+              Expanded(
+                child: Container(
+                  child: Text(
+                    title,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: kHeaderTextStyleDark.copyWith(fontSize: 26.0),
+                  ),
+                ),
+              ),
+              SizedBox(width: 16.0),
+              CircularArrowIcon(),
+            ],
+          ),
         ),
       ),
     );

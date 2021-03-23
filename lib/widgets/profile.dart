@@ -10,11 +10,11 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return kIsDesktop(context)
-        ? _buildDesktopView()
+        ? _buildDesktopView(context)
         : _buildMobileView(context);
   }
 
-  Widget _buildDesktopView() {
+  Widget _buildDesktopView(BuildContext context) {
     return FittedBox(
       child: Container(
         width: 436.0,
@@ -33,7 +33,7 @@ class Profile extends StatelessWidget {
                   top: 48.0,
                   bottom: 10.0,
                 ),
-                child: profileName(),
+                child: profileName(context),
               ),
             ),
           ],
@@ -61,7 +61,7 @@ class Profile extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16.0),
-                  child: profileName(),
+                  child: profileName(context),
                 ),
               ],
             ),
@@ -82,21 +82,30 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget profileName() {
+  Widget profileName(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 3.0),
-          child: Text('Meet', style: kSectionInfoTextStyle),
+          child: Text(
+            'Meet',
+            style: kSectionInfoTextStyle.copyWith(
+              fontSize: kIsDesktop(context) ? 16.0 : 12.0,
+            ),
+          ),
         ),
-        SizedBox(height: 8.0),
-        Text('Delords\nArthur', style: kLargeHeaderTextStyle),
+        Text(
+          'Delords\nArthur',
+          style: kLargeHeaderTextStyle.copyWith(
+            fontSize: kIsDesktop(context) ? 72.0 : 54.0,
+          ),
+        ),
         Container(
           width: 46.0,
           height: 8.0,
-          margin: const EdgeInsets.only(left: 4.0, top: 8.0),
+          margin: const EdgeInsets.only(left: 2.0),
           color: kAccentColorDeep,
         ),
       ],

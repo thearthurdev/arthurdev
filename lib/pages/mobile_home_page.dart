@@ -162,9 +162,8 @@ class SliverDetailsSection extends StatelessWidget {
     double scrollOffset =
         context.watch<HomePageProvider>().mobileViewScrollControllerOffset;
 
-    double opacityOffset = scrollOffset -
-        kToolbarHeight -
-        (kScreenHeight(context) * sectionIndex);
+    double opacityOffset =
+        scrollOffset - kToolbarHeight - (kScreenHeight(context) * sectionIndex);
 
     return SliverPersistentHeader(
       pinned: true,

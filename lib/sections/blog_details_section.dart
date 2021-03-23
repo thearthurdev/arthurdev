@@ -47,18 +47,7 @@ class BlogDetailsSection extends StatelessWidget {
                 minWidth: 300.0,
               ),
               margin: EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: List.generate(
-                  blogPosts.length,
-                  (i) => BlogPostListTile(
-                    date: blogPosts.keys.elementAt(i),
-                    title: blogPosts.values.elementAt(i),
-                    url: kBlogPostURLs[i],
-                  ),
-                ),
-              ),
+              child: buildBlogPostsListView(),
             ),
           ),
         ],
@@ -91,23 +80,14 @@ class BlogDetailsSection extends StatelessWidget {
                 child: HashnodeLogo(size: 400.0),
               ),
               Center(
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: 560.0,
-                    minWidth: 300.0,
-                  ),
-                  margin: EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: List.generate(
-                      blogPosts.length,
-                      (i) => BlogPostListTile(
-                        date: blogPosts.keys.elementAt(i),
-                        title: blogPosts.values.elementAt(i),
-                        url: kBlogPostURLs[i],
-                      ),
+                child: FittedBox(
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 560.0,
+                      minWidth: 300.0,
                     ),
+                    margin: EdgeInsets.all(24.0),
+                    child: buildBlogPostsListView(),
                   ),
                 ),
               ),
@@ -115,6 +95,28 @@ class BlogDetailsSection extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  ListView buildBlogPostsListView() {
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: blogPosts.length,
+      itemBuilder: (context, i) {
+        return BlogPostListTile(
+          date: blogPosts.keys.elementAt(i),
+          title: blogPosts.values.elementAt(i),
+          url: kBlogPostURLs[i],
+        );
+      },
+      separatorBuilder: (context, i) {
+        return Container(
+          height: 1.0,
+          margin: EdgeInsets.symmetric(horizontal: 8.0),
+          color: kDividerColor,
+        );
+      },
     );
   }
 }
