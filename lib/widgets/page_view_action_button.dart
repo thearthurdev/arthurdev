@@ -1,4 +1,5 @@
 import 'package:arthurdev/utils/consts.dart';
+import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:flutter/material.dart';
 
 class PageViewActionButton extends StatelessWidget {
@@ -16,7 +17,7 @@ class PageViewActionButton extends StatelessWidget {
     return Container(
       width: 60.0,
       height: 60.0,
-      margin: EdgeInsets.all(64.0),
+      margin: EdgeInsets.all(kScreenWidthAwareSize(48.0, context)),
       decoration: BoxDecoration(
         color: kDividerColor.withOpacity(0.4),
         shape: BoxShape.circle,

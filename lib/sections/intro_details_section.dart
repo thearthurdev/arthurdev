@@ -83,7 +83,9 @@ class IntroDetailsSection extends StatelessWidget {
               ),
             ),
           ),
-          Profile(),
+          Center(
+            child: Profile(),
+          ),
         ],
       ),
     );
