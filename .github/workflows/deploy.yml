@@ -25,6 +25,7 @@ jobs:
         run: flutter build web --release
       - name: Deploy web app
         run: |
+          cp CNAME build/web/CNAME
           cd build/web
           git init
           git config --global user.email arthurdelords@gmail.com
