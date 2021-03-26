@@ -14,16 +14,17 @@ class PlayaPortfolioView extends StatelessWidget {
 
   Widget buildDesktopView(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomCenter,
-          colors: [
-            kPrimaryColorLight2,
-            kPrimaryColorLight1,
-          ],
-        ),
-      ),
+      color: kPrimaryColorLight1,
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topRight,
+      //     end: Alignment.bottomCenter,
+      //     colors: [
+      //       kPrimaryColorLight2,
+      //       kPrimaryColorLight1,
+      //     ],
+      //   ),
+      // ),
       child: Stack(
         children: [
           Positioned(

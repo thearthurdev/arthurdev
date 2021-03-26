@@ -79,11 +79,13 @@ class BlogPostListTile extends StatelessWidget {
             children: [
               Container(
                 width: 48.0,
-                child: Text(
-                  date,
-                  style: kSectionInfoTextStyle.copyWith(fontSize: 16.0),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+                child: FittedBox(
+                  child: Text(
+                    date,
+                    style: kSectionInfoTextStyle.copyWith(fontSize: 16.0),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
               ),
               SizedBox(width: 16.0),

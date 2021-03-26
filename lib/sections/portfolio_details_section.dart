@@ -33,16 +33,17 @@ class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
     return Container(
       key: kIsDesktop(context) ? null : kPortfolioSectionKey,
       height: kScreenHeight(context) * 0.6,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomRight,
-          colors: [
-            kPrimaryColorLight2,
-            kPrimaryColorLight1,
-          ],
-        ),
-      ),
+      color: kPrimaryColorLight2,
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topCenter,
+      //     end: Alignment.bottomRight,
+      //     colors: [
+      //       kPrimaryColorLight2,
+      //       kPrimaryColorLight1,
+      //     ],
+      //   ),
+      // ),
       child: Stack(
         children: [
           PageView(

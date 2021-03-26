@@ -58,16 +58,17 @@ class BlogDetailsSection extends StatelessWidget {
   Widget _buildMobileView(BuildContext context) {
     return Container(
       key: kBlogSectionKey,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomCenter,
-          colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
-          ],
-        ),
-      ),
+      color: kPrimaryColorLight1,
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topRight,
+      //     end: Alignment.bottomCenter,
+      //     colors: [
+      //       kPrimaryColorLight1,
+      //       kPrimaryColorLight2,
+      //     ],
+      //   ),
+      // ),
       child: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Container(

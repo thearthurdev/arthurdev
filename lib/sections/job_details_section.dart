@@ -28,16 +28,17 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
   Widget build(BuildContext context) {
     return Container(
       key: kIsDesktop(context) ? null : kJobSectionKey,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            kPrimaryColorLight2,
-            kPrimaryColorLight1,
-          ],
-        ),
-      ),
+      color: kPrimaryColorLight2,
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topLeft,
+      //     end: Alignment.bottomRight,
+      //     colors: [
+      //       kPrimaryColorLight2,
+      //       kPrimaryColorLight1,
+      //     ],
+      //   ),
+      // ),
       child: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Stack(

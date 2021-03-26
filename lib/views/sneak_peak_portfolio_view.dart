@@ -14,16 +14,17 @@ class SneakPeakPortfolioView extends StatelessWidget {
 
   Widget buildDesktopView(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
-          ],
-        ),
-      ),
+      color: kPrimaryColorLight2,
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topCenter,
+      //     end: Alignment.bottomCenter,
+      //     colors: [
+      //       kPrimaryColorLight1,
+      //       kPrimaryColorLight2,
+      //     ],
+      //   ),
+      // ),
       child: Stack(
         children: [
           Positioned(

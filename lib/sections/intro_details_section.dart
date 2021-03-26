@@ -59,16 +59,17 @@ class IntroDetailsSection extends StatelessWidget {
   Widget _buildMobileView(BuildContext context) {
     return Container(
       key: kIntroSectionKey,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
-          ],
-        ),
-      ),
+      color: kPrimaryColorLight1,
+      // decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topCenter,
+      //     end: Alignment.bottomCenter,
+      //     colors: [
+      //       kPrimaryColorLight1,
+      //       kPrimaryColorLight2,
+      //     ],
+      //   ),
+      // ),
       child: Stack(
         children: [
           Positioned(
