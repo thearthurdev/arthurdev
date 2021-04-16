@@ -59,6 +59,9 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
             ),
             Center(
               child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: 540.0,
+                ),
                 height: kIsDesktop(context)
                     ? kScreenHeight(context)
                     : kScreenHeight(context) * 0.6,

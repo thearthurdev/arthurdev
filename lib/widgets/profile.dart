@@ -47,8 +47,12 @@ class Profile extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       child: Center(
         child: Container(
-          padding: EdgeInsets.all(
-            kScreenWidthAwareSize(30.0, context),
+          constraints: BoxConstraints(
+            maxHeight: 1200.0,
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: kScreenWidthAwareSize(80.0, context),
+            vertical: kScreenHeightAwareSize(80.0, context),
           ),
           height: kScreenHeight(context) * 0.6,
           child: FittedBox(

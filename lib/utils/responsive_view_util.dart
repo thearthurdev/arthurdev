@@ -12,7 +12,8 @@ double kScreenHeight(BuildContext context) {
 }
 
 bool kIsDesktop(BuildContext context) {
-  return kScreenWidth(context) > tabletBreakPoint;
+  return kScreenWidth(context) > tabletBreakPoint &&
+      kScreenHeight(context) < kScreenWidth(context);
 }
 
 bool kIsTablet(BuildContext context) {
@@ -40,12 +41,20 @@ dynamic kResponsiveAttribute(
 }) {
   dynamic attribute;
 
-  if (desktop != null && kIsDesktop(context) ||
-      tablet == null && mobile == null) {
+  bool isDesktop = desktop != null && kIsDesktop(context) ||
+      tablet == null && mobile == null;
+
+  bool isTablet = tablet != null && kIsTablet(context) || mobile == null;
+
+  bool isMobile = mobile != null && kIsMobile(context) || tablet == null;
+
+  print(isDesktop);
+
+  if (isDesktop) {
     attribute = desktop;
-  } else if (tablet != null && kIsTablet(context) || mobile == null) {
+  } else if (isTablet) {
     attribute = tablet;
-  } else if (mobile != null && kIsMobile(context) || tablet == null) {
+  } else if (isMobile) {
     attribute = mobile;
   }
 
