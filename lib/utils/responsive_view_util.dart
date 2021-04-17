@@ -48,7 +48,6 @@ dynamic kResponsiveAttribute(
 
   bool isMobile = mobile != null && kIsMobile(context) || tablet == null;
 
-  print(isDesktop);
 
   if (isDesktop) {
     attribute = desktop;

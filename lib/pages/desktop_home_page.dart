@@ -158,7 +158,6 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
           },
           child: SingleChildScrollView(
             controller: _mainScrollController,
-            // physics: NeverScrollableScrollPhysics(),
             child: Column(
               children: [
                 NavigationBar(
