@@ -5,12 +5,6 @@ import 'package:arthurdev/widgets/hashnode_logo.dart';
 import 'package:flutter/material.dart';
 
 class BlogDetailsSection extends StatelessWidget {
-  final Map<String, String> blogPosts = {
-    'Jan 31': 'Recreating the iconic Star Wars Intro in Flutter',
-    'Jan 14': 'How to Migrate your WhatsApp Chats to Telegram',
-    'Jul 29': 'scrcpy - Mirror Your Device\'s Screen! (Linux Edition)',
-  };
-
   @override
   Widget build(BuildContext context) {
     return kIsDesktop(context)
@@ -103,11 +97,11 @@ class BlogDetailsSection extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: blogPosts.length,
+      itemCount: kBlogPosts.length,
       itemBuilder: (context, i) {
         return BlogPostListTile(
-          date: blogPosts.keys.elementAt(i),
-          title: blogPosts.values.elementAt(i),
+          date: kBlogPosts.keys.elementAt(i),
+          title: kBlogPosts.values.elementAt(i),
           url: kBlogPostURLs[i],
         );
       },

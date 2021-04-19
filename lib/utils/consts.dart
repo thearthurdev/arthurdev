@@ -67,6 +67,13 @@ const List<String> kBlogPostURLs = [
   'https://blog.thearthur.dev/scrcpy-mirror-your-devices-screen-linux-edition',
 ];
 
+// Blog Posts
+const Map<String, String> kBlogPosts = {
+    'Apr 18': 'Sharing info-rich links of your Flutter Website using Meta Tags',
+    'Jan 31': 'Recreating the iconic Star Wars Intro in Flutter',
+    'Jan 14': 'How to Migrate your WhatsApp Chats to Telegram',
+  };
+
 // Colors
 const Color kPrimaryColor = Color(0xFFFFFFFF);
 const Color kPrimaryColorDark = Color(0xFF000000);
