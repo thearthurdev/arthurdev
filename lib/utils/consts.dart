@@ -62,9 +62,9 @@ const String kPlayaTwitterURL =
 const String kBlogRSSURL = 'https://blog.thearthur.dev/rss.xml';
 
 const List<String> kBlogPostURLs = [
+  'https://blog.thearthur.dev/sharing-info-rich-links-of-your-flutter-website-using-meta-tags',
   'https://blog.thearthur.dev/recreating-the-iconic-star-wars-intro-in-flutter',
   'https://blog.thearthur.dev/how-to-migrate-your-whatsapp-chats-to-telegram',
-  'https://blog.thearthur.dev/scrcpy-mirror-your-devices-screen-linux-edition',
 ];
 
 // Blog Posts
