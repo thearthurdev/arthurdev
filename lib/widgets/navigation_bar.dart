@@ -1,7 +1,6 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/arthurdev_banner.dart';
-import 'package:arthurdev/widgets/navigation_menu.dart';
 import 'package:arthurdev/widgets/navigation_destinations.dart';
 import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
