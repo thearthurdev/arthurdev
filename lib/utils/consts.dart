@@ -60,6 +60,7 @@ const String kSneakPeakTwitterURL =
 const String kPlayaTwitterURL =
     'https://twitter.com/_DeeArthur/status/1356754726809960449';
 const String kBlogRSSURL = 'https://blog.thearthur.dev/rss.xml';
+const String kResumeURL = 'https://docs.google.com/document/d/1a5JzACnhgusFIQYJzqKSFp4eWOEf7QlSmtY818kgrO0/edit?usp=sharing';
 
 const List<String> kBlogPostURLs = [
   'https://blog.thearthur.dev/sharing-info-rich-links-of-your-flutter-website-using-meta-tags',

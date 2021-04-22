@@ -25,7 +25,7 @@ class IntroInfoSection extends StatelessWidget {
                 'I specialize in cross-platform mobile\ndevelopment, android and windows\nautomation',
             actionText: 'More about me',
             onActionTap: () async {
-              String url = kLinkedInURL;
+              String url = kResumeURL;
 
               if (await canLaunch(url)) {
                 await launch(url);
