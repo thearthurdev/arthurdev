@@ -171,7 +171,8 @@ class SliverDetailsSection extends StatelessWidget {
         minHeight: 0.0,
         maxHeight: kScreenHeight(context) * 0.6,
         child: Opacity(
-          opacity: (1 - opacityOffset / (kScreenHeight(context) * 0.6)).clamp(0.0, 1.0),
+          opacity: (1 - opacityOffset / (kScreenHeight(context) * 0.6))
+              .clamp(0.0, 1.0),
           child: Container(
             height: kScreenHeight(context) * 0.6,
             child: child,
@@ -203,7 +204,8 @@ class SliverInfoSection extends StatelessWidget {
 
     return SliverToBoxAdapter(
       child: Opacity(
-        opacity: (1 - opacityOffset / (kScreenHeight(context) * 0.4)).clamp(0.0, 1.0),
+        opacity: (1 - opacityOffset / (kScreenHeight(context) * 0.4))
+            .clamp(0.0, 1.0),
         child: Container(
           height: kScreenHeight(context) * 0.4,
           child: FittedBox(

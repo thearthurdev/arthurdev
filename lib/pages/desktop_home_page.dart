@@ -37,10 +37,12 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
   @override
   void initState() {
     super.initState();
+
     _mainScrollController = ScrollController()
       ..addListener(_handleScrollEvents);
     _secondaryScrollController = ScrollController()
       ..addListener(_handleScrollEvents);
+
     _currentScrollController = _mainScrollController;
     _freezeMainScrollController = false;
     _secondaryScrollControllerOffset = 0.0;
@@ -67,6 +69,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
   void dispose() {
     _mainScrollController.removeListener(_handleScrollEvents);
     _secondaryScrollController.removeListener(_handleScrollEvents);
+
     super.dispose();
   }
 
@@ -255,7 +258,6 @@ class InfoPanel extends StatelessWidget {
       flex: 4,
       child: SingleChildScrollView(
         controller: secondaryScrollController,
-        // physics: NeverScrollableScrollPhysics(),
         child: Container(
           color: kPrimaryColor,
           padding: EdgeInsets.only(

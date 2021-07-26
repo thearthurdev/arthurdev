@@ -63,9 +63,8 @@ class _HomePageBuilderState extends State<HomePageBuilder> {
     _initScreenHeight = _initScreenHeight ?? kScreenHeight(context) - 128.0;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      int sectionIndex = -1;
+      int sectionIndex = 0;
       for (GlobalKey sectionKey in kSectionKeys) {
-        sectionIndex++;
         try {
           final RenderBox sectionRenderBox =
               sectionKey.currentContext.findRenderObject();
@@ -73,6 +72,7 @@ class _HomePageBuilderState extends State<HomePageBuilder> {
               sectionRenderBox.localToGlobal(Offset(0.0, 0.0));
           kSectionScrollOffsets[sectionIndex] =
               sectionPosition.dy - (sectionIndex == 0 ? kToolbarHeight : 0.0);
+          sectionIndex++;
         } catch (e) {
           print(e);
         }

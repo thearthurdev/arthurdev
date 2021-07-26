@@ -53,16 +53,6 @@ class BlogDetailsSection extends StatelessWidget {
     return Container(
       key: kBlogSectionKey,
       color: kPrimaryColorLight1,
-      // decoration: BoxDecoration(
-      //   gradient: LinearGradient(
-      //     begin: Alignment.topRight,
-      //     end: Alignment.bottomCenter,
-      //     colors: [
-      //       kPrimaryColorLight1,
-      //       kPrimaryColorLight2,
-      //     ],
-      //   ),
-      // ),
       child: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Container(

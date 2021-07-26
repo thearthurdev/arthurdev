@@ -25,13 +25,15 @@ class ArthurDevBanner extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: isLarge ? 80.0 : 42.0,
-              height: isLarge ? 48.0 : 32.0,
-              padding: EdgeInsets.only(left: 8.0),
-              child: Image.asset(
-                kImageAssets['ArthurDevLogo'],
-                fit: BoxFit.fitWidth,
+            Flexible(
+              child: Container(
+                width: isLarge ? 80.0 : 42.0,
+                height: isLarge ? 48.0 : 32.0,
+                padding: EdgeInsets.only(left: 8.0),
+                child: Image.asset(
+                  kImageAssets['ArthurDevLogo'],
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
             Flexible(

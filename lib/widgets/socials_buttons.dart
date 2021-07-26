@@ -10,12 +10,14 @@ class SocialsButtons extends StatelessWidget {
   final Color color;
 
   final Map<String, IconData> _socials = {
+    kEmailURL: Icons.email,
     kGitHubURL: MyIcons.github,
     kLinkedInURL: MyIcons.linkedin,
     kTwitterURL: MyIcons.twitter,
   };
 
   final List<String> _socialsToolTips = [
+    'Send me an Email',
     'Check out my repos',
     'View my professional profile',
     'See what\'s happening',

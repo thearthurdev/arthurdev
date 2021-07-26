@@ -1,6 +1,7 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/circular_arrow_icon.dart';
+import 'package:arthurdev/widgets/project_info_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,16 +30,6 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
     return Container(
       key: kIsDesktop(context) ? null : kJobSectionKey,
       color: kPrimaryColorLight2,
-      // decoration: BoxDecoration(
-      //   gradient: LinearGradient(
-      //     begin: Alignment.topLeft,
-      //     end: Alignment.bottomRight,
-      //     colors: [
-      //       kPrimaryColorLight2,
-      //       kPrimaryColorLight1,
-      //     ],
-      //   ),
-      // ),
       child: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Stack(
@@ -161,47 +152,6 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ProjectInfoTextField extends StatelessWidget {
-  ProjectInfoTextField({
-    this.controller,
-    this.hint,
-    this.inputType,
-  });
-
-  final TextEditingController controller;
-  final String hint;
-  final TextInputType inputType;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      autocorrect: false,
-      textCapitalization: TextCapitalization.words,
-      cursorColor: kAccentColorDeep,
-      keyboardType: inputType,
-      style: kTextFieldTextStyleDark,
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: kTextFieldTextStyleDark,
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: kDividerColor,
-            width: 1.0,
-          ),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: kDividerColor,
-            width: 1.0,
-          ),
-        ),
-        contentPadding: EdgeInsets.symmetric(vertical: 32.0),
       ),
     );
   }

@@ -51,8 +51,8 @@ class Profile extends StatelessWidget {
             maxHeight: 1200.0,
           ),
           padding: EdgeInsets.symmetric(
-            horizontal: kScreenWidthAwareSize(80.0, context),
-            vertical: kScreenHeightAwareSize(80.0, context),
+            horizontal: kScreenWidthAwareSize(60.0, context),
+            vertical: kScreenHeightAwareSize(60.0, context),
           ),
           height: kScreenHeight(context) * 0.6,
           child: FittedBox(

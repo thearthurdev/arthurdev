@@ -98,7 +98,7 @@ class FooterSection extends StatelessWidget {
             ),
           ),
           SizedBox(width: 32.0),
-          SocialsButtons(size: 20.0),
+          Flexible(child: SocialsButtons(size: 20.0)),
         ],
       ),
     );

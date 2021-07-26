@@ -14,24 +14,26 @@ class PageViewActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      child: Container(
-        width: 60.0,
-        height: 60.0,
-        margin: EdgeInsets.all(kScreenWidthAwareSize(48.0, context)),
-        decoration: BoxDecoration(
-          color: kDividerColor.withOpacity(0.4),
-          shape: BoxShape.circle,
-        ),
-        child: Material(
-          type: MaterialType.transparency,
-          child: InkWell(
-            onTap: onTap ?? () {},
-            customBorder: CircleBorder(),
-            child: Icon(
-              icon,
-              size: 24.0,
-              color: kPrimaryColorDark,
+    return Flexible(
+      child: FittedBox(
+        child: Container(
+          width: 60.0,
+          height: 60.0,
+          margin: EdgeInsets.all(kScreenWidthAwareSize(48.0, context)),
+          decoration: BoxDecoration(
+            color: kDividerColor.withOpacity(0.4),
+            shape: BoxShape.circle,
+          ),
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              onTap: onTap ?? () {},
+              customBorder: CircleBorder(),
+              child: Icon(
+                icon,
+                size: 24.0,
+                color: kPrimaryColorDark,
+              ),
             ),
           ),
         ),

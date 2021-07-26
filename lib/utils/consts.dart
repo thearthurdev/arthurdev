@@ -8,10 +8,10 @@ BorderRadius kBorderRadius = BorderRadius.circular(6.0);
 List<String> kNavigationDestinations = ['Intro', 'Portfolio', 'Blog', 'Job'];
 
 // Section scroll offsets
-double kIntroSectionScrollOffset = 0.0;
-double kPortfolioSectionScrollOffset = 1418.0;
-double kBlogSectionScrollOffset = 3189.0;
-double kJobSectionScrollOffset = 4167.0;
+double kIntroSectionScrollOffset;
+double kPortfolioSectionScrollOffset;
+double kBlogSectionScrollOffset;
+double kJobSectionScrollOffset;
 
 List<double> kSectionScrollOffsets = [
   kIntroSectionScrollOffset,
@@ -48,7 +48,7 @@ Map<String, String> kImageAssets = {
 // URLs
 const String kGitHubURL = 'https://github.com/thearthurdev';
 const String kLinkedInURL = 'https://www.linkedin.com/in/arthurdelords/';
-const String kTwitterURL = 'https://twitter.com/_DeeArthur';
+const String kTwitterURL = 'https://twitter.com/thearthurdev';
 const String kEmailURL = 'mailto:arthurdelords@gmail.com';
 const String kPortfolioURL = 'https://blog.thearthur.dev/arthurdev-portfolio';
 const String kBlogURL = 'https://blog.thearthur.dev';
