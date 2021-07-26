@@ -15,8 +15,8 @@ jobs:
         with:
           flutter-version: 1.12.x
           channel: beta
-      - name: Upgrade Flutter
-        run: flutter upgrade
+#       - name: Upgrade Flutter
+#         run: flutter upgrade
       - name: Get packages
         run: flutter pub get
       - name: Enable flutter web
