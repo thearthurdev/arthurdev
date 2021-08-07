@@ -27,6 +27,7 @@ class BlogInfoSection extends StatelessWidget {
             actionText: 'Visit blog',
             onActionTap: () async {
               String url = kBlogURL;
+              
               if (await canLaunch(url)) {
                 await launch(url);
               } else {

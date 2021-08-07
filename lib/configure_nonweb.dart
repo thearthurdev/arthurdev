@@ -1,0 +1,3 @@
+void configureApp() {
+// Do nothing
+}

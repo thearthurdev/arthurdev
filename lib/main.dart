@@ -6,9 +6,11 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/utils/scroll_behaviour.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'configure_nonweb.dart' if (dart.library.html) 'configure_web.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureApp();
 
   runApp(
     MultiProvider(

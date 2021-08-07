@@ -7,7 +7,7 @@
 //   static get feed => _feed;
 
 //   static Future<RssFeed> _getFeed() async {
-//     final _authority = "thearthur.dev";
+//     final _authority = "blog.thearthur.dev";
 //     final _path = "rss.xml";
 //     final _feedUri = Uri.https(_authority, _path);
 
