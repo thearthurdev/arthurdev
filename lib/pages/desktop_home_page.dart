@@ -163,7 +163,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
             controller: _mainScrollController,
             child: Column(
               children: [
-                NavigationBar(
+                MyNavigationBar(
                   currentSection:
                       context.read<HomePageProvider>().currentSection,
                   scrollController: _secondaryScrollController,

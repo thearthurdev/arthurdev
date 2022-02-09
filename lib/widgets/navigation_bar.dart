@@ -5,8 +5,8 @@ import 'package:arthurdev/widgets/navigation_destinations.dart';
 import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
 
-class NavigationBar extends StatelessWidget {
-  const NavigationBar({
+class MyNavigationBar extends StatelessWidget {
+  const MyNavigationBar({
     Key key,
     @required this.currentSection,
     @required this.scrollController,
@@ -31,7 +31,10 @@ class NavigationBar extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Flexible(child: ArthurDevBanner(scrollController: scrollController),),
+                    Flexible(
+                      child:
+                          ArthurDevBanner(scrollController: scrollController),
+                    ),
                     SizedBox(width: 24.0),
                     NavigationDestinations(
                       currentSection: currentSection,
