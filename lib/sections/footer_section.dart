@@ -44,18 +44,28 @@ class FooterSection extends StatelessWidget {
               SizedBox(height: 32.0),
               SocialsButtons(),
               SizedBox(height: 32.0),
-              RichText(
-                text: TextSpan(
-                  text: 'Made with ',
-                  style: kHeaderTextStyleLight.copyWith(fontSize: 16.0),
-                  children: [
-                    TextSpan(
-                      text: 'Flutter 💙',
-                      style: kActionButtonTextStyle.copyWith(
-                          fontSize: 14.0, color: Colors.blue[500]),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: 'Built with ',
+                      style: kHeaderTextStyleLight.copyWith(fontSize: 12.0),
+                      children: [
+                        TextSpan(
+                          text: 'Flutter ',
+                          style: kActionButtonTextStyle.copyWith(
+                              fontSize: 12.0, color: Colors.blue[400]),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Icon(
+                    Icons.favorite,
+                    color: Colors.blue[400],
+                    size: 16.0,
+                  )
+                ],
               ),
               SizedBox(height: 16.0),
             ],
