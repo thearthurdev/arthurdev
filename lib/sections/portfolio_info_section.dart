@@ -12,28 +12,32 @@ class PortfolioInfoSection extends StatelessWidget {
       height:
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
       padding: kIsDesktop(context)
-          ? null
+          ? EdgeInsets.symmetric(
+              horizontal: kScreenWidthAwareSize(25.0, context),
+            )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(140.0, context),
             ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          InfoActionWidget(
-            sectionTitle: 'Portfolio',
-            heading: 'Creative works,\nhighlighted projects',
-            body: 'Check out some of my projects and\ncreative works',
-            actionText: 'Explore more',
-            onActionTap: () async {
-              String url = kPortfolioURL;
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-        ],
+      child: FittedBox(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InfoActionWidget(
+              sectionTitle: 'Portfolio',
+              heading: 'Creative works,\nhighlighted projects',
+              body: 'Check out some of my projects and\ncreative works',
+              actionText: 'Explore more',
+              onActionTap: () async {
+                Uri url = kPortfolioURL;
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launchUrl $url';
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

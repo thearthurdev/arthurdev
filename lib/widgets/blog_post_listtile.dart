@@ -14,7 +14,7 @@ class BlogPostListTile extends StatelessWidget {
 
   final String date;
   final String title;
-  final String url;
+  final Uri url;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class BlogPostListTile extends StatelessWidget {
   }
 
   Future<void> _openBlogPost() async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
     } else {
-      throw 'Could not launch $url';
+      throw 'Could not launchUrl $url';
     }
   }
 

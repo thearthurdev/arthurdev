@@ -9,7 +9,7 @@ class SocialsButtons extends StatelessWidget {
   final double size;
   final Color color;
 
-  final Map<String, IconData> _socials = {
+  final Map<Uri, IconData> _socials = {
     kEmailURL: Icons.email,
     kGitHubURL: MyIcons.github,
     kLinkedInURL: MyIcons.linkedin,
@@ -50,11 +50,11 @@ class SocialsButtons extends StatelessWidget {
                   child: InkWell(
                     customBorder: CircleBorder(),
                     onTap: () async {
-                      String url = _socials.keys.elementAt(i);
-                      if (await canLaunch(url)) {
-                        await launch(url);
+                      Uri url = _socials.keys.elementAt(i);
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url);
                       } else {
-                        throw 'Could not launch $url';
+                        throw 'Could not launchUrl $url';
                       }
                     },
                     child: Container(

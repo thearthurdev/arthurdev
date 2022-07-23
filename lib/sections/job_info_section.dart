@@ -12,28 +12,32 @@ class JobInfoSection extends StatelessWidget {
       height:
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
       padding: kIsDesktop(context)
-          ? null
+          ? EdgeInsets.symmetric(
+              horizontal: kScreenWidthAwareSize(25.0, context),
+            )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(160.0, context),
             ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          InfoActionWidget(
-            sectionTitle: 'Job',
-            heading: 'Impressed?\nGive me a job',
-            body: 'I am looking for a part-time job\nor a freelance project',
-            actionText: 'Email me',
-            onActionTap: () async {
-              String url = '$kEmailURL?subject=Job Offer';
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-        ],
+      child: FittedBox(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InfoActionWidget(
+              sectionTitle: 'Job',
+              heading: 'Impressed?\nGive me a job',
+              body: 'I am looking for a part-time job\nor a freelance project',
+              actionText: 'Email me',
+              onActionTap: () async {
+                Uri url = Uri(path: '$kEmailURL?subject=Job Offer');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launchUrl $url';
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

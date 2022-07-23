@@ -54,12 +54,12 @@ class SneakPeakPortfolioView extends StatelessWidget {
                           'Experience delightful animations\nwhile sneaker shopping',
                       toolTip: 'Click to see the animations in action',
                       onTap: () async {
-                        String url = kSneakPeakTwitterURL;
+                        Uri url = kSneakPeakTwitterURL;
 
-                        if (await canLaunch(url)) {
-                          await launch(url);
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
                         } else {
-                          throw 'Could not launch $url';
+                          throw 'Could not launchUrl $url';
                         }
                       },
                     ),
@@ -125,12 +125,12 @@ class SneakPeakPortfolioView extends StatelessWidget {
                       'Experience delightful animations\nwhile sneaker shopping',
                   toolTip: 'Click to see the animations in action',
                   onTap: () async {
-                    String url = kSneakPeakTwitterURL;
+                    Uri url = kSneakPeakTwitterURL;
 
-                    if (await canLaunch(url)) {
-                      await launch(url);
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
                     } else {
-                      throw 'Could not launch $url';
+                      throw 'Could not launchUrl $url';
                     }
                   },
                 ),

@@ -28,30 +28,32 @@ class IntroDetailsSection extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.fromLTRB(
-        kScreenWidthAwareSize(60.0, context),
-        kScreenHeightAwareSize(0.0, context),
-        kScreenWidthAwareSize(60.0, context),
-        kScreenHeightAwareSize(30.0, context),
+        kScreenWidthAwareSize(90.0, context),
+        kScreenHeightAwareSize(20.0, context),
+        kScreenWidthAwareSize(90.0, context),
+        kScreenHeightAwareSize(50.0, context),
       ),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Positioned(
-            bottom: -kScreenHeight(context) * 0.25,
-            left: -500.0,
-            child: Opacity(
-              opacity: 0.02,
-              child: Icon(
-                Icons.person,
-                color: kPrimaryColorDark,
-                size: 800.0,
+      child: FittedBox(
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              bottom: -kScreenHeight(context) * 0.25,
+              left: -500.0,
+              child: Opacity(
+                opacity: 0.02,
+                child: Icon(
+                  Icons.person,
+                  color: kPrimaryColorDark,
+                  size: 800.0,
+                ),
               ),
             ),
-          ),
-          Center(
-            child: Profile(),
-          ),
-        ],
+            Center(
+              child: Profile(),
+            ),
+          ],
+        ),
       ),
     );
   }

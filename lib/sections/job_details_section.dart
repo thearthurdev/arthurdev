@@ -102,20 +102,21 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
                                     String name = _nameFieldController.text;
                                     String email = _emailFieldController.text;
 
-                                    String url =
-                                        "$kEmailURL?subject=Project Collaboration Proposal"
-                                        "&body=Hi Delords,%0D%0A%0D%0A"
-                                        "My name's ${name.split(" ")[0]}"
-                                        " and I'd like to collaborate with you on a project.%0D%0A%0D%0A"
-                                        "[Please tell me about your idea here]%0D%0A%0D%0A"
-                                        "Here's my fancy email, $email. Reach back to me and let's talk!%0D%0A%0D%0A"
-                                        "Regards,%0D%0A"
-                                        "$name.%0D%0A%0D%0A";
+                                    Uri url = Uri(
+                                        path:
+                                            "$kEmailURL?subject=Project Collaboration Proposal"
+                                            "&body=Hi Delords,%0D%0A%0D%0A"
+                                            "My name's ${name.split(" ")[0]}"
+                                            " and I'd like to collaborate with you on a project.%0D%0A%0D%0A"
+                                            "[Please tell me about your idea here]%0D%0A%0D%0A"
+                                            "Here's my fancy email, $email. Reach back to me and let's talk!%0D%0A%0D%0A"
+                                            "Regards,%0D%0A"
+                                            "$name.%0D%0A%0D%0A");
 
-                                    if (await canLaunch(url)) {
-                                      await launch(url);
+                                    if (await canLaunchUrl(url)) {
+                                      await launchUrl(url);
                                     } else {
-                                      throw 'Could not launch $url';
+                                      throw 'Could not launchUrl $url';
                                     }
                                   },
                                   borderRadius: kBorderRadius,

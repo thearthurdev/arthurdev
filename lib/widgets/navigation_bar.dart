@@ -24,7 +24,8 @@ class MyNavigationBar extends StatelessWidget {
         width: kScreenWidth(context),
         child: Center(
           child: Container(
-            constraints: BoxConstraints(maxWidth: kMaxWidth),
+            // constraints: BoxConstraints(maxWidth: kMaxWidth),
+            padding: EdgeInsets.only(right: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

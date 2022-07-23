@@ -204,8 +204,7 @@ class DetailsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 6,
+    return Expanded(
       child: Container(
         height: kScreenHeight(context) + kToolbarHeight,
         child: buildSection(context),
@@ -254,16 +253,16 @@ class InfoPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 4,
-      child: SingleChildScrollView(
-        controller: secondaryScrollController,
-        child: Container(
-          color: kPrimaryColor,
-          padding: EdgeInsets.only(
-            left: kScreenWidthAwareSize(60.0, context),
-            right: kScreenWidthAwareSize(40.0, context),
-          ),
+    return SingleChildScrollView(
+      controller: secondaryScrollController,
+      child: Container(
+        width: kScreenWidthAwareSize(300.0, context),
+        color: kPrimaryColor,
+        padding: EdgeInsets.only(
+          left: kScreenWidthAwareSize(60.0, context),
+          right: kScreenWidthAwareSize(40.0, context),
+        ),
+        child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

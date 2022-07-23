@@ -9,15 +9,15 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  flutter_web_plugins:
-    sdk: flutter
+  cupertino_icons: ^1.0.0
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.0
+  flutter_svg: ^1.1.1+1
+  flutter_web_plugins:
+    sdk: flutter
   http: null
   provider: ^5.0.0
-  url_launcher: ^5.7.10
-  webfeed: ^0.6.0
+  url_launcher: ^6.1.5
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +28,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/svg/
 
   fonts:
     - family: SquadaOne

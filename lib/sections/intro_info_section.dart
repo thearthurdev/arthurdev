@@ -11,30 +11,34 @@ class IntroInfoSection extends StatelessWidget {
       key: kIsDesktop(context) ? kIntroSectionKey : null,
       height: kIsDesktop(context) ? kScreenHeight(context) : null,
       padding: kIsDesktop(context)
-          ? null
+          ? EdgeInsets.symmetric(
+              horizontal: kScreenWidthAwareSize(25.0, context),
+            )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(140.0, context),
             ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          InfoActionWidget(
-            sectionTitle: 'Intro',
-            heading: 'Software Developer,\nbased in Ghana',
-            body:
-                'I specialize in cross-platform mobile\ndevelopment, UI design, Android\nand Windows automation',
-            actionText: 'More about me',
-            onActionTap: () async {
-              String url = kResumeURL;
+      child: FittedBox(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InfoActionWidget(
+              sectionTitle: 'Intro',
+              heading: 'Software Developer,\nbased in Ghana',
+              body:
+                  'I specialize in cross-platform mobile\ndevelopment, UI design, Android\nand Windows automation',
+              actionText: 'More about me',
+              onActionTap: () async {
+                Uri url = kResumeURL;
 
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-        ],
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launchUrl $url';
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

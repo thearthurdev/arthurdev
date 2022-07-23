@@ -48,12 +48,12 @@ class PlayaPortfolioView extends StatelessWidget {
                 toolTip:
                     'Click to see the mockup in its full\ntwitter-compression glory',
                 onTap: () async {
-                  String url = kPlayaTwitterURL;
+                  Uri url = kPlayaTwitterURL;
 
-                  if (await canLaunch(url)) {
-                    await launch(url);
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url);
                   } else {
-                    throw 'Could not launch $url';
+                    throw 'Could not launchUrl $url';
                   }
                 }),
           ),
@@ -125,12 +125,12 @@ class PlayaPortfolioView extends StatelessWidget {
                 toolTip:
                     'Click to see the mockup in its full\ntwitter-compression glory',
                 onTap: () async {
-                  String url = kPlayaTwitterURL;
+                  Uri url = kPlayaTwitterURL;
 
-                  if (await canLaunch(url)) {
-                    await launch(url);
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url);
                   } else {
-                    throw 'Could not launch $url';
+                    throw 'Could not launchUrl $url';
                   }
                 }),
           ),

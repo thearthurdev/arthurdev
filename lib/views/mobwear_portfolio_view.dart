@@ -60,23 +60,23 @@ class MobWearPortfolioView extends StatelessWidget {
                               'Customize smartphones with colors and textures',
                           toolTip: 'Click to view the code on GitHub',
                           onTap: () async {
-                            String url = kMobWearGitHubURL;
+                            Uri url = kMobWearGitHubURL;
 
-                            if (await canLaunch(url)) {
-                              await launch(url);
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
                             } else {
-                              throw 'Could not launch $url';
+                              throw 'Could not launchUrl $url';
                             }
                           },
                         ),
                         InkWell(
                           onTap: () async {
-                            String url = kMobWearPlayStoreURL;
+                            Uri url = kMobWearPlayStoreURL;
 
-                            if (await canLaunch(url)) {
-                              await launch(url);
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
                             } else {
-                              throw 'Could not launch $url';
+                              throw 'Could not launchUrl $url';
                             }
                           },
                           child: Container(
@@ -144,23 +144,23 @@ class MobWearPortfolioView extends StatelessWidget {
                               'Customize smartphones with colors and textures',
                           toolTip: 'Click to view the code on GitHub',
                           onTap: () async {
-                            String url = kMobWearGitHubURL;
+                            Uri url = kMobWearGitHubURL;
 
-                            if (await canLaunch(url)) {
-                              await launch(url);
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
                             } else {
-                              throw 'Could not launch $url';
+                              throw 'Could not launchUrl $url';
                             }
                           },
                         ),
                         InkWell(
                           onTap: () async {
-                            String url = kMobWearPlayStoreURL;
+                            Uri url = kMobWearPlayStoreURL;
 
-                            if (await canLaunch(url)) {
-                              await launch(url);
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
                             } else {
-                              throw 'Could not launch $url';
+                              throw 'Could not launchUrl $url';
                             }
                           },
                           child: Container(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const double kMaxWidth = 1160.0;
+const double kMaxWidth = 1360.0;
 
 BorderRadius kBorderRadius = BorderRadius.circular(6.0);
 
@@ -36,6 +36,7 @@ List<GlobalKey> kSectionKeys = [
 // Images
 Map<String, String> kImageAssets = {
   'ArthurDevLogo': 'assets/images/arthurdev_logo.png',
+  'ArthurDevLogoSVG': 'assets/svg/arthurdev_logo.svg',
   'ProfilePic': 'assets/images/profile_pic.png',
   'PlayStoreButton': 'assets/images/play_store_button.png',
   'MobWearLogo': 'assets/images/mobwear_logo.png',
@@ -46,34 +47,31 @@ Map<String, String> kImageAssets = {
 };
 
 // URLs
-const String kGitHubURL = 'https://github.com/thearthurdev';
-const String kLinkedInURL = 'https://www.linkedin.com/in/arthurdelords/';
-const String kTwitterURL = 'https://twitter.com/thearthurdev';
-const String kEmailURL = 'mailto:arthurdelords@gmail.com';
-const String kPortfolioURL = 'https://blog.thearthur.dev/arthurdev-portfolio';
-const String kBlogURL = 'https://blog.thearthur.dev';
-const String kMobWearGitHubURL = 'https://github.com/thearthurdev/mobwear';
-const String kMobWearPlayStoreURL =
-    'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear';
-const String kSneakPeakTwitterURL =
-    'https://twitter.com/_DeeArthur/status/1246287315707797505';
-const String kPlayaTwitterURL =
-    'https://twitter.com/_DeeArthur/status/1356754726809960449';
-const String kBlogRSSURL = 'https://blog.thearthur.dev/rss.xml';
-const String kResumeURL = 'https://docs.google.com/document/d/1a5JzACnhgusFIQYJzqKSFp4eWOEf7QlSmtY818kgrO0/edit?usp=sharing';
+Uri kGitHubURL = Uri(path: 'https://github.com/thearthurdev');
+Uri kLinkedInURL = Uri(path: 'https://www.linkedin.com/in/arthurdelords/');
+Uri kTwitterURL = Uri(path: 'https://twitter.com/thearthurdev');
+Uri kEmailURL = Uri(path: 'mailto:arthurdelords@gmail.com');
+Uri kPortfolioURL = Uri(path: 'https://blog.thearthur.dev/arthurdev-portfolio');
+Uri kBlogURL = Uri(path: 'https://blog.thearthur.dev');
+Uri kMobWearGitHubURL = Uri(path: 'https://github.com/thearthurdev/mobwear');
+Uri kMobWearPlayStoreURL = Uri(path: 'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear');
+Uri kSneakPeakTwitterURL = Uri(path: 'https://twitter.com/_DeeArthur/status/1246287315707797505');
+Uri kPlayaTwitterURL = Uri(path: 'https://twitter.com/_DeeArthur/status/1356754726809960449');
+Uri kBlogRSSURL = Uri(path: 'https://blog.thearthur.dev/rss.xml');
+Uri kResumeURL = Uri(path: 'https://docs.google.com/document/d/1a5JzACnhgusFIQYJzqKSFp4eWOEf7QlSmtY818kgrO0/edit?usp=sharing');
 
-const List<String> kBlogPostURLs = [
-  'https://blog.thearthur.dev/sharing-info-rich-links-of-your-flutter-website-using-meta-tags',
-  'https://blog.thearthur.dev/recreating-the-iconic-star-wars-intro-in-flutter',
-  'https://blog.thearthur.dev/how-to-migrate-your-whatsapp-chats-to-telegram',
+List<Uri> kBlogPostURLs = [
+  Uri(path: 'https://blog.thearthur.dev/sharing-info-rich-links-of-your-flutter-website-using-meta-tags'),
+  Uri(path: 'https://blog.thearthur.dev/recreating-the-iconic-star-wars-intro-in-flutter'),
+  Uri(path: 'https://blog.thearthur.dev/how-to-migrate-your-whatsapp-chats-to-telegram'),
 ];
 
 // Blog Posts
 const Map<String, String> kBlogPosts = {
-    'Apr 18': 'Sharing info-rich links of your Flutter Website using Meta Tags',
-    'Jan 31': 'Recreating the iconic Star Wars Intro in Flutter',
-    'Jan 14': 'How to Migrate your WhatsApp Chats to Telegram',
-  };
+  'Apr 18': 'Sharing info-rich links of your Flutter Website using Meta Tags',
+  'Jan 31': 'Recreating the iconic Star Wars Intro in Flutter',
+  'Jan 14': 'How to Migrate your WhatsApp Chats to Telegram',
+};
 
 // Colors
 const Color kPrimaryColor = Color(0xFFFFFFFF);

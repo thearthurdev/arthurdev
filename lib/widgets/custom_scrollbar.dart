@@ -3,8 +3,6 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/rendering.dart';
-
 class CustomScrollbar extends StatefulWidget {
   const CustomScrollbar({
     Key key,

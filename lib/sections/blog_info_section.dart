@@ -12,30 +12,34 @@ class BlogInfoSection extends StatelessWidget {
       height:
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
       padding: kIsDesktop(context)
-          ? null
+          ? EdgeInsets.symmetric(
+              horizontal: kScreenWidthAwareSize(25.0, context),
+            )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(100.0, context),
             ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          InfoActionWidget(
-            sectionTitle: 'Blog',
-            heading: 'What\'s new?\nSee my latest blog posts',
-            body: 'I write about tech tips, software development,'
-                '\nmy experiences and opinions now and then',
-            actionText: 'Visit blog',
-            onActionTap: () async {
-              String url = kBlogURL;
-              
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-        ],
+      child: FittedBox(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InfoActionWidget(
+              sectionTitle: 'Blog',
+              heading: 'What\'s new?\nSee my latest blog posts',
+              body: 'I write about tech tips, software development,'
+                  '\nmy experiences and opinions now and then',
+              actionText: 'Visit blog',
+              onActionTap: () async {
+                Uri url = kBlogURL;
+
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  throw 'Could not launchUrl $url';
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
