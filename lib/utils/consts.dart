@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:system_theme/system_theme.dart';
 
 const double kMaxWidth = 1360.0;
 
@@ -80,18 +81,58 @@ const Map<String, String> kBlogPosts = {
   'Jan 14': 'How to Migrate your WhatsApp Chats to Telegram',
 };
 
+bool isDarkMode(BuildContext context) {
+  return SystemTheme.isDarkMode;
+}
+
 // Colors
-const Color kPrimaryColor = Color(0xFFFFFFFF);
-const Color kPrimaryColorDark = Color(0xFF000000);
-const Color kPrimaryColorLight1 = Color(0xFFEAEAEA);
-const Color kPrimaryColorLight2 = Color(0xFFD2D2D2);
-const Color kAccentColor = Color(0xFFFFC279);
-const Color kAccentColorDeep = Color(0xFFE49A41);
-const Color kDividerColor = Color(0xFFC5C5C5);
-const Color kPrimaryTextColorLight = Color(0xFFEBEBEC);
-const Color kPrimaryTextColorDark = Color(0xFF000000);
-const Color kPrimaryTextDisabledColor = Color(0xFF666874);
-const Color kSectionInfoTextColor = Color(0xFF999AA2);
+Color kPrimaryColor(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFF2B2B2B) : Color(0xFFFFFFFF);
+}
+
+Color kPrimaryColorDark(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFF000000) : Color(0xFF000000);
+}
+
+Color kPrimaryColorLight1(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFF3B3B3B) : Color(0xFFEAEAEA);
+}
+
+Color kPrimaryColorLight2(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFF3B3B3B) : Color(0xFFD2D2D2);
+}
+
+Color kAccentColor(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFFFFC279) : Color(0xFFFFC279);
+}
+
+Color kAccentColorDeep(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFFE49A41) : Color(0xFFE49A41);
+}
+
+Color kDividerColor(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFFC5C5C5) : Color(0xFFC5C5C5);
+}
+
+Color kPrimaryTextColorLight(BuildContext context) {
+  return isDarkMode(context)
+      ? Color.fromARGB(255, 199, 199, 199)
+      : Color(0xFFEBEBEC);
+}
+
+Color kPrimaryTextColorDark(BuildContext context) {
+  return isDarkMode(context)
+      ? Color.fromARGB(255, 245, 245, 245)
+      : Color(0xFF000000);
+}
+
+Color kPrimaryTextDisabledColor(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFF666874) : Color(0xFF666874);
+}
+
+Color kSectionInfoTextColor(BuildContext context) {
+  return isDarkMode(context) ? Color(0xFF999AA2) : Color(0xFF999AA2);
+}
 
 // Animation Durations
 const Duration kVeryShortDuration = Duration(milliseconds: 100);
@@ -100,58 +141,74 @@ const Duration kMediumDuration = Duration(milliseconds: 600);
 const Duration kLongDuration = Duration(milliseconds: 900);
 
 // TextStyles
-const TextStyle kLargeHeaderTextStyle = TextStyle(
-  fontFamily: 'SquadaOne',
-  fontSize: 72.0,
-  letterSpacing: 1.0,
-  height: 0.9,
-  color: kPrimaryTextColorDark,
-);
+TextStyle kLargeHeaderTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'SquadaOne',
+    fontSize: 72.0,
+    letterSpacing: 1.0,
+    height: 0.9,
+    color: kPrimaryTextColorDark(context),
+  );
+}
 
-const TextStyle kHeaderTextStyleLight = TextStyle(
-  fontFamily: 'Sen',
-  fontSize: 22.0,
-  letterSpacing: -0.1,
-  color: kPrimaryTextColorLight,
-);
+TextStyle kHeaderTextStyleLight(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'Sen',
+    fontSize: 22.0,
+    letterSpacing: -0.1,
+    color: kPrimaryTextColorLight(context),
+  );
+}
 
-const TextStyle kHeaderTextStyleDark = TextStyle(
-  fontFamily: 'SquadaOne',
-  fontSize: 22.0,
-  letterSpacing: 1.0,
-  color: kPrimaryTextColorDark,
-);
+TextStyle kHeaderTextStyleDark(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'SquadaOne',
+    fontSize: 22.0,
+    letterSpacing: 1.0,
+    color: kPrimaryTextColorDark(context),
+  );
+}
 
-const TextStyle kTextFieldTextStyleDark = TextStyle(
-  fontFamily: 'Sen',
-  fontSize: 16.0,
-  color: kPrimaryTextColorDark,
-);
+TextStyle kTextFieldTextStyleDark(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'Sen',
+    fontSize: 16.0,
+    color: kPrimaryTextColorDark(context),
+  );
+}
 
-const TextStyle kSectionInfoTextStyle = TextStyle(
-  fontFamily: 'Sen',
-  fontSize: 16.0,
-  color: kPrimaryTextColorDark,
-);
+TextStyle kSectionInfoTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'Sen',
+    fontSize: 16.0,
+    color: kPrimaryTextColorDark(context),
+  );
+}
 
-const TextStyle kSectionHeaderTextStyle = TextStyle(
-  fontFamily: 'SquadaOne',
-  fontSize: 32.0,
-  color: kPrimaryTextColorDark,
-);
+TextStyle kSectionHeaderTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'SquadaOne',
+    fontSize: 32.0,
+    color: kPrimaryTextColorDark(context),
+  );
+}
 
-const TextStyle kActionButtonTextStyle = TextStyle(
-  fontFamily: 'Sen',
-  fontSize: 14.0,
-  letterSpacing: 0.5,
-  color: kAccentColor,
-  fontWeight: FontWeight.bold,
-);
+TextStyle kActionButtonTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'Sen',
+    fontSize: 14.0,
+    letterSpacing: 0.5,
+    color: kAccentColor(context),
+    fontWeight: FontWeight.bold,
+  );
+}
 
-const TextStyle kNavigationDestinationTextStyle = TextStyle(
-  fontFamily: 'Sen',
-  fontSize: 14.0,
-  letterSpacing: 2.1,
-  height: 0.9,
-  color: kSectionInfoTextColor,
-);
+TextStyle kNavigationDestinationTextStyle(BuildContext context) {
+  return TextStyle(
+    fontFamily: 'Sen',
+    fontSize: 14.0,
+    letterSpacing: 2.1,
+    height: 0.9,
+    color: kSectionInfoTextColor(context),
+  );
+}

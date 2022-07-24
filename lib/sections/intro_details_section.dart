@@ -22,8 +22,8 @@ class IntroDetailsSection extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
+            kPrimaryColorLight1(context),
+            kPrimaryColorLight2(context),
           ],
         ),
       ),
@@ -44,7 +44,7 @@ class IntroDetailsSection extends StatelessWidget {
                 opacity: 0.02,
                 child: Icon(
                   Icons.person,
-                  color: kPrimaryColorDark,
+                  color: kPrimaryColorDark(context),
                   size: 800.0,
                 ),
               ),
@@ -61,7 +61,7 @@ class IntroDetailsSection extends StatelessWidget {
   Widget _buildMobileView(BuildContext context) {
     return Container(
       key: kIntroSectionKey,
-      color: kPrimaryColorLight1,
+      color: kPrimaryColorLight1(context),
       child: Stack(
         children: [
           Positioned(
@@ -71,7 +71,7 @@ class IntroDetailsSection extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.person,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 600.0,
               ),
             ),

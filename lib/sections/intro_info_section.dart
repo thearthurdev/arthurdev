@@ -33,12 +33,6 @@ class IntroInfoSection extends StatelessWidget {
                 if (!await launchUrl(url)) {
                   throw 'Could not launch $url';
                 }
-
-                // if (await canLaunchUrl(url)) {
-                //   await launchUrl(url);
-                // } else {
-                //   throw 'Could not launchUrl $url';
-                // }
               },
             ),
           ],

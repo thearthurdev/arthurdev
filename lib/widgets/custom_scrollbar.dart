@@ -176,7 +176,7 @@ class ScrollbarHandle extends StatelessWidget {
           width: 6.0,
           margin: EdgeInsets.only(top: 8.0),
           decoration: BoxDecoration(
-            color: kAccentColor,
+            color: kAccentColor(context),
             borderRadius: BorderRadius.all(
               Radius.circular(3.0),
             ),

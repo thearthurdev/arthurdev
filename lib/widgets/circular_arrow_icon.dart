@@ -11,14 +11,14 @@ class CircularArrowIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: kDividerColor,
+        color: kDividerColor(context),
         shape: BoxShape.circle,
       ),
       padding: EdgeInsets.all(8.0),
       child: Icon(
         MyIcons.arrow_right,
         size: 16.0,
-        color: kPrimaryColorDark,
+        color: kPrimaryColorDark(context),
       ),
     );
   }

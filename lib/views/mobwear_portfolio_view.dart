@@ -14,7 +14,7 @@ class MobWearPortfolioView extends StatelessWidget {
 
   Widget buildDesktopView(BuildContext context) {
     return Container(
-      color: kPrimaryColorLight2,
+      color: kPrimaryColorLight2(context),
       child: Stack(
         children: [
           Positioned(
@@ -24,7 +24,7 @@ class MobWearPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.phone_android_rounded,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 800.0,
               ),
             ),
@@ -55,10 +55,8 @@ class MobWearPortfolioView extends StatelessWidget {
                           onTap: () async {
                             Uri url = kMobWearGitHubURL;
 
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launchUrl $url';
+                            if (!await launchUrl(url)) {
+                              throw 'Could not launch $url';
                             }
                           },
                         ),
@@ -66,10 +64,8 @@ class MobWearPortfolioView extends StatelessWidget {
                           onTap: () async {
                             Uri url = kMobWearPlayStoreURL;
 
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launchUrl $url';
+                            if (!await launchUrl(url)) {
+                              throw 'Could not launch $url';
                             }
                           },
                           child: Container(
@@ -99,8 +95,8 @@ class MobWearPortfolioView extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomRight,
           colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
+            kPrimaryColorLight1(context),
+            kPrimaryColorLight2(context),
           ],
         ),
       ),
@@ -113,7 +109,7 @@ class MobWearPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.phone_android_rounded,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 400.0,
               ),
             ),
@@ -139,10 +135,8 @@ class MobWearPortfolioView extends StatelessWidget {
                           onTap: () async {
                             Uri url = kMobWearGitHubURL;
 
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launchUrl $url';
+                            if (!await launchUrl(url)) {
+                              throw 'Could not launch $url';
                             }
                           },
                         ),
@@ -150,10 +144,8 @@ class MobWearPortfolioView extends StatelessWidget {
                           onTap: () async {
                             Uri url = kMobWearPlayStoreURL;
 
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                            } else {
-                              throw 'Could not launchUrl $url';
+                            if (!await launchUrl(url)) {
+                              throw 'Could not launch $url';
                             }
                           },
                           child: Container(

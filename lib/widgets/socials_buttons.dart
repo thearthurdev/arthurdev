@@ -38,10 +38,11 @@ class SocialsButtons extends StatelessWidget {
                 message: _socialsToolTips[i],
                 waitDuration: kMediumDuration,
                 decoration: BoxDecoration(
-                  color: kPrimaryColorLight1,
+                  color: kPrimaryColorLight1(context),
                   borderRadius: kBorderRadius,
                 ),
-                textStyle: kSectionInfoTextStyle.copyWith(fontSize: 12.0),
+                textStyle:
+                    kSectionInfoTextStyle(context).copyWith(fontSize: 12.0),
                 padding: EdgeInsets.all(8.0),
                 preferBelow: true,
                 verticalOffset: 32.0,
@@ -51,17 +52,15 @@ class SocialsButtons extends StatelessWidget {
                     customBorder: CircleBorder(),
                     onTap: () async {
                       Uri url = _socials.keys.elementAt(i);
-                      if (await canLaunchUrl(url)) {
-                        await launchUrl(url);
-                      } else {
-                        throw 'Could not launchUrl $url';
+                      if (!await launchUrl(url)) {
+                        throw 'Could not launch $url';
                       }
                     },
                     child: Container(
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(
                         _socials.values.elementAt(i),
-                        color: color ?? kPrimaryTextColorLight,
+                        color: color ?? kPrimaryTextColorLight(context),
                         size: size ?? null,
                       ),
                     ),

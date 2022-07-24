@@ -14,7 +14,7 @@ class SneakPeakPortfolioView extends StatelessWidget {
 
   Widget buildDesktopView(BuildContext context) {
     return Container(
-      color: kPrimaryColorLight2,
+      color: kPrimaryColorLight2(context),
       child: Stack(
         children: [
           Positioned(
@@ -24,7 +24,7 @@ class SneakPeakPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.shopping_cart_outlined,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 600.0,
               ),
             ),
@@ -49,10 +49,8 @@ class SneakPeakPortfolioView extends StatelessWidget {
                       onTap: () async {
                         Uri url = kSneakPeakTwitterURL;
 
-                        if (await canLaunchUrl(url)) {
-                          await launchUrl(url);
-                        } else {
-                          throw 'Could not launchUrl $url';
+                        if (!await launchUrl(url)) {
+                          throw 'Could not launch $url';
                         }
                       },
                     ),
@@ -76,8 +74,8 @@ class SneakPeakPortfolioView extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
+            kPrimaryColorLight1(context),
+            kPrimaryColorLight2(context),
           ],
         ),
       ),
@@ -90,7 +88,7 @@ class SneakPeakPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.shopping_cart_outlined,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 350.0,
               ),
             ),
@@ -120,10 +118,8 @@ class SneakPeakPortfolioView extends StatelessWidget {
                   onTap: () async {
                     Uri url = kSneakPeakTwitterURL;
 
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
-                    } else {
-                      throw 'Could not launchUrl $url';
+                    if (!await launchUrl(url)) {
+                      throw 'Could not launch $url';
                     }
                   },
                 ),

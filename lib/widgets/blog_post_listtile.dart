@@ -18,18 +18,18 @@ class BlogPostListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return kIsDesktop(context) ? _buildDesktopView() : _buildMobileView();
+    return kIsDesktop(context)
+        ? _buildDesktopView(context)
+        : _buildMobileView(context);
   }
 
   Future<void> _openBlogPost() async {
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launchUrl $url';
+    if (!await launchUrl(url)) {
+      throw 'Could not launch $url';
     }
   }
 
-  Material _buildDesktopView() {
+  Material _buildDesktopView(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -43,7 +43,7 @@ class BlogPostListTile extends StatelessWidget {
                 width: 80.0,
                 child: Text(
                   date,
-                  style: kSectionInfoTextStyle,
+                  style: kSectionInfoTextStyle(context),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
@@ -54,7 +54,7 @@ class BlogPostListTile extends StatelessWidget {
                     title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: kHeaderTextStyleDark,
+                    style: kHeaderTextStyleDark(context),
                   ),
                 ),
               ),
@@ -67,7 +67,7 @@ class BlogPostListTile extends StatelessWidget {
     );
   }
 
-  Widget _buildMobileView() {
+  Widget _buildMobileView(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -82,7 +82,8 @@ class BlogPostListTile extends StatelessWidget {
                 child: FittedBox(
                   child: Text(
                     date,
-                    style: kSectionInfoTextStyle.copyWith(fontSize: 16.0),
+                    style:
+                        kSectionInfoTextStyle(context).copyWith(fontSize: 16.0),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -95,7 +96,8 @@ class BlogPostListTile extends StatelessWidget {
                     title,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: kHeaderTextStyleDark.copyWith(fontSize: 26.0),
+                    style:
+                        kHeaderTextStyleDark(context).copyWith(fontSize: 26.0),
                   ),
                 ),
               ),

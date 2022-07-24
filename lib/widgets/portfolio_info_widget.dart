@@ -20,27 +20,27 @@ class PortfolioInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (toolTip == null) return buildView();
+    if (toolTip == null) return buildView(context);
 
     return Tooltip(
       message: toolTip,
       waitDuration: kMediumDuration,
       decoration: BoxDecoration(
-        color: kPrimaryColorDark,
+        color: kPrimaryColorDark(context),
         borderRadius: kBorderRadius,
       ),
-      textStyle: kSectionInfoTextStyle.copyWith(
+      textStyle: kSectionInfoTextStyle(context).copyWith(
         fontSize: 12.0,
-        color: kPrimaryTextColorLight,
+        color: kPrimaryTextColorLight(context),
       ),
       padding: EdgeInsets.all(8.0),
       preferBelow: true,
       verticalOffset: 32.0,
-      child: buildView(),
+      child: buildView(context),
     );
   }
 
-  InkWell buildView() {
+  InkWell buildView(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -70,12 +70,13 @@ class PortfolioInfoWidget extends StatelessWidget {
                 children: [
                   Flexible(
                     child: FittedBox(
-                      child: Text(title, style: kLargeHeaderTextStyle),
+                      child: Text(title, style: kLargeHeaderTextStyle(context)),
                     ),
                   ),
                   SizedBox(height: 4.0),
                   Flexible(
-                    child: Text(description, style: kSectionInfoTextStyle),
+                    child: Text(description,
+                        style: kSectionInfoTextStyle(context)),
                   ),
                 ],
               ),

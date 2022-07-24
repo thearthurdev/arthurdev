@@ -32,9 +32,9 @@ class ArthurDev extends StatelessWidget {
       title: 'ArthurDev',
       home: HomePageBuilder(),
       theme: ThemeData(
-        primaryColor: kPrimaryColor,
+        primaryColor: kPrimaryColor(context),
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kAccentColor),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kAccentColor(context)),
       ),
       builder: (context, child) {
         return ScrollConfiguration(

@@ -153,7 +153,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: kPrimaryColor(context),
       body: SafeArea(
         child: Listener(
           onPointerSignal: (pointerSignal) {
@@ -257,7 +257,7 @@ class InfoPanel extends StatelessWidget {
       controller: secondaryScrollController,
       child: Container(
         width: kScreenWidthAwareSize(300.0, context),
-        color: kPrimaryColor,
+        color: kPrimaryColor(context),
         padding: EdgeInsets.only(
           left: kScreenWidthAwareSize(60.0, context),
           right: kScreenWidthAwareSize(40.0, context),

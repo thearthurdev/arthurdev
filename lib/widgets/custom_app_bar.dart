@@ -25,7 +25,7 @@ class CustomAppBar extends StatelessWidget {
       alignment:
           showAppBar ? Alignment.topCenter : Alignment(0.0, -kToolbarHeight),
       child: Material(
-        color: kPrimaryColor,
+        color: kPrimaryColor(context),
         elevation: 5.0,
         child: Container(
           height: kToolbarHeight,

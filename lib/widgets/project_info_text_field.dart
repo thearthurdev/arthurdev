@@ -18,21 +18,21 @@ class ProjectInfoTextField extends StatelessWidget {
       controller: controller,
       autocorrect: false,
       textCapitalization: TextCapitalization.words,
-      cursorColor: kAccentColorDeep,
+      cursorColor: kAccentColorDeep(context),
       keyboardType: inputType,
-      style: kTextFieldTextStyleDark,
+      style: kTextFieldTextStyleDark(context),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: kTextFieldTextStyleDark,
+        hintStyle: kTextFieldTextStyleDark(context),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: kDividerColor,
+            color: kDividerColor(context),
             width: 1.0,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: kDividerColor,
+            color: kDividerColor(context),
             width: 1.0,
           ),
         ),

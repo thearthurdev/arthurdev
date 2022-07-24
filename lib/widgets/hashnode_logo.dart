@@ -19,7 +19,7 @@ class HashnodeLogo extends StatelessWidget {
           width: size ?? 600.0,
           height: size ?? 600.0,
           decoration: BoxDecoration(
-            color: kPrimaryColorDark,
+            color: kPrimaryColorDark(context),
             borderRadius:
                 BorderRadius.circular(size != null ? size * 0.15 : 100.0),
           ),
@@ -28,7 +28,7 @@ class HashnodeLogo extends StatelessWidget {
               width: size != null ? size * 0.5 : 300.0,
               height: size != null ? size * 0.5 : 300.0,
               decoration: BoxDecoration(
-                color: kPrimaryColorLight2,
+                color: kPrimaryColorLight2(context),
                 shape: BoxShape.circle,
               ),
             ),

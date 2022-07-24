@@ -33,7 +33,7 @@ class InfoActionWidget extends StatelessWidget {
                   '— $sectionTitle',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: kSectionInfoTextStyle,
+                  style: kSectionInfoTextStyle(context),
                 ),
           SizedBox(height: sectionTitle == null ? 0.0 : 8.0),
           heading == null
@@ -42,7 +42,7 @@ class InfoActionWidget extends StatelessWidget {
                   heading.toUpperCase(),
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
-                  style: kSectionHeaderTextStyle,
+                  style: kSectionHeaderTextStyle(context),
                 ),
           SizedBox(height: body == null ? 0.0 : 16.0),
           body == null
@@ -51,14 +51,14 @@ class InfoActionWidget extends StatelessWidget {
                   body,
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
-                  style: kSectionInfoTextStyle,
+                  style: kSectionInfoTextStyle(context),
                 ),
           SizedBox(height: actionText == null ? 0.0 : 32.0),
           actionText == null
               ? SizedBox()
               : Container(
                   decoration: BoxDecoration(
-                    color: kPrimaryColorDark,
+                    color: kPrimaryColorDark(context),
                     borderRadius: kBorderRadius,
                   ),
                   child: Material(
@@ -79,7 +79,7 @@ class InfoActionWidget extends StatelessWidget {
                                 actionText.toUpperCase(),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: kActionButtonTextStyle,
+                                style: kActionButtonTextStyle(context),
                               ),
                             ),
                           ],

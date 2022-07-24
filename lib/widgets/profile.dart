@@ -95,14 +95,14 @@ class Profile extends StatelessWidget {
           padding: const EdgeInsets.only(left: 3.0),
           child: Text(
             'Meet',
-            style: kSectionInfoTextStyle.copyWith(
+            style: kSectionInfoTextStyle(context).copyWith(
               fontSize: kIsDesktop(context) ? 16.0 : 12.0,
             ),
           ),
         ),
         Text(
           'Delords\nArthur',
-          style: kLargeHeaderTextStyle.copyWith(
+          style: kLargeHeaderTextStyle(context).copyWith(
             fontSize: kIsDesktop(context) ? 72.0 : 54.0,
           ),
         ),
@@ -110,7 +110,7 @@ class Profile extends StatelessWidget {
           width: 46.0,
           height: 8.0,
           margin: const EdgeInsets.only(left: 2.0),
-          color: kAccentColorDeep,
+          color: kAccentColorDeep(context),
         ),
       ],
     );

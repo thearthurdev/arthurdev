@@ -13,7 +13,7 @@ class MoreSoonPortfolioView extends StatelessWidget {
 
   Widget buildDesktopView(BuildContext context) {
     return Container(
-      color: kPrimaryColorLight1,
+      color: kPrimaryColorLight1(context),
       child: Stack(
         children: [
           Positioned(
@@ -23,7 +23,7 @@ class MoreSoonPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.library_add_rounded,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 800.0,
               ),
             ),
@@ -47,8 +47,8 @@ class MoreSoonPortfolioView extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomRight,
           colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
+            kPrimaryColorLight1(context),
+            kPrimaryColorLight2(context),
           ],
         ),
       ),
@@ -61,7 +61,7 @@ class MoreSoonPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.library_add_rounded,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 400.0,
               ),
             ),

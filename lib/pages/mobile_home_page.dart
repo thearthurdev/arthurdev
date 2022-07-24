@@ -87,6 +87,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kPrimaryColor(context),
         body: Listener(
           onPointerSignal: (pointerSignal) {
             _handleWheelScrollEvents(pointerSignal);
@@ -97,7 +98,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
             slivers: [
               SliverAppBar(
                 centerTitle: true,
-                backgroundColor: kPrimaryColorDark,
+                backgroundColor: kPrimaryColorDark(context),
                 title: ArthurDevBanner(scrollController: _scrollController),
                 actions: [
                   NavigationMenu(

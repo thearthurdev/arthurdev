@@ -49,7 +49,7 @@ class ArthurDevBanner extends StatelessWidget {
                   maxLines: 1,
                   softWrap: false,
                   overflow: TextOverflow.fade,
-                  style: kHeaderTextStyleLight.copyWith(
+                  style: kHeaderTextStyleLight(context).copyWith(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),

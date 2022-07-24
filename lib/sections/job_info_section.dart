@@ -29,10 +29,8 @@ class JobInfoSection extends StatelessWidget {
               actionText: 'Email me',
               onActionTap: () async {
                 Uri url = Uri.parse('$kEmailURL?subject=Job Offer');
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                } else {
-                  throw 'Could not launchUrl $url';
+                if (!await launchUrl(url)) {
+                  throw 'Could not launch $url';
                 }
               },
             ),

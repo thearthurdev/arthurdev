@@ -29,7 +29,7 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
   Widget build(BuildContext context) {
     return Container(
       key: kIsDesktop(context) ? null : kJobSectionKey,
-      color: kPrimaryColorLight2,
+      color: kPrimaryColorLight2(context),
       child: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Stack(
@@ -43,7 +43,7 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
                 opacity: 0.02,
                 child: Icon(
                   Icons.work,
-                  color: kPrimaryColorDark,
+                  color: kPrimaryColorDark(context),
                   size: kIsDesktop(context) ? 600.0 : 400.0,
                 ),
               ),
@@ -74,7 +74,7 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
                         '\nLet me know here.',
                         maxLines: 4,
                         overflow: TextOverflow.ellipsis,
-                        style: kSectionHeaderTextStyle,
+                        style: kSectionHeaderTextStyle(context),
                       ),
                       Container(
                         constraints: BoxConstraints(maxWidth: 420.0),
@@ -103,19 +103,17 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
                                     String email = _emailFieldController.text;
 
                                     Uri url = Uri.parse(
-                                            "$kEmailURL?subject=Project Collaboration Proposal"
-                                            "&body=Hi Delords,%0D%0A%0D%0A"
-                                            "My name's ${name.split(" ")[0]}"
-                                            " and I'd like to collaborate with you on a project.%0D%0A%0D%0A"
-                                            "[Please tell me about your idea here]%0D%0A%0D%0A"
-                                            "Here's my fancy email, $email. Reach back to me and let's talk!%0D%0A%0D%0A"
-                                            "Regards,%0D%0A"
-                                            "$name.%0D%0A%0D%0A");
+                                        "$kEmailURL?subject=Project Collaboration Proposal"
+                                        "&body=Hi Delords,%0D%0A%0D%0A"
+                                        "My name's ${name.split(" ")[0]}"
+                                        " and I'd like to collaborate with you on a project.%0D%0A%0D%0A"
+                                        "[Please tell me about your idea here]%0D%0A%0D%0A"
+                                        "Here's my fancy email, $email. Reach back to me and let's talk!%0D%0A%0D%0A"
+                                        "Regards,%0D%0A"
+                                        "$name.%0D%0A%0D%0A");
 
-                                    if (await canLaunchUrl(url)) {
-                                      await launchUrl(url);
-                                    } else {
-                                      throw 'Could not launchUrl $url';
+                                    if (!await launchUrl(url)) {
+                                      throw 'Could not launch $url';
                                     }
                                   },
                                   borderRadius: kBorderRadius,
@@ -131,7 +129,8 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
                                             'Tell me about your idea',
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
-                                            style: kTextFieldTextStyleDark,
+                                            style: kTextFieldTextStyleDark(
+                                                context),
                                           ),
                                         ),
                                         SizedBox(width: 24.0),

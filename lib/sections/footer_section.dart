@@ -7,13 +7,15 @@ import 'package:flutter/material.dart';
 class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return kIsDesktop(context) ? _buildDesktopView() : _buildMobileView();
+    return kIsDesktop(context)
+        ? _buildDesktopView(context)
+        : _buildMobileView(context);
   }
 
-  Widget _buildDesktopView() {
+  Widget _buildDesktopView(BuildContext context) {
     return Container(
       height: kToolbarHeight * 5.0,
-      color: kPrimaryColorDark,
+      color: kPrimaryColorDark(context),
       padding: EdgeInsets.all(24.0),
       child: Center(
         child: FittedBox(
@@ -32,12 +34,13 @@ class FooterSection extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   text: 'Thanks for dropping by,',
-                  style: kHeaderTextStyleLight.copyWith(fontSize: 16.0),
+                  style:
+                      kHeaderTextStyleLight(context).copyWith(fontSize: 16.0),
                   children: [
                     TextSpan(
                       text: ' visit again soon!',
-                      style: kSectionInfoTextStyle.copyWith(
-                          fontSize: 14.0, color: kAccentColor),
+                      style: kSectionInfoTextStyle(context).copyWith(
+                          fontSize: 14.0, color: kAccentColor(context)),
                     ),
                   ],
                 ),
@@ -54,10 +57,10 @@ class FooterSection extends StatelessWidget {
     );
   }
 
-  Widget _buildMobileView() {
+  Widget _buildMobileView(BuildContext context) {
     return Container(
       height: kToolbarHeight * 2.0,
-      color: kPrimaryColorDark,
+      color: kPrimaryColorDark(context),
       padding: EdgeInsets.all(24.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,16 +85,16 @@ class FooterSection extends StatelessWidget {
                       children: [
                         Text(
                           'Thanks for dropping by,',
-                          style: kSectionInfoTextStyle.copyWith(
+                          style: kSectionInfoTextStyle(context).copyWith(
                             fontSize: 14.0,
-                            color: kPrimaryColor,
+                            color: kPrimaryTextColorDark(context),
                           ),
                         ),
                         Text(
                           ' visit again soon!',
-                          style: kSectionInfoTextStyle.copyWith(
+                          style: kSectionInfoTextStyle(context).copyWith(
                             fontSize: 14.0,
-                            color: kAccentColor,
+                            color: kAccentColor(context),
                           ),
                         ),
                       ],

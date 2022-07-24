@@ -19,8 +19,8 @@ class BlogDetailsSection extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomCenter,
           colors: [
-            kPrimaryColorLight1,
-            kPrimaryColorLight2,
+            kPrimaryColorLight1(context),
+            kPrimaryColorLight2(context),
           ],
         ),
       ),
@@ -52,7 +52,7 @@ class BlogDetailsSection extends StatelessWidget {
   Widget _buildMobileView(BuildContext context) {
     return Container(
       key: kBlogSectionKey,
-      color: kPrimaryColorLight1,
+      color: kPrimaryColorLight1(context),
       child: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Container(
@@ -99,7 +99,7 @@ class BlogDetailsSection extends StatelessWidget {
         return Container(
           height: 1.0,
           margin: EdgeInsets.symmetric(horizontal: 8.0),
-          color: kDividerColor,
+          color: kDividerColor(context),
         );
       },
     );

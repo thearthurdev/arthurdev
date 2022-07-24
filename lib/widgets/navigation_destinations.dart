@@ -38,7 +38,7 @@ class NavigationDestinations extends StatelessWidget {
                   child: Center(
                     child: Text(
                       kNavigationDestinations[i].toUpperCase(),
-                      style: kNavigationDestinationTextStyle,
+                      style: kNavigationDestinationTextStyle(context),
                     ),
                   ),
                 ),

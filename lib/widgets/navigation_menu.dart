@@ -11,14 +11,14 @@ class NavigationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuTheme(
       data: PopupMenuThemeData(
-        color: kPrimaryColor,
+        color: kPrimaryColor(context),
         shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
       ),
       child: PopupMenuButton(
         tooltip: 'Navigation Menu',
         icon: Icon(
           Icons.menu_rounded,
-          color: kPrimaryTextColorLight,
+          color: kPrimaryTextColorLight(context),
         ),
         onSelected: (i) {
           scrollController.animateTo(
@@ -36,18 +36,18 @@ class NavigationMenu extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(16.0, 4.0, 4.0, 0.0),
                       child: Text(
                         kNavigationDestinations[i].toUpperCase(),
-                        style: kNavigationDestinationTextStyle.copyWith(
+                        style: kNavigationDestinationTextStyle(context).copyWith(
                           fontSize: 14.0,
-                          color: kPrimaryColorDark,
+                          color: kPrimaryTextColorDark(context),
                         ),
                       ),
                     )
                   : Column(
                       children: [
-                        Divider(color: kDividerColor),
+                        Divider(color: kDividerColor(context)),
                         Container(
                           child: SocialsButtons(
-                            color: kPrimaryColorDark,
+                            color: kPrimaryTextColorDark(context),
                             size: 18.0,
                           ),
                         ),

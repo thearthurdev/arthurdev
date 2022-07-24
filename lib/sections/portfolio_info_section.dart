@@ -29,10 +29,8 @@ class PortfolioInfoSection extends StatelessWidget {
               actionText: 'Explore more',
               onActionTap: () async {
                 Uri url = kPortfolioURL;
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                } else {
-                  throw 'Could not launchUrl $url';
+                if (!await launchUrl(url)) {
+                  throw 'Could not launch $url';
                 }
               },
             ),

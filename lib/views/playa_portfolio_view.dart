@@ -14,7 +14,7 @@ class PlayaPortfolioView extends StatelessWidget {
 
   Widget buildDesktopView(BuildContext context) {
     return Container(
-      color: kPrimaryColorLight1,
+      color: kPrimaryColorLight1(context),
       child: Stack(
         children: [
           Positioned(
@@ -24,7 +24,7 @@ class PlayaPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.play_circle_outline_rounded,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 800.0,
               ),
             ),
@@ -33,19 +33,18 @@ class PlayaPortfolioView extends StatelessWidget {
             top: 90.0,
             left: 120.0,
             child: PortfolioInfoWidget(
-                title: 'Playa',
-                description: 'For music that looks as\ngood as it sounds',
-                toolTip:
-                    'Click to see the mockup in its full\ntwitter-compression glory',
-                onTap: () async {
-                  Uri url = kPlayaTwitterURL;
+              title: 'Playa',
+              description: 'For music that looks as\ngood as it sounds',
+              toolTip:
+                  'Click to see the mockup in its full\ntwitter-compression glory',
+              onTap: () async {
+                Uri url = kPlayaTwitterURL;
 
-                  if (await canLaunchUrl(url)) {
-                    await launchUrl(url);
-                  } else {
-                    throw 'Could not launchUrl $url';
-                  }
-                }),
+                if (!await launchUrl(url)) {
+                  throw 'Could not launch $url';
+                }
+              },
+            ),
           ),
           Positioned(
             bottom: kScreenHeightAwareSize(40.0, context),
@@ -87,8 +86,8 @@ class PlayaPortfolioView extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomCenter,
           colors: [
-            kPrimaryColorLight2,
-            kPrimaryColorLight1,
+            kPrimaryColorLight2(context),
+            kPrimaryColorLight1(context),
           ],
         ),
       ),
@@ -101,7 +100,7 @@ class PlayaPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.play_circle_outline_rounded,
-                color: kPrimaryColorDark,
+                color: kPrimaryColorDark(context),
                 size: 800.0,
               ),
             ),
@@ -110,19 +109,18 @@ class PlayaPortfolioView extends StatelessWidget {
             top: 32.0,
             left: 32.0,
             child: PortfolioInfoWidget(
-                title: 'Playa',
-                description: 'For music that looks as\ngood as it sounds',
-                toolTip:
-                    'Click to see the mockup in its full\ntwitter-compression glory',
-                onTap: () async {
-                  Uri url = kPlayaTwitterURL;
+              title: 'Playa',
+              description: 'For music that looks as\ngood as it sounds',
+              toolTip:
+                  'Click to see the mockup in its full\ntwitter-compression glory',
+              onTap: () async {
+                Uri url = kPlayaTwitterURL;
 
-                  if (await canLaunchUrl(url)) {
-                    await launchUrl(url);
-                  } else {
-                    throw 'Could not launchUrl $url';
-                  }
-                }),
+                if (!await launchUrl(url)) {
+                  throw 'Could not launch $url';
+                }
+              },
+            ),
           ),
           Positioned(
             top: kScreenHeightAwareSize(120.0, context),

@@ -15,11 +15,11 @@ class BuiltWithFlutter extends StatelessWidget {
         RichText(
           text: TextSpan(
             text: 'Built with ',
-            style: kHeaderTextStyleLight.copyWith(fontSize: 12.0),
+            style: kHeaderTextStyleLight(context).copyWith(fontSize: 12.0),
             children: [
               TextSpan(
                 text: 'Flutter ',
-                style: kActionButtonTextStyle.copyWith(
+                style: kActionButtonTextStyle(context).copyWith(
                     fontSize: 12.0, color: Colors.blue[400]),
               ),
             ],
