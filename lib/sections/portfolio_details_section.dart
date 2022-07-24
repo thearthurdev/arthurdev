@@ -50,59 +50,49 @@ class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _currentPage > 0
-                    ? Tooltip(
-                        message: "Back",
-                        verticalOffset: 40.0,
-                        waitDuration: Duration(milliseconds: 700),
-                        child: PageViewActionButton(
-                          Icons.arrow_back_ios_rounded,
-                          onTap: () {
-                            setState(() {
-                              _currentPage = (_pageController.page - 1).toInt();
-                            });
+                    ? PageViewActionButton(
+                      Icons.arrow_back_ios_rounded,
+                      onTap: () {
+                        setState(() {
+                          _currentPage = (_pageController.page - 1).toInt();
+                        });
 
-                            _pageController
-                                .animateToPage(
-                              _currentPage,
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.fastOutSlowIn,
-                            )
-                                .whenComplete(
-                              () {
-                                context
-                                    .read<HomePageProvider>()
-                                    .changePortfolioPage(_currentPage);
-                              },
-                            );
+                        _pageController
+                            .animateToPage(
+                          _currentPage,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.fastOutSlowIn,
+                        )
+                            .whenComplete(
+                          () {
+                            context
+                                .read<HomePageProvider>()
+                                .changePortfolioPage(_currentPage);
                           },
-                        ),
-                      )
+                        );
+                      },
+                    )
                     : SizedBox.shrink(),
                 _currentPage < 3
-                    ? Tooltip(
-                        message: "Next",
-                        verticalOffset: 40.0,
-                        waitDuration: Duration(milliseconds: 700),
-                        child: PageViewActionButton(
-                            Icons.arrow_forward_ios_rounded, onTap: () {
-                          setState(() {
-                            _currentPage = (_pageController.page + 1).toInt();
-                          });
-                          _pageController
-                              .animateToPage(
-                            _currentPage,
-                            duration: Duration(milliseconds: 500),
-                            curve: Curves.fastOutSlowIn,
-                          )
-                              .whenComplete(
-                            () {
-                              context
-                                  .read<HomePageProvider>()
-                                  .changePortfolioPage(_currentPage);
-                            },
-                          );
-                        }),
-                      )
+                    ? PageViewActionButton(Icons.arrow_forward_ios_rounded,
+                        onTap: () {
+                        setState(() {
+                          _currentPage = (_pageController.page + 1).toInt();
+                        });
+                        _pageController
+                            .animateToPage(
+                          _currentPage,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.fastOutSlowIn,
+                        )
+                            .whenComplete(
+                          () {
+                            context
+                                .read<HomePageProvider>()
+                                .changePortfolioPage(_currentPage);
+                          },
+                        );
+                      })
                     : SizedBox.shrink(),
               ],
             ),
