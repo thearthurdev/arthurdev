@@ -13,7 +13,7 @@ class JobInfoSection extends StatelessWidget {
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
       padding: kIsDesktop(context)
           ? EdgeInsets.symmetric(
-              horizontal: kScreenWidthAwareSize(25.0, context),
+              horizontal: kScreenWidthAwareSize(50.0, context),
             )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(160.0, context),
@@ -28,7 +28,7 @@ class JobInfoSection extends StatelessWidget {
               body: 'I am looking for a part-time job\nor a freelance project',
               actionText: 'Email me',
               onActionTap: () async {
-                Uri url = Uri(path: '$kEmailURL?subject=Job Offer');
+                Uri url = Uri.parse('$kEmailURL?subject=Job Offer');
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url);
                 } else {

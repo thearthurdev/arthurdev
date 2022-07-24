@@ -14,16 +14,6 @@ class MoreSoonPortfolioView extends StatelessWidget {
   Widget buildDesktopView(BuildContext context) {
     return Container(
       color: kPrimaryColorLight1,
-      // decoration: BoxDecoration(
-      //   gradient: LinearGradient(
-      //     begin: Alignment.topCenter,
-      //     end: Alignment.bottomRight,
-      //     colors: [
-      //       kPrimaryColorLight1,
-      //       kPrimaryColorLight2,
-      //     ],
-      //   ),
-      // ),
       child: Stack(
         children: [
           Positioned(

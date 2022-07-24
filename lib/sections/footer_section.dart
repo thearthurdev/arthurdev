@@ -1,5 +1,6 @@
 import 'package:arthurdev/utils/consts.dart';
 import 'package:arthurdev/utils/responsive_view_util.dart';
+import 'package:arthurdev/widgets/built_with_flutter.dart';
 import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
 
@@ -44,29 +45,7 @@ class FooterSection extends StatelessWidget {
               SizedBox(height: 32.0),
               SocialsButtons(),
               SizedBox(height: 32.0),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                      text: 'Built with ',
-                      style: kHeaderTextStyleLight.copyWith(fontSize: 12.0),
-                      children: [
-                        TextSpan(
-                          text: 'Flutter ',
-                          style: kActionButtonTextStyle.copyWith(
-                              fontSize: 12.0, color: Colors.blue[400]),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Icon(
-                    Icons.favorite,
-                    color: Colors.blue[400],
-                    size: 16.0,
-                  )
-                ],
-              ),
+              BuiltWithFlutter(),
               SizedBox(height: 16.0),
             ],
           ),
@@ -123,7 +102,13 @@ class FooterSection extends StatelessWidget {
             ),
           ),
           SizedBox(width: 32.0),
-          Flexible(child: SocialsButtons(size: 20.0)),
+          Flexible(
+              child: Column(
+            children: [
+              SocialsButtons(size: 20.0),
+              BuiltWithFlutter(),
+            ],
+          )),
         ],
       ),
     );

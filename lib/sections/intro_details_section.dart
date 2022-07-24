@@ -28,9 +28,9 @@ class IntroDetailsSection extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.fromLTRB(
-        kScreenWidthAwareSize(90.0, context),
+        kScreenWidthAwareSize(100.0, context),
         kScreenHeightAwareSize(20.0, context),
-        kScreenWidthAwareSize(90.0, context),
+        kScreenWidthAwareSize(100.0, context),
         kScreenHeightAwareSize(50.0, context),
       ),
       child: FittedBox(

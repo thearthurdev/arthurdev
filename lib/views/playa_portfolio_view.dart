@@ -15,20 +15,10 @@ class PlayaPortfolioView extends StatelessWidget {
   Widget buildDesktopView(BuildContext context) {
     return Container(
       color: kPrimaryColorLight1,
-      // decoration: BoxDecoration(
-      //   gradient: LinearGradient(
-      //     begin: Alignment.topRight,
-      //     end: Alignment.bottomCenter,
-      //     colors: [
-      //       kPrimaryColorLight2,
-      //       kPrimaryColorLight1,
-      //     ],
-      //   ),
-      // ),
       child: Stack(
         children: [
           Positioned(
-            top: -kScreenHeight(context) * 0.4,
+            top: -kScreenHeight(context) * 0.2,
             left: -160.0,
             child: Opacity(
               opacity: 0.02,
@@ -40,8 +30,8 @@ class PlayaPortfolioView extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 32.0,
-            left: 62.0,
+            top: 90.0,
+            left: 120.0,
             child: PortfolioInfoWidget(
                 title: 'Playa',
                 description: 'For music that looks as\ngood as it sounds',
@@ -58,28 +48,28 @@ class PlayaPortfolioView extends StatelessWidget {
                 }),
           ),
           Positioned(
-            top: kScreenHeightAwareSize(200.0, context),
-            left: kScreenWidthAwareSize(188.0, context),
+            bottom: kScreenHeightAwareSize(40.0, context),
+            left: kScreenWidthAwareSize(-150.0, context),
             child: FittedBox(
               child: Container(
-                width: kScreenWidthAwareSize(250.0, context),
-                height: kScreenHeightAwareSize(350.0, context),
+                width: kScreenWidthAwareSize(650.0, context),
+                height: kScreenHeightAwareSize(520.0, context),
                 child: Image.asset(
-                  kImageAssets['PlayaDevicePhone'],
+                  kImageAssets['PlayaDeviceLaptop'],
                   fit: BoxFit.fitHeight,
                 ),
               ),
             ),
           ),
           Positioned(
-            bottom: kScreenHeightAwareSize(-20.0, context),
-            left: kScreenWidthAwareSize(-200.0, context),
+            top: kScreenHeightAwareSize(200.0, context),
+            left: kScreenWidthAwareSize(200.0, context),
             child: FittedBox(
               child: Container(
-                width: kScreenWidthAwareSize(750.0, context),
-                height: kScreenHeightAwareSize(550.0, context),
+                width: kScreenWidthAwareSize(180.0, context),
+                height: kScreenHeightAwareSize(280.0, context),
                 child: Image.asset(
-                  kImageAssets['PlayaDeviceLaptop'],
+                  kImageAssets['PlayaDevicePhone'],
                   fit: BoxFit.fitHeight,
                 ),
               ),

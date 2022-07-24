@@ -15,16 +15,6 @@ class SneakPeakPortfolioView extends StatelessWidget {
   Widget buildDesktopView(BuildContext context) {
     return Container(
       color: kPrimaryColorLight2,
-      // decoration: BoxDecoration(
-      //   gradient: LinearGradient(
-      //     begin: Alignment.topCenter,
-      //     end: Alignment.bottomCenter,
-      //     colors: [
-      //       kPrimaryColorLight1,
-      //       kPrimaryColorLight2,
-      //     ],
-      //   ),
-      // ),
       child: Stack(
         children: [
           Positioned(
@@ -41,8 +31,11 @@ class SneakPeakPortfolioView extends StatelessWidget {
           ),
           Container(
             height: kScreenHeight(context),
+            padding: EdgeInsets.symmetric(
+              vertical: kScreenHeightAwareSize(60.0, context),
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(width: 32.0),

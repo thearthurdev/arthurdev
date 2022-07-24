@@ -13,7 +13,7 @@ class BlogInfoSection extends StatelessWidget {
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
       padding: kIsDesktop(context)
           ? EdgeInsets.symmetric(
-              horizontal: kScreenWidthAwareSize(25.0, context),
+              horizontal: kScreenWidthAwareSize(30.0, context),
             )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(100.0, context),
@@ -31,10 +31,8 @@ class BlogInfoSection extends StatelessWidget {
               onActionTap: () async {
                 Uri url = kBlogURL;
 
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                } else {
-                  throw 'Could not launchUrl $url';
+                if (!await launchUrl(url)) {
+                  throw 'Could not launch $url';
                 }
               },
             ),

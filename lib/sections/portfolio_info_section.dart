@@ -13,7 +13,7 @@ class PortfolioInfoSection extends StatelessWidget {
           kIsDesktop(context) ? kScreenHeight(context) + kToolbarHeight : null,
       padding: kIsDesktop(context)
           ? EdgeInsets.symmetric(
-              horizontal: kScreenWidthAwareSize(25.0, context),
+              horizontal: kScreenWidthAwareSize(40.0, context),
             )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(140.0, context),

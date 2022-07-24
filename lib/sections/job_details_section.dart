@@ -102,8 +102,7 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
                                     String name = _nameFieldController.text;
                                     String email = _emailFieldController.text;
 
-                                    Uri url = Uri(
-                                        path:
+                                    Uri url = Uri.parse(
                                             "$kEmailURL?subject=Project Collaboration Proposal"
                                             "&body=Hi Delords,%0D%0A%0D%0A"
                                             "My name's ${name.split(" ")[0]}"

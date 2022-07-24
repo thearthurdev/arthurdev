@@ -12,7 +12,7 @@ class IntroInfoSection extends StatelessWidget {
       height: kIsDesktop(context) ? kScreenHeight(context) : null,
       padding: kIsDesktop(context)
           ? EdgeInsets.symmetric(
-              horizontal: kScreenWidthAwareSize(25.0, context),
+              horizontal: kScreenWidthAwareSize(40.0, context),
             )
           : EdgeInsets.symmetric(
               horizontal: kScreenWidthAwareSize(140.0, context),
@@ -30,11 +30,15 @@ class IntroInfoSection extends StatelessWidget {
               onActionTap: () async {
                 Uri url = kResumeURL;
 
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                } else {
-                  throw 'Could not launchUrl $url';
+                if (!await launchUrl(url)) {
+                  throw 'Could not launch $url';
                 }
+
+                // if (await canLaunchUrl(url)) {
+                //   await launchUrl(url);
+                // } else {
+                //   throw 'Could not launchUrl $url';
+                // }
               },
             ),
           ],

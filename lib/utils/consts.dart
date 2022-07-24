@@ -47,23 +47,30 @@ Map<String, String> kImageAssets = {
 };
 
 // URLs
-Uri kGitHubURL = Uri(path: 'https://github.com/thearthurdev');
-Uri kLinkedInURL = Uri(path: 'https://www.linkedin.com/in/arthurdelords/');
-Uri kTwitterURL = Uri(path: 'https://twitter.com/thearthurdev');
-Uri kEmailURL = Uri(path: 'mailto:arthurdelords@gmail.com');
-Uri kPortfolioURL = Uri(path: 'https://blog.thearthur.dev/arthurdev-portfolio');
-Uri kBlogURL = Uri(path: 'https://blog.thearthur.dev');
-Uri kMobWearGitHubURL = Uri(path: 'https://github.com/thearthurdev/mobwear');
-Uri kMobWearPlayStoreURL = Uri(path: 'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear');
-Uri kSneakPeakTwitterURL = Uri(path: 'https://twitter.com/_DeeArthur/status/1246287315707797505');
-Uri kPlayaTwitterURL = Uri(path: 'https://twitter.com/_DeeArthur/status/1356754726809960449');
-Uri kBlogRSSURL = Uri(path: 'https://blog.thearthur.dev/rss.xml');
-Uri kResumeURL = Uri(path: 'https://docs.google.com/document/d/1a5JzACnhgusFIQYJzqKSFp4eWOEf7QlSmtY818kgrO0/edit?usp=sharing');
+Uri kGitHubURL = Uri.parse('https://github.com/thearthurdev');
+Uri kLinkedInURL = Uri.parse('https://www.linkedin.com/in/arthurdelords/');
+Uri kTwitterURL = Uri.parse('https://twitter.com/thearthurdev');
+Uri kEmailURL = Uri.parse('mailto:arthurdelords@gmail.com');
+Uri kPortfolioURL = Uri.parse('https://blog.thearthur.dev/arthurdev-portfolio');
+Uri kBlogURL = Uri.parse('https://blog.thearthur.dev');
+Uri kMobWearGitHubURL = Uri.parse('https://github.com/thearthurdev/mobwear');
+Uri kMobWearPlayStoreURL = Uri.parse(
+    'https://play.google.com/store/apps/details?id=com.arthurdev.mobwear');
+Uri kSneakPeakTwitterURL =
+    Uri.parse('https://twitter.com/_DeeArthur/status/1246287315707797505');
+Uri kPlayaTwitterURL =
+    Uri.parse('https://twitter.com/_DeeArthur/status/1356754726809960449');
+Uri kBlogRSSURL = Uri.parse('https://blog.thearthur.dev/rss.xml');
+Uri kResumeURL = Uri.parse(
+    'https://docs.google.com/document/d/1a5JzACnhgusFIQYJzqKSFp4eWOEf7QlSmtY818kgrO0/edit?usp=sharing');
 
 List<Uri> kBlogPostURLs = [
-  Uri(path: 'https://blog.thearthur.dev/sharing-info-rich-links-of-your-flutter-website-using-meta-tags'),
-  Uri(path: 'https://blog.thearthur.dev/recreating-the-iconic-star-wars-intro-in-flutter'),
-  Uri(path: 'https://blog.thearthur.dev/how-to-migrate-your-whatsapp-chats-to-telegram'),
+  Uri.parse(
+      'https://blog.thearthur.dev/sharing-info-rich-links-of-your-flutter-website-using-meta-tags'),
+  Uri.parse(
+      'https://blog.thearthur.dev/recreating-the-iconic-star-wars-intro-in-flutter'),
+  Uri.parse(
+      'https://blog.thearthur.dev/how-to-migrate-your-whatsapp-chats-to-telegram'),
 ];
 
 // Blog Posts
