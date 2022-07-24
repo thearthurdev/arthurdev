@@ -3,6 +3,7 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:arthurdev/widgets/built_with_flutter.dart';
 import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FooterSection extends StatelessWidget {
   @override
@@ -25,9 +26,13 @@ class FooterSection extends StatelessWidget {
               SizedBox(
                 width: 88.0,
                 height: 88.0,
-                child: Image.asset(
-                  kImageAssets['ArthurDevLogo'],
-                  fit: BoxFit.fitWidth,
+                // child: Image.asset(
+                //   kImageAssets['ArthurDevLogo'],
+                //   fit: BoxFit.fitWidth,
+                // ),
+                child: SvgPicture.asset(
+                  kImageAssets['ArthurDevLogoSVG'],
+                  semanticsLabel: 'ArthurDev Logo',
                 ),
               ),
               SizedBox(height: 24.0),
@@ -72,9 +77,13 @@ class FooterSection extends StatelessWidget {
                   SizedBox(
                     width: 60.0,
                     height: 60.0,
-                    child: Image.asset(
-                      kImageAssets['ArthurDevLogo'],
-                      fit: BoxFit.fitWidth,
+                    // child: Image.asset(
+                    //   kImageAssets['ArthurDevLogo'],
+                    //   fit: BoxFit.fitWidth,
+                    // ),
+                    child: SvgPicture.asset(
+                      kImageAssets['ArthurDevLogoSVG'],
+                      semanticsLabel: 'ArthurDev Logo',
                     ),
                   ),
                   SizedBox(width: 8.0),

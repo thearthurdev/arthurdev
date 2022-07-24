@@ -24,7 +24,7 @@ class SneakPeakPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.shopping_cart_outlined,
-                color: kPrimaryColorDark(context),
+                color: kPrimaryTextColorLight(context),
                 size: 600.0,
               ),
             ),

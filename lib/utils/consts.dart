@@ -115,15 +115,11 @@ Color kDividerColor(BuildContext context) {
 }
 
 Color kPrimaryTextColorLight(BuildContext context) {
-  return isDarkMode(context)
-      ? Color.fromARGB(255, 199, 199, 199)
-      : Color(0xFFEBEBEC);
+  return isDarkMode(context) ? Color(0xFFFFFFFF) : Color(0xFFEBEBEC);
 }
 
 Color kPrimaryTextColorDark(BuildContext context) {
-  return isDarkMode(context)
-      ? Color.fromARGB(255, 245, 245, 245)
-      : Color(0xFF000000);
+  return isDarkMode(context) ? Color(0xFFFFFFFF) : Color(0xFF000000);
 }
 
 Color kPrimaryTextDisabledColor(BuildContext context) {

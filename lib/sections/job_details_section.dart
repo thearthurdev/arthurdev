@@ -43,7 +43,7 @@ class _JobDetailsSectionState extends State<JobDetailsSection> {
                 opacity: 0.02,
                 child: Icon(
                   Icons.work,
-                  color: kPrimaryColorDark(context),
+                  color: kPrimaryTextColorLight(context),
                   size: kIsDesktop(context) ? 600.0 : 400.0,
                 ),
               ),

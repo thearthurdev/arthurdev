@@ -38,13 +38,13 @@ class IntroDetailsSection extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              bottom: -kScreenHeight(context) * 0.25,
+              bottom: -450,
               left: -500.0,
               child: Opacity(
                 opacity: 0.02,
                 child: Icon(
                   Icons.person,
-                  color: kPrimaryColorDark(context),
+                  color: kPrimaryTextColorLight(context),
                   size: 800.0,
                 ),
               ),
