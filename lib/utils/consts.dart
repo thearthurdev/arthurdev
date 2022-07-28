@@ -81,53 +81,55 @@ const Map<String, String> kBlogPosts = {
   'Jan 14': 'How to Migrate your WhatsApp Chats to Telegram',
 };
 
-bool isDarkMode(BuildContext context) {
+bool kIsDarkMode(BuildContext context) {
   return SystemTheme.isDarkMode;
 }
 
 // Colors
 Color kPrimaryColor(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFF2B2B2B) : Color(0xFFFFFFFF);
+  return kIsDarkMode(context) ? Color(0xFF2B2B2B) : Color(0xFFFFFFFF);
 }
 
 Color kPrimaryColorDark(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFF000000) : Color(0xFF000000);
+  return kIsDarkMode(context) ? Color(0xFF000000) : Color(0xFF000000);
 }
 
 Color kPrimaryColorLight1(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFF3B3B3B) : Color(0xFFEAEAEA);
+  return kIsDarkMode(context) ? Color(0xFF3B3B3B) : Color(0xFFEAEAEA);
 }
 
 Color kPrimaryColorLight2(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFF3B3B3B) : Color(0xFFD2D2D2);
+  return kIsDarkMode(context) ? Color(0xFF3B3B3B) : Color(0xFFD2D2D2);
 }
 
 Color kAccentColor(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFFFFC279) : Color(0xFFFFC279);
+  return kIsDarkMode(context) ? Color(0xFFFFC279) : Color(0xFFFFC279);
 }
 
 Color kAccentColorDeep(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFFE49A41) : Color(0xFFE49A41);
+  return kIsDarkMode(context) ? Color(0xFFE49A41) : Color(0xFFE49A41);
 }
 
 Color kDividerColor(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFFC5C5C5) : Color(0xFFC5C5C5);
+  return kIsDarkMode(context)
+      ? Color(0xFFC5C5C5).withOpacity(0.4)
+      : Color(0xFFC5C5C5);
 }
 
 Color kPrimaryTextColorLight(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFFFFFFFF) : Color(0xFFEBEBEC);
+  return kIsDarkMode(context) ? Color(0xFFFFFFFF) : Color(0xFFEBEBEC);
 }
 
 Color kPrimaryTextColorDark(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFFFFFFFF) : Color(0xFF000000);
+  return kIsDarkMode(context) ? Color(0xFFFFFFFF) : Color(0xFF000000);
 }
 
 Color kPrimaryTextDisabledColor(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFF666874) : Color(0xFF666874);
+  return kIsDarkMode(context) ? Color(0xFF666874) : Color(0xFF666874);
 }
 
 Color kSectionInfoTextColor(BuildContext context) {
-  return isDarkMode(context) ? Color(0xFF999AA2) : Color(0xFF999AA2);
+  return kIsDarkMode(context) ? Color(0xFF999AA2) : Color(0xFF999AA2);
 }
 
 // Animation Durations

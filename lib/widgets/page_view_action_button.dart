@@ -21,7 +21,7 @@ class PageViewActionButton extends StatelessWidget {
           height: 60.0,
           margin: EdgeInsets.all(kScreenWidthAwareSize(48.0, context)),
           decoration: BoxDecoration(
-            color: kDividerColor(context).withOpacity(0.4),
+            color: kDividerColor(context),
             shape: BoxShape.circle,
           ),
           child: Material(

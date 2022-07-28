@@ -21,11 +21,13 @@ class NavigationMenu extends StatelessWidget {
           color: kPrimaryTextColorLight(context),
         ),
         onSelected: (i) {
-          scrollController.animateTo(
-            kSectionScrollOffsets[i],
-            curve: Curves.easeOut,
-            duration: kShortDuration,
-          );
+          if (i < kNavigationDestinations.length) {
+            scrollController.animateTo(
+              kSectionScrollOffsets[i],
+              curve: Curves.easeOut,
+              duration: kShortDuration,
+            );
+          }
         },
         itemBuilder: (context) {
           return List.generate(kNavigationDestinations.length + 1, (i) {
@@ -36,7 +38,8 @@ class NavigationMenu extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(16.0, 4.0, 4.0, 0.0),
                       child: Text(
                         kNavigationDestinations[i].toUpperCase(),
-                        style: kNavigationDestinationTextStyle(context).copyWith(
+                        style:
+                            kNavigationDestinationTextStyle(context).copyWith(
                           fontSize: 14.0,
                           color: kPrimaryTextColorDark(context),
                         ),

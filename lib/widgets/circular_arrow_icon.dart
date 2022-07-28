@@ -18,7 +18,7 @@ class CircularArrowIcon extends StatelessWidget {
       child: Icon(
         MyIcons.arrow_right,
         size: 16.0,
-        color: kPrimaryColorDark(context),
+        color: kPrimaryTextColorDark(context),
       ),
     );
   }
