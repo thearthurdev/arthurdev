@@ -61,7 +61,7 @@ class MoreSoonPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.library_add_rounded,
-                color: kPrimaryTextColorLight(context),
+                color: kPrimaryTextColorDark(context),
                 size: 400.0,
               ),
             ),

@@ -65,13 +65,13 @@ class IntroDetailsSection extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: -kScreenHeight(context) * 0.02,
+            bottom: -kScreenHeight(context) * 0.2,
             left: -300.0,
             child: Opacity(
               opacity: 0.02,
               child: Icon(
                 Icons.person,
-                color: kPrimaryTextColorLight(context),
+                color: kPrimaryTextColorDark(context),
                 size: 600.0,
               ),
             ),
