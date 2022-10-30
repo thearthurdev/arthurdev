@@ -44,7 +44,7 @@ class IntroDetailsSection extends StatelessWidget {
                 opacity: 0.02,
                 child: Icon(
                   Icons.person,
-                  color: kPrimaryTextColorLight(context),
+                  color: kPrimaryTextColorDark(context),
                   size: 800.0,
                 ),
               ),

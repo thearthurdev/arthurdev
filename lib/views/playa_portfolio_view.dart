@@ -24,7 +24,7 @@ class PlayaPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.play_circle_outline_rounded,
-                color: kPrimaryTextColorLight(context),
+                color: kPrimaryTextColorDark(context),
                 size: 800.0,
               ),
             ),

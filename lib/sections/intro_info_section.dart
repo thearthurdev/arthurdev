@@ -25,7 +25,7 @@ class IntroInfoSection extends StatelessWidget {
               sectionTitle: 'Intro',
               heading: 'Software Developer,\nbased in Ghana',
               body:
-                  'I specialize in cross-platform mobile\ndevelopment, UI design, Android\nand Windows automation',
+                  'I specialize in QA, cross-platform mobile\ndevelopment, UI design, Android\nand Windows automation',
               actionText: 'More about me',
               onActionTap: () async {
                 Uri url = kResumeURL;

@@ -25,7 +25,7 @@ class JobInfoSection extends StatelessWidget {
             InfoActionWidget(
               sectionTitle: 'Job',
               heading: 'Impressed?\nGive me a job',
-              body: 'I am looking for a part-time job\nor a freelance project',
+              body: 'I am open to new challenges\nand expanding my portfolio',
               actionText: 'Email me',
               onActionTap: () async {
                 Uri url = Uri.parse('$kEmailURL?subject=Job Offer');

@@ -24,7 +24,7 @@ class MobWearPortfolioView extends StatelessWidget {
               opacity: 0.02,
               child: Icon(
                 Icons.phone_android_rounded,
-                color: kPrimaryTextColorLight(context),
+                color: kPrimaryTextColorDark(context),
                 size: 800.0,
               ),
             ),
