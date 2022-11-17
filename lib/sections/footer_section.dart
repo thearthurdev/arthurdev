@@ -96,7 +96,7 @@ class FooterSection extends StatelessWidget {
                           'Thanks for dropping by,',
                           style: kSectionInfoTextStyle(context).copyWith(
                             fontSize: 14.0,
-                            color: kPrimaryTextColorDark(context),
+                            color: kPrimaryTextColorLight(context),
                           ),
                         ),
                         Text(
