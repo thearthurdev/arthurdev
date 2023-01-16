@@ -63,7 +63,7 @@ Uri kPlayaTwitterURL =
     Uri.parse('https://twitter.com/_DeeArthur/status/1356754726809960449');
 Uri kBlogRSSURL = Uri.parse('https://blog.thearthur.dev/rss.xml');
 Uri kResumeURL = Uri.parse(
-    'https://docs.google.com/document/d/1wYnZlZs0scGB4KkX5P6T9cRVtwOGc2V3/edit?usp=sharing');
+    'https://docs.google.com/document/d/1TtF09lgVIsEG3-6ttsbKvcZoEi-uQFs2/edit?usp=sharing&ouid=102753117759568809536&rtpof=true&sd=true');
 
 List<Uri> kBlogPostURLs = [
   Uri.parse(
