@@ -167,30 +167,34 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
           onPointerSignal: (pointerSignal) {
             _handleWheelScrollEvents(pointerSignal);
           },
-          child: SingleChildScrollView(
-            controller: _mainScrollController,
-            child: Column(
-              children: [
-                MyNavigationBar(
-                  currentSection:
-                      context.read<HomePageProvider>().currentSection,
-                  scrollController: _secondaryScrollController,
-                ),
-                Container(
-                  height: kScreenHeight(context),
-                  child: Row(
-                    children: [
-                      DetailsPanel(
+          child: ScrollConfiguration(
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: SingleChildScrollView(
+              controller: _mainScrollController,
+              child: Column(
+                children: [
+                  MyNavigationBar(
+                    currentSection:
                         context.read<HomePageProvider>().currentSection,
-                        _secondaryScrollControllerOffset,
-                        _secondaryScrollController,
-                      ),
-                      InfoPanel(_secondaryScrollController),
-                    ],
+                    scrollController: _secondaryScrollController,
                   ),
-                ),
-                FooterSection(),
-              ],
+                  Container(
+                    height: kScreenHeight(context),
+                    child: Row(
+                      children: [
+                        DetailsPanel(
+                          context.read<HomePageProvider>().currentSection,
+                          _secondaryScrollControllerOffset,
+                          _secondaryScrollController,
+                        ),
+                        InfoPanel(_secondaryScrollController),
+                      ],
+                    ),
+                  ),
+                  FooterSection(),
+                ],
+              ),
             ),
           ),
         ),
@@ -261,24 +265,28 @@ class InfoPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: secondaryScrollController,
-      child: Container(
-        width: kScreenWidthAwareSize(300.0, context),
-        color: kPrimaryColor(context),
-        padding: EdgeInsets.only(
-          left: kScreenWidthAwareSize(60.0, context),
-          right: kScreenWidthAwareSize(40.0, context),
-        ),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IntroInfoSection(),
-              PortfolioInfoSection(),
-              BlogInfoSection(),
-              JobInfoSection(),
-            ],
+    return ScrollConfiguration(
+      behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: true),
+      child: SingleChildScrollView(
+        controller: secondaryScrollController,
+        child: Container(
+          width: kScreenWidthAwareSize(300.0, context),
+          color: kPrimaryColor(context),
+          padding: EdgeInsets.only(
+            left: kScreenWidthAwareSize(60.0, context),
+            right: kScreenWidthAwareSize(40.0, context),
+          ),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IntroInfoSection(),
+                PortfolioInfoSection(),
+                BlogInfoSection(),
+                JobInfoSection(),
+              ],
+            ),
           ),
         ),
       ),
