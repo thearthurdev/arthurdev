@@ -33,6 +33,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
   late double _mainScrollControllerExtentAfter;
   late double _secondaryScrollControllerExtentBefore;
   late double _currentScrollControllerExtentBefore;
+  late double scrollDelta;
 
   @override
   void initState() {
@@ -103,13 +104,15 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
 
     if (pointerSignal is PointerScrollEvent) {
       double scrollDirection = pointerSignal.scrollDelta.direction;
-      double scrollDelta = kToolbarHeight;
 
       // If user is scrolling down
       if (scrollDirection > 0) {
+        scrollDelta = kToolbarHeight * 4.0;
+
         // Freeze main scroll controller to hide nav bar
         if (_mainScrollControllerExtentBefore == 0.0 &&
             _freezeMainScrollController == false) {
+          scrollDelta = kToolbarHeight;
           setState(() => _freezeMainScrollController = true);
         }
 
@@ -117,6 +120,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
         if (_secondaryScrollControllerExtentBefore ==
                 _maxSecondaryScrollExtent &&
             _freezeMainScrollController == true) {
+          scrollDelta = kToolbarHeight;
           setState(() => _freezeMainScrollController = false);
         }
 
@@ -127,15 +131,19 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
 
       // If user is scrolling up
       if (scrollDirection < 0) {
+        scrollDelta = kToolbarHeight * 4.0;
+
         // Unfreeze main scroll controller to show nav bar
         if (_secondaryScrollControllerExtentBefore <= kToolbarHeight &&
             _freezeMainScrollController == true) {
+          scrollDelta = kToolbarHeight;
           setState(() => _freezeMainScrollController = false);
         }
 
         // Freeze main scroll controller when footer is hidden
         if (_mainScrollControllerExtentAfter == kToolbarHeight * 4.0 &&
             _freezeMainScrollController == false) {
+          scrollDelta = kToolbarHeight;
           setState(() => _freezeMainScrollController = true);
         }
 
@@ -239,7 +247,7 @@ class DetailsPanel extends StatelessWidget {
         );
       case 3:
         return JobDetailsSection();
-        //break;
+      //break;
       default:
         return SizedBox.shrink();
     }

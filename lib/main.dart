@@ -69,11 +69,11 @@ class _HomePageBuilderState extends State<HomePageBuilder> {
       for (GlobalKey sectionKey in kSectionKeys) {
         try {
           final RenderBox? sectionRenderBox =
-              sectionKey.currentContext?.render;
+              sectionKey.currentContext?.findRenderObject() as RenderBox;
           final sectionPosition =
               sectionRenderBox?.localToGlobal(Offset(0.0, 0.0));
           kSectionScrollOffsets[sectionIndex] =
-              sectionPosition.dy - (sectionIndex == 0 ? kToolbarHeight : 0.0);
+              sectionPosition!.dy - (sectionIndex == 0 ? kToolbarHeight : 0.0);
           sectionIndex++;
         } catch (e) {
           print(e);

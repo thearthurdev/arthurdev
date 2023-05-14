@@ -1,4 +1,5 @@
 {
     "cmake.configureOnOpen": false,
-    "cmake.sourceDirectory": "E:/07 Codebase/arthurdev/linux"
+    "cmake.sourceDirectory": "E:/07 Codebase/arthurdev/linux",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
