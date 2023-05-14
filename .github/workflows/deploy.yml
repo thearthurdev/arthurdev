@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build:
-    name: Build Web
+    name: Build and deploy thearthur.dev
     env:
       my_secret: ${{secrets.ACCESS_TOKEN}}
     runs-on: ubuntu-latest
@@ -18,8 +18,8 @@ jobs:
         run: flutter upgrade
       - name: Get packages
         run: flutter pub get
-      - name: Enable flutter web
-        run: flutter config --enable-web
+#       - name: Enable flutter web
+#         run: flutter config --enable-web
       - name: Build web app
         run: flutter build web --release
       - name: Deploy web app
