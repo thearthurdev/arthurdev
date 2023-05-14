@@ -3,7 +3,7 @@ import 'package:arthurdev/widgets/socials_buttons.dart';
 import 'package:flutter/material.dart';
 
 class NavigationMenu extends StatelessWidget {
-  NavigationMenu({Key key, @required this.scrollController}) : super(key: key);
+  NavigationMenu({required this.scrollController}) ;
 
   final ScrollController scrollController;
 
@@ -20,10 +20,10 @@ class NavigationMenu extends StatelessWidget {
           Icons.menu_rounded,
           color: kPrimaryTextColorLight(context),
         ),
-        onSelected: (i) {
-          if (i < kNavigationDestinations.length) {
+        onSelected: (int? i) {
+          if (i! < kNavigationDestinations.length) {
             scrollController.animateTo(
-              kSectionScrollOffsets[i],
+              kSectionScrollOffsets[i]!,
               curve: Curves.easeOut,
               duration: kShortDuration,
             );

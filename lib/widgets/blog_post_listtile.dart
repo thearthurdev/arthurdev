@@ -6,11 +6,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class BlogPostListTile extends StatelessWidget {
   const BlogPostListTile({
-    Key key,
-    @required this.date,
-    @required this.title,
-    @required this.url,
-  }) : super(key: key);
+    required this.date,
+    required this.title,
+    required this.url,
+  });
 
   final String date;
   final String title;

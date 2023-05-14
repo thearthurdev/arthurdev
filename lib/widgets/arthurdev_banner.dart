@@ -4,8 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ArthurDevBanner extends StatelessWidget {
   const ArthurDevBanner(
-      {Key key, @required this.scrollController, this.isLarge = false})
-      : super(key: key);
+      {required this.scrollController, this.isLarge = false});
 
   final bool isLarge;
   final ScrollController scrollController;
@@ -15,7 +14,7 @@ class ArthurDevBanner extends StatelessWidget {
     return InkWell(
       onTap: () {
         scrollController.animateTo(
-          kSectionScrollOffsets[0],
+          kSectionScrollOffsets[0]!,
           curve: Curves.easeOut,
           duration: kShortDuration,
         );
@@ -36,7 +35,7 @@ class ArthurDevBanner extends StatelessWidget {
                 //   fit: BoxFit.fitWidth,
                 // ),
                 child: SvgPicture.asset(
-                  kImageAssets['ArthurDevLogoSVG'],
+                  kImageAssets['ArthurDevLogoSVG']!,
                   semanticsLabel: 'ArthurDev Logo',
                 ),
               ),

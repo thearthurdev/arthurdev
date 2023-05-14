@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class CustomScrollbar extends StatefulWidget {
   const CustomScrollbar({
-    Key key,
-    @required this.scrollController,
-  }) : super(key: key);
+    
+    required this.scrollController,
+  }) ;
 
   final ScrollController scrollController;
 
@@ -16,10 +16,10 @@ class CustomScrollbar extends StatefulWidget {
 }
 
 class _CustomScrollbarState extends State<CustomScrollbar> {
-  double maxScrollExtent;
-  double screenHeight;
-  double scrollbarHandleOffset;
-  double scrollbarHandleExtent;
+  double? maxScrollExtent;
+  double? screenHeight;
+  double? scrollbarHandleOffset;
+  double? scrollbarHandleExtent;
 
   @override
   void initState() {
@@ -44,11 +44,11 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
   }
 
   Future<void> getscrollbarHandleExtent() async {
-    final double visibleViewRatio = maxScrollExtent / screenHeight;
+    final double visibleViewRatio = maxScrollExtent! / screenHeight!;
 
-    final double handleExtent = (1 / visibleViewRatio) * screenHeight;
+    final double handleExtent = (1 / visibleViewRatio) * screenHeight!;
 
-    scrollbarHandleExtent = handleExtent.clamp(24.0, screenHeight);
+    scrollbarHandleExtent = handleExtent.clamp(24.0, screenHeight!);
   }
 
   void handleScrolling() {
@@ -56,10 +56,10 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
         widget.scrollController.position.extentBefore;
 
     final double scrollbarTrackExtent =
-        screenHeight - (scrollbarHandleExtent + 16.0);
+        screenHeight! - (scrollbarHandleExtent! + 16.0);
 
     setState(() => scrollbarHandleOffset =
-        (scrollbarTrackExtent / maxScrollExtent) * scrollExtentBefore);
+        (scrollbarTrackExtent / maxScrollExtent!) * scrollExtentBefore);
   }
 
   void handleWheelScrollEvents(PointerSignalEvent pointerSignal) {
@@ -72,11 +72,11 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
 
       if (scrollDirection > 0) {
         widget.scrollController.position.moveTo(
-          scrollExtentBefore + (scrollDelta * (maxScrollExtent / screenHeight)),
+          scrollExtentBefore + (scrollDelta * (maxScrollExtent! / screenHeight!)),
         );
       } else {
         widget.scrollController.position.moveTo(
-          scrollExtentBefore - (scrollDelta * (maxScrollExtent / screenHeight)),
+          scrollExtentBefore - (scrollDelta * (maxScrollExtent! / screenHeight!)),
         );
       }
     }
@@ -109,20 +109,19 @@ class _CustomScrollbarState extends State<CustomScrollbar> {
 
 class ScrollbarTrack extends StatelessWidget {
   const ScrollbarTrack({
-    Key key,
     this.scrollController,
     this.maxScrollExtent,
     this.screenHeight,
-  }) : super(key: key);
+  }) ;
 
-  final ScrollController scrollController;
-  final double maxScrollExtent;
-  final double screenHeight;
+  final ScrollController? scrollController;
+  final double? maxScrollExtent;
+  final double? screenHeight;
 
   void handleTapEvents(TapUpDetails tapUpDetails) {
     double tapPosition = tapUpDetails.globalPosition.dy;
-    scrollController.position
-        .moveTo(tapPosition * maxScrollExtent / screenHeight);
+    scrollController?.position
+        .moveTo(tapPosition * maxScrollExtent! / screenHeight!);
   }
 
   @override
@@ -144,23 +143,22 @@ class ScrollbarTrack extends StatelessWidget {
 
 class ScrollbarHandle extends StatelessWidget {
   const ScrollbarHandle({
-    Key key,
     this.scrollController,
     this.scrollbarHandleOffset,
     this.scrollbarHandleExtent,
     this.maxScrollExtent,
     this.screenHeight,
-  }) : super(key: key);
+  }) ;
 
-  final ScrollController scrollController;
-  final double scrollbarHandleOffset;
-  final double scrollbarHandleExtent;
-  final double maxScrollExtent;
-  final double screenHeight;
+  final ScrollController? scrollController;
+  final double? scrollbarHandleOffset;
+  final double? scrollbarHandleExtent;
+  final double? maxScrollExtent;
+  final double? screenHeight;
 
   void handleDragEvents(DragUpdateDetails dragDetails) {
     double position = dragDetails.globalPosition.dy;
-    scrollController.position.moveTo(position * maxScrollExtent / screenHeight);
+    scrollController?.position.moveTo(position * maxScrollExtent! / screenHeight!);
   }
 
   @override

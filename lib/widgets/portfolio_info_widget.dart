@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class PortfolioInfoWidget extends StatelessWidget {
   const PortfolioInfoWidget({
-    @required this.title,
+    required this.title,
     this.description,
     this.image,
     this.width,
@@ -11,12 +11,12 @@ class PortfolioInfoWidget extends StatelessWidget {
     this.toolTip,
   });
 
-  final String image;
-  final String title;
-  final String description;
-  final String toolTip;
-  final double width;
-  final VoidCallback onTap;
+  final String? image;
+  final String? title;
+  final String? description;
+  final String? toolTip;
+  final double? width;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class PortfolioInfoWidget extends StatelessWidget {
                     height: 100.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(image),
+                        image: AssetImage(image!),
                       ),
                     ),
                   )
@@ -70,12 +70,12 @@ class PortfolioInfoWidget extends StatelessWidget {
                 children: [
                   Flexible(
                     child: FittedBox(
-                      child: Text(title, style: kLargeHeaderTextStyle(context)),
+                      child: Text(title!, style: kLargeHeaderTextStyle(context)),
                     ),
                   ),
                   SizedBox(height: 4.0),
                   Flexible(
-                    child: Text(description,
+                    child: Text(description!,
                         style: kSectionInfoTextStyle(context)),
                   ),
                 ],

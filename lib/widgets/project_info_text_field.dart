@@ -8,9 +8,9 @@ class ProjectInfoTextField extends StatelessWidget {
     this.inputType,
   });
 
-  final TextEditingController controller;
-  final String hint;
-  final TextInputType inputType;
+  final TextEditingController? controller;
+  final String? hint;
+  final TextInputType? inputType;
 
   @override
   Widget build(BuildContext context) {

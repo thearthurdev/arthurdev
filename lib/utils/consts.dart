@@ -9,12 +9,12 @@ BorderRadius kBorderRadius = BorderRadius.circular(6.0);
 List<String> kNavigationDestinations = ['Intro', 'Portfolio', 'Blog', 'Job'];
 
 // Section scroll offsets
-double kIntroSectionScrollOffset;
-double kPortfolioSectionScrollOffset;
-double kBlogSectionScrollOffset;
-double kJobSectionScrollOffset;
+double? kIntroSectionScrollOffset;
+double? kPortfolioSectionScrollOffset;
+double? kBlogSectionScrollOffset;
+double? kJobSectionScrollOffset;
 
-List<double> kSectionScrollOffsets = [
+List<double?> kSectionScrollOffsets = [
   kIntroSectionScrollOffset,
   kPortfolioSectionScrollOffset,
   kBlogSectionScrollOffset,
@@ -28,10 +28,10 @@ GlobalKey kBlogSectionKey = GlobalKey();
 GlobalKey kJobSectionKey = GlobalKey();
 
 List<GlobalKey> kSectionKeys = [
-  kIntroSectionKey,
-  kPortfolioSectionKey,
-  kBlogSectionKey,
-  kJobSectionKey,
+ kIntroSectionKey,
+ kPortfolioSectionKey,
+ kBlogSectionKey,
+ kJobSectionKey,
 ];
 
 // Images

@@ -7,11 +7,11 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
-    Key key,
-    @required this.showAppBar,
-    @required this.currentSection,
-    @required this.scrollController,
-  }) : super(key: key);
+    
+    required this.showAppBar,
+    required this.currentSection,
+    required this.scrollController,
+  }) ;
 
   final bool showAppBar;
   final int currentSection;

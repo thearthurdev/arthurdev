@@ -54,7 +54,7 @@ class PlayaPortfolioView extends StatelessWidget {
                 width: kScreenWidthAwareSize(650.0, context),
                 height: kScreenHeightAwareSize(520.0, context),
                 child: Image.asset(
-                  kImageAssets['PlayaDeviceLaptop'],
+                  kImageAssets['PlayaDeviceLaptop']!,
                   fit: BoxFit.fitHeight,
                 ),
               ),
@@ -68,7 +68,7 @@ class PlayaPortfolioView extends StatelessWidget {
                 width: kScreenWidthAwareSize(180.0, context),
                 height: kScreenHeightAwareSize(280.0, context),
                 child: Image.asset(
-                  kImageAssets['PlayaDevicePhone'],
+                  kImageAssets['PlayaDevicePhone']!,
                   fit: BoxFit.fitHeight,
                 ),
               ),
@@ -130,7 +130,7 @@ class PlayaPortfolioView extends StatelessWidget {
               child: Container(
                 width: 600.0,
                 child: Image.asset(
-                  kImageAssets['PlayaDeviceLaptop'],
+                  kImageAssets['PlayaDeviceLaptop']!,
                   fit: BoxFit.fitWidth,
                 ),
               ),

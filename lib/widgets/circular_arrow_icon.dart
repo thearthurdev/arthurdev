@@ -3,9 +3,7 @@ import 'package:arthurdev/utils/my_icons.dart';
 import 'package:flutter/material.dart';
 
 class CircularArrowIcon extends StatelessWidget {
-  const CircularArrowIcon({
-    Key key,
-  }) : super(key: key);
+  const CircularArrowIcon() ;
 
   @override
   Widget build(BuildContext context) {

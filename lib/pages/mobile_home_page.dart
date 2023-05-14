@@ -23,8 +23,8 @@ class MobileHomePage extends StatefulWidget {
 }
 
 class _MobileHomePageState extends State<MobileHomePage> {
-  ScrollController _scrollController;
-  double _scrollControllerExtentBefore;
+  late ScrollController _scrollController;
+  late double _scrollControllerExtentBefore;
 
   @override
   void initState() {
@@ -151,8 +151,8 @@ class _MobileHomePageState extends State<MobileHomePage> {
 
 class SliverDetailsSection extends StatelessWidget {
   const SliverDetailsSection({
-    @required this.child,
-    this.sectionIndex,
+    required this.child,
+    this.sectionIndex = 0,
   });
 
   final Widget child;
@@ -186,8 +186,8 @@ class SliverDetailsSection extends StatelessWidget {
 
 class SliverInfoSection extends StatelessWidget {
   const SliverInfoSection({
-    @required this.child,
-    this.sectionIndex,
+    required this.child,
+    this.sectionIndex = 0,
   });
 
   final Widget child;

@@ -39,7 +39,7 @@ class MobWearPortfolioView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Flexible(
-                  child: Image.asset(kImageAssets['MobWearDevice']),
+                  child: Image.asset(kImageAssets['MobWearDevice']!),
                 ),
                 Flexible(
                   child: FittedBox(
@@ -47,7 +47,7 @@ class MobWearPortfolioView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         PortfolioInfoWidget(
-                          image: kImageAssets['MobWearLogo'],
+                          image: kImageAssets['MobWearLogo']!,
                           title: 'MobWear',
                           description:
                               'Customize smartphones with colors and textures',
@@ -72,7 +72,7 @@ class MobWearPortfolioView extends StatelessWidget {
                             width: 160.0,
                             margin: EdgeInsets.only(right: 60.0, top: 32.0),
                             child: Image.asset(
-                              kImageAssets['PlayStoreButton'],
+                              kImageAssets['PlayStoreButton']!,
                             ),
                           ),
                         ),
@@ -127,7 +127,7 @@ class MobWearPortfolioView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         PortfolioInfoWidget(
-                          image: kImageAssets['MobWearLogo'],
+                          image: kImageAssets['MobWearLogo']!,
                           title: 'MobWear',
                           description:
                               'Customize smartphones with colors and textures',
@@ -152,7 +152,7 @@ class MobWearPortfolioView extends StatelessWidget {
                             width: 160.0,
                             margin: EdgeInsets.only(right: 60.0, top: 32.0),
                             child: Image.asset(
-                              kImageAssets['PlayStoreButton'],
+                              kImageAssets['PlayStoreButton']!,
                             ),
                           ),
                         ),
@@ -163,7 +163,7 @@ class MobWearPortfolioView extends StatelessWidget {
                 Container(
                   width: kScreenWidthAwareSize(500.0, context),
                   child: Image.asset(
-                    kImageAssets['MobWearDevice'],
+                    kImageAssets['MobWearDevice']!,
                   ),
                 ),
               ],

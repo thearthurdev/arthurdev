@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 class PageViewActionButton extends StatelessWidget {
   const PageViewActionButton(
     this.icon, {
-    Key key,
+    
     this.onTap,
-  }) : super(key: key);
+  }) ;
 
   final IconData icon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

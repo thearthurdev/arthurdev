@@ -61,11 +61,11 @@ dynamic kResponsiveAttribute(
 
 // class ResponsiveViewBuilder extends StatelessWidget {
 //   const ResponsiveViewBuilder({
-//     Key key,
+//     
 //     this.desktop,
 //     this.tablet,
 //     this.mobile,
-//   }) : super(key: key);
+//   }) ;
 
 //   final dynamic desktop;
 //   final dynamic tablet;

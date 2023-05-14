@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PortfolioDetailsSection extends StatefulWidget {
-  const PortfolioDetailsSection({Key key}) : super(key: key);
+  const PortfolioDetailsSection() ;
 
   @override
   _PortfolioDetailsSectionState createState() =>
@@ -18,8 +18,8 @@ class PortfolioDetailsSection extends StatefulWidget {
 }
 
 class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
-  PageController _pageController;
-  int _currentPage;
+  late PageController _pageController;
+  late int _currentPage;
 
   @override
   void initState() {
@@ -54,7 +54,7 @@ class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
                       Icons.arrow_back_ios_rounded,
                       onTap: () {
                         setState(() {
-                          _currentPage = (_pageController.page - 1).toInt();
+                          _currentPage = (_pageController.page! - 1).toInt();
                         });
 
                         _pageController
@@ -77,7 +77,7 @@ class _PortfolioDetailsSectionState extends State<PortfolioDetailsSection> {
                     ? PageViewActionButton(Icons.arrow_forward_ios_rounded,
                         onTap: () {
                         setState(() {
-                          _currentPage = (_pageController.page + 1).toInt();
+                          _currentPage = (_pageController.page! + 1).toInt();
                         });
                         _pageController
                             .animateToPage(

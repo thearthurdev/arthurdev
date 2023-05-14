@@ -3,21 +3,20 @@ import 'package:flutter/material.dart';
 
 class InfoActionWidget extends StatelessWidget {
   const InfoActionWidget({
-    Key key,
     this.sectionTitle,
     this.heading,
     this.body,
     this.actionText,
     this.onActionTap,
     this.leftIndent,
-  }) : super(key: key);
+  }) ;
 
-  final String sectionTitle;
-  final String heading;
-  final String body;
-  final String actionText;
-  final Function onActionTap;
-  final double leftIndent;
+  final String? sectionTitle;
+  final String? heading;
+  final String? body;
+  final String? actionText;
+  final VoidCallback? onActionTap;
+  final double? leftIndent;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class InfoActionWidget extends StatelessWidget {
           heading == null
               ? SizedBox()
               : Text(
-                  heading.toUpperCase(),
+                  heading!.toUpperCase(),
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                   style: kSectionHeaderTextStyle(context),
@@ -48,7 +47,7 @@ class InfoActionWidget extends StatelessWidget {
           body == null
               ? SizedBox()
               : Text(
-                  body,
+                  body!,
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                   style: kSectionInfoTextStyle(context),
@@ -76,7 +75,7 @@ class InfoActionWidget extends StatelessWidget {
                           children: [
                             Flexible(
                               child: Text(
-                                actionText.toUpperCase(),
+                                actionText!.toUpperCase(),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: kActionButtonTextStyle(context),

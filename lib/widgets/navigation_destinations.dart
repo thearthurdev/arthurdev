@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class NavigationDestinations extends StatelessWidget {
   const NavigationDestinations({
-    Key key,
-    @required this.currentSection,
-    @required this.scrollController,
-  }) : super(key: key);
+    
+    required this.currentSection,
+    required this.scrollController,
+  }) ;
 
   final int currentSection;
   final ScrollController scrollController;
@@ -27,7 +27,7 @@ class NavigationDestinations extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   scrollController.animateTo(
-                    kSectionScrollOffsets[i],
+                    kSectionScrollOffsets[i]!,
                     curve: Curves.easeOut,
                     duration: kMediumDuration,
                   );

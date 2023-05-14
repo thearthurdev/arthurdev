@@ -6,8 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 class SocialsButtons extends StatelessWidget {
   SocialsButtons({this.size, this.color});
 
-  final double size;
-  final Color color;
+  final double? size;
+  final Color? color;
 
   final Map<Uri, IconData> _socials = {
     kEmailURL: Icons.email,

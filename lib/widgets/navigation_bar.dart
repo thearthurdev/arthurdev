@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 
 class MyNavigationBar extends StatelessWidget {
   const MyNavigationBar({
-    Key key,
-    @required this.currentSection,
-    @required this.scrollController,
-  }) : super(key: key);
+    
+    required this.currentSection,
+    required this.scrollController,
+  }) ;
 
   final int currentSection;
   final ScrollController scrollController;

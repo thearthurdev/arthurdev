@@ -7,9 +7,9 @@ class PersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   final Widget child;
 
   PersistentHeaderDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
   });
 
   @override

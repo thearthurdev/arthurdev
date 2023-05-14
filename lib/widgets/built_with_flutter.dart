@@ -2,9 +2,7 @@ import 'package:arthurdev/utils/consts.dart';
 import 'package:flutter/material.dart';
 
 class BuiltWithFlutter extends StatelessWidget {
-  const BuiltWithFlutter({
-    Key key,
-  }) : super(key: key);
+  const BuiltWithFlutter() ;
 
   @override
   Widget build(BuildContext context) {

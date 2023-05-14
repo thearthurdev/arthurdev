@@ -6,17 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class JobDetailsSection extends StatefulWidget {
-  const JobDetailsSection({
-    Key key,
-  }) : super(key: key);
+  const JobDetailsSection() ;
 
   @override
   _JobDetailsSectionState createState() => _JobDetailsSectionState();
 }
 
 class _JobDetailsSectionState extends State<JobDetailsSection> {
-  TextEditingController _nameFieldController;
-  TextEditingController _emailFieldController;
+  late TextEditingController _nameFieldController;
+  late TextEditingController _emailFieldController;
 
   @override
   void initState() {

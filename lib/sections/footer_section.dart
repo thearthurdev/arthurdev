@@ -31,7 +31,7 @@ class FooterSection extends StatelessWidget {
                 //   fit: BoxFit.fitWidth,
                 // ),
                 child: SvgPicture.asset(
-                  kImageAssets['ArthurDevLogoSVG'],
+                  kImageAssets['ArthurDevLogoSVG']!,
                   semanticsLabel: 'ArthurDev Logo',
                 ),
               ),
@@ -82,7 +82,7 @@ class FooterSection extends StatelessWidget {
                     //   fit: BoxFit.fitWidth,
                     // ),
                     child: SvgPicture.asset(
-                      kImageAssets['ArthurDevLogoSVG'],
+                      kImageAssets['ArthurDevLogoSVG']!,
                       semanticsLabel: 'ArthurDev Logo',
                     ),
                   ),

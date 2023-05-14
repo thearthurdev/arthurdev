@@ -22,17 +22,17 @@ class DesktopHomePage extends StatefulWidget {
 }
 
 class _DesktopHomePageState extends State<DesktopHomePage> {
-  ScrollController _mainScrollController;
-  ScrollController _secondaryScrollController;
-  ScrollController _currentScrollController;
-  bool _freezeMainScrollController;
-  // double _maxMainScrollExtent;
-  double _maxSecondaryScrollExtent;
-  double _secondaryScrollControllerOffset;
-  double _mainScrollControllerExtentBefore;
-  double _mainScrollControllerExtentAfter;
-  double _secondaryScrollControllerExtentBefore;
-  double _currentScrollControllerExtentBefore;
+  late ScrollController _mainScrollController;
+  late ScrollController _secondaryScrollController;
+  late ScrollController _currentScrollController;
+  late bool _freezeMainScrollController;
+  // late double _maxMainScrollExtent;
+  late double _maxSecondaryScrollExtent;
+  late double _secondaryScrollControllerOffset;
+  late double _mainScrollControllerExtentBefore;
+  late double _mainScrollControllerExtentAfter;
+  late double _secondaryScrollControllerExtentBefore;
+  late double _currentScrollControllerExtentBefore;
 
   @override
   void initState() {
@@ -239,7 +239,7 @@ class DetailsPanel extends StatelessWidget {
         );
       case 3:
         return JobDetailsSection();
-        break;
+        //break;
       default:
         return SizedBox.shrink();
     }

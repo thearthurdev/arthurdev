@@ -57,7 +57,7 @@ class SneakPeakPortfolioView extends StatelessWidget {
                   ),
                 ),
                 Flexible(
-                  child: Image.asset(kImageAssets['SneakPeakDevice']),
+                  child: Image.asset(kImageAssets['SneakPeakDevice']!),
                 ),
               ],
             ),
@@ -99,7 +99,7 @@ class SneakPeakPortfolioView extends StatelessWidget {
             child: FittedBox(
               child: Container(
                 height: 200.0,
-                child: Image.asset(kImageAssets['SneakPeakDevice']),
+                child: Image.asset(kImageAssets['SneakPeakDevice']!),
               ),
             ),
           ),

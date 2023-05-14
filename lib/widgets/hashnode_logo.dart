@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 
 class HashnodeLogo extends StatelessWidget {
   const HashnodeLogo({
-    Key key,
     this.size,
-  }) : super(key: key);
+  }) ;
 
-  final double size;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +20,12 @@ class HashnodeLogo extends StatelessWidget {
           decoration: BoxDecoration(
             color: kPrimaryTextColorDark(context),
             borderRadius:
-                BorderRadius.circular(size != null ? size * 0.15 : 100.0),
+                BorderRadius.circular(size != null ? size! * 0.15 : 100.0),
           ),
           child: Center(
             child: Container(
-              width: size != null ? size * 0.5 : 300.0,
-              height: size != null ? size * 0.5 : 300.0,
+              width: size != null ? size! * 0.5 : 300.0,
+              height: size != null ? size! * 0.5 : 300.0,
               decoration: BoxDecoration(
                 color: kPrimaryColorLight2(context),
                 shape: BoxShape.circle,

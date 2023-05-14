@@ -3,9 +3,7 @@ import 'package:arthurdev/utils/responsive_view_util.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({
-    Key key,
-  }) : super(key: key);
+  const Profile() ;
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +73,12 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget profilePic({double width, double height}) {
+  Widget profilePic({double? width, double? height}) {
     return SizedBox(
       width: width ?? 296.0,
       height: height ?? 333.0,
       child: Image.asset(
-        kImageAssets['ProfilePic'],
+        kImageAssets['ProfilePic']!,
         fit: BoxFit.fitHeight,
       ),
     );

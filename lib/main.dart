@@ -39,7 +39,7 @@ class ArthurDev extends StatelessWidget {
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: PlatformAdaptiveScrollBehavior(),
-          child: child,
+          child: child!,
         );
       },
     );
@@ -52,7 +52,7 @@ class HomePageBuilder extends StatefulWidget {
 }
 
 class _HomePageBuilderState extends State<HomePageBuilder> {
-  double _initScreenHeight;
+  double? _initScreenHeight;
 
   @override
   void initState() {
@@ -68,10 +68,10 @@ class _HomePageBuilderState extends State<HomePageBuilder> {
       int sectionIndex = 0;
       for (GlobalKey sectionKey in kSectionKeys) {
         try {
-          final RenderBox sectionRenderBox =
-              sectionKey.currentContext.findRenderObject();
+          final RenderBox? sectionRenderBox =
+              sectionKey.currentContext?.render;
           final sectionPosition =
-              sectionRenderBox.localToGlobal(Offset(0.0, 0.0));
+              sectionRenderBox?.localToGlobal(Offset(0.0, 0.0));
           kSectionScrollOffsets[sectionIndex] =
               sectionPosition.dy - (sectionIndex == 0 ? kToolbarHeight : 0.0);
           sectionIndex++;
@@ -79,26 +79,25 @@ class _HomePageBuilderState extends State<HomePageBuilder> {
           print(e);
         }
       }
-    });
-
-    _precacheImageAssets(context);
+    }); 
+    
   }
 
-  static List<Image> _loadImageAssets(BuildContext context) {
-    List<Image> imageAssets = [];
+  // static List<Image> _loadImageAssets(BuildContext context) {
+  //   List<Image> imageAssets = [];
 
-    kImageAssets.forEach((key, value) {
-      imageAssets.add(Image.asset(value));
-    });
+  //   kImageAssets.forEach((key, value) {
+  //     imageAssets.add(Image.asset(value));
+  //   });
 
-    return imageAssets;
-  }
+  //   return imageAssets;
+  // }
 
-  static Future<void> _precacheImageAssets(BuildContext context) async {
-    for (Image asset in _loadImageAssets(context)) {
-      await precacheImage(asset.image, context);
-    }
-  }
+  // static Future<void> _precacheImageAssets(BuildContext context) async {
+  //   for (Image asset in _loadImageAssets(context)) {
+  //     await precacheImage(asset.image, context);
+  //   }
+  // }
 
   // TODO: Syncronize scroll position between responsive views
 

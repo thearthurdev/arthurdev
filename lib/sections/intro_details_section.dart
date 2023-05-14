@@ -4,9 +4,7 @@ import 'package:arthurdev/widgets/profile.dart';
 import 'package:flutter/material.dart';
 
 class IntroDetailsSection extends StatelessWidget {
-  const IntroDetailsSection({
-    Key key,
-  }) : super(key: key);
+  const IntroDetailsSection();
 
   @override
   Widget build(BuildContext context) {

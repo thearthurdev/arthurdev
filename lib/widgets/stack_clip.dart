@@ -6,19 +6,19 @@ class StackClip extends StatefulWidget {
   final double scrollOffset;
 
   StackClip({
-    Key key,
-    @required this.backgroundWidget,
-    @required this.foregroundWidget,
-    @required this.scrollOffset,
-  }) : super(key: key);
+    
+    required this.backgroundWidget,
+    required this.foregroundWidget,
+    required this.scrollOffset,
+  }) ;
 
   @override
   _StackClipState createState() => _StackClipState();
 }
 
 class _StackClipState extends State<StackClip> {
-  double _offset;
-  double _overlayOpacity;
+  late double _offset;
+  late double _overlayOpacity;
 
   @override
   void initState() {
@@ -61,7 +61,7 @@ class _StackClipState extends State<StackClip> {
 class _StackClipper extends CustomClipper<Path> {
   final double offset;
   _StackClipper({
-    @required this.offset,
+    required this.offset,
   });
   @override
   Path getClip(Size size) {
